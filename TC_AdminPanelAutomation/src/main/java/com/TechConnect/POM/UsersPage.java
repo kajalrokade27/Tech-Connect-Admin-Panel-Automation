@@ -47,6 +47,18 @@ public class UsersPage {
 	 public @FindBy(xpath="(//div[@title='Delete'])[1]")
 	 WebElement delete_user;
 	 
+	 //import user from excel file
+	 public @FindBy(xpath="//button[@class='btn me-3 mb-3 btn btn-success']")
+	 WebElement import_user;
+	 
+	 public @FindBy(xpath="//div[@class='d-flex flex-column align-items-center text-center ']")
+	 WebElement upload_file;
+	 
+	 public @FindBy(xpath="//button[@class='btn-info btn btn-secondary']")
+	 WebElement submit_button;
+	 
+	   
+	 
 	 
 	 
 	 

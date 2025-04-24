@@ -27,10 +27,10 @@ public class ListenersClass extends BaseClass implements ITestListener
 	    public void onStart(ITestContext context)
 	    {
 	        String timestamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-	        String reportName = "Metapercept_Report_" + timestamp + ".html";
+	        String reportName = "TechConnect_Report_" + timestamp + ".html";
 
 	        ExtentSparkReporter spark = new ExtentSparkReporter("./Reports/" + reportName);
-	        spark.config().setDocumentTitle("Metapercept Automation Report");
+	        spark.config().setDocumentTitle("Tech-Connect Testing Report");
 	        spark.config().setReportName("Test Execution Summary");
 	        spark.config().setTheme(Theme.DARK);
 	        

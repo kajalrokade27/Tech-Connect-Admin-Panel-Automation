@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="UsersValidationScripts.UsersModuleValidation">
+      <class name="WorkshopValidation.DetailsValidation">
         <methods>
           <include name="preCondition"/>
-          <include name="addUsersWithValidInput"/>
+          <include name="validateSessions"/>
+          <include name="validateDetailsModule"/>
         </methods>
-      </class> <!-- UsersValidationScripts.UsersModuleValidation -->
+      </class> <!-- WorkshopValidation.DetailsValidation -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

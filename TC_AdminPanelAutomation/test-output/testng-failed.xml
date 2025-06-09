@@ -3,13 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="WorkshopValidation.DetailsValidation">
+      <class name="UserAppLoginValidation.VerifyLoginFunctionality">
         <methods>
+          <include name="verifyLoginWithInvalidCredentials"/>
+          <include name="postCondition"/>
+          <include name="logout"/>
           <include name="preCondition"/>
-          <include name="validateSessions"/>
-          <include name="validateDetailsModule"/>
         </methods>
-      </class> <!-- WorkshopValidation.DetailsValidation -->
+      </class> <!-- UserAppLoginValidation.VerifyLoginFunctionality -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

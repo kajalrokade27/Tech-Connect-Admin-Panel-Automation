@@ -10,7 +10,7 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
-import com.TechConnect.Base.BaseClass;
+import com.TechConnect.Base.AdminBaseClass;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.markuputils.ExtentColor;
@@ -18,7 +18,7 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
-public class ListenersClass extends BaseClass implements ITestListener
+public class ListenersClass extends AdminBaseClass implements ITestListener
 {
 	 private ExtentReports report;
 	    private ExtentTest test;

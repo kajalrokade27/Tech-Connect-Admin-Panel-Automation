@@ -13,7 +13,7 @@ public class ExcelUtils
 {
 	public static String Exceldata(String s, int row, int column) throws EncryptedDocumentException, IOException
 	{
-		FileInputStream fis = new FileInputStream("C:\\Users\\Admin\\OneDrive\\Desktop\\MData.xlsx");
+		FileInputStream fis = new FileInputStream("src/test/resources/TC_UserDetails.xlsx");
 		Workbook wb = WorkbookFactory.create(fis);
 		Sheet sheet = wb.getSheet(s);
 		String data =sheet.getRow(row).getCell(column).toString();
@@ -22,7 +22,7 @@ public class ExcelUtils
 	}
 	public static int getRows(String s) throws EncryptedDocumentException, IOException
 	{
-		FileInputStream fis = new FileInputStream("C:\\Users\\Admin\\OneDrive\\Desktop\\MData.xlsx");
+		FileInputStream fis = new FileInputStream("src/test/resources/TC_UserDetails.xlsx");
 		Workbook wb = WorkbookFactory.create(fis);
 		Sheet sheet = wb.getSheet(s);
 	
@@ -41,7 +41,7 @@ public class ExcelUtils
 //		
 //	}
 	public static int getCells(String s) throws EncryptedDocumentException, IOException {
-	    FileInputStream fis = new FileInputStream("C:\\Users\\Admin\\OneDrive\\Desktop\\MData.xlsx");
+	    FileInputStream fis = new FileInputStream("src/test/resources/TC_UserDetails.xlsx");
 	    Workbook wb = WorkbookFactory.create(fis);
 	    Sheet sheet = wb.getSheet(s);
 	    

@@ -1,3 +1,4 @@
+
 package com.tech_Connect.Action;
 
 import java.awt.AWTException;
@@ -13,276 +14,201 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.TechConnect.Base.BaseDriver;
 
-public class ActionClass extends BaseDriver
-{
-	public static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-	public static JavascriptExecutor js = (JavascriptExecutor) driver;
-	public static Actions actions = new Actions(driver);
+public class ActionClass extends BaseDriver {
+    // WebDriverWait for explicit waits
+    private static final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+    // JavascriptExecutor for JS-based actions
+    private static final JavascriptExecutor js = (JavascriptExecutor) driver;
+    // Actions class for advanced user interactions
+    private static final Actions actions = new Actions(driver);
 
-//Method to highlight an element with a specific border color
-	public static void applyBorder(WebElement element, String color) 
-	{
-		js.executeScript("arguments[0].style.border='3px solid " + color + "'", element);
-	}
+    // Apply a colored border to a WebElement (for debugging/highlighting)
+    public static void applyBorder(WebElement element, String color) {
+        js.executeScript("arguments[0].style.border='3px solid " + color + "'", element);
+    }
 
-//Method to click an element
-	public static void click(WebElement element) 
-	{
-		try
-		{
-			waitUptoClickable(element);
-			element.click();
-		} 
-		catch (Exception e) 
-		{
-			System.out.println("Unable to click element: " + e.getMessage());
-		}
-	}
+    // Click an element, fallback to JS click if normal click fails
+    public static void click(WebElement element) {
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+        try {
+        	applyBorder(element, "green");
+            element.click();
+        } catch (Exception e) {
+            js.executeScript("arguments[0].click();", element);
+        }
+    }
 
-//Method to enter text into input field
-	public static void enterText(WebElement element, String value) 
-	{
-		try 
-		{
-			wait.until(ExpectedConditions.visibilityOf(element));
-			element.clear();
-			element.sendKeys(value);
-		} 
-		catch (Exception e) 
-		{
-			System.out.println("Unable to enter the value in input box: " + e.getMessage());
-		}
-	}
+    // Enter text into an input field after waiting for visibility
+    public static void enterText(WebElement element, String value) {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(element));
+            element.clear();
+            applyBorder(element, "blue");
+            element.sendKeys(value);
+        } catch (Exception e) {
+            System.err.println("Unable to enter value: " + e.getMessage());
+        }
+    }
 
-//WaitForElement to be Clickable
-	public static void waitUptoClickable(WebElement element) 
-	{
-		try
-		{
-			wait.until(ExpectedConditions.elementToBeClickable(element));
-		}
-		catch (Exception e) 
-		{
-			System.out.println("Element is not clickable: " + e.getMessage());
-		}
-	}
+    // Wait until the element is clickable
+    public static void waitUptoClickable(WebElement element) {
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+        } catch (Exception e) {
+            System.err.println("Element not clickable: " + e.getMessage());
+        }
+    }
 
-//Method to get text from an input field
-	public static String getText(WebElement element) 
-	{
-		try 
-		{
-			wait.until(ExpectedConditions.visibilityOf(element));
-			return element.getText();
-		} 
-		catch (Exception e)
-		{
-			System.out.println("Unable to getText: " + e.getMessage());
-			return "";
-		}
-	}
+    // Get text from an element after waiting for visibility
+    public static String getText(WebElement element) {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(element));
+            return element.getText();
+        } catch (Exception e) {
+            System.err.println("Unable to get text: " + e.getMessage());
+            return "";
+        }
+    }
 
-//Wait for the Page to Load
-	public static void waitForPageLoad(int timeOutInSec) 
-	{
-		try
-		{
-			wait.withTimeout(Duration.ofSeconds(timeOutInSec)).until(webDriver -> ((JavascriptExecutor) webDriver)
-					.executeScript("return document.readyState").equals("complete"));
-			System.out.println("Page loaded successfully.");
-		} 
-		catch (Exception e) 
-		{
-			System.out.println("Page did not load within " + timeOutInSec + " seconds. Exception: " + e.getMessage());
-		}
-	}
+    // Wait for the page to load completely
+    public static void waitForPageLoad(int timeOutInSec) {
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(timeOutInSec))
+                .until(webDriver -> js.executeScript("return document.readyState").equals("complete"));
+            System.out.println("Page loaded successfully.");
+        } catch (Exception e) {
+            System.err.println("Page did not load: " + e.getMessage());
+        }
+    }
 
-//Wait for element to be Visible
-	public static void waitUptoVisible(WebElement element) 
-	{
-		try
-		{
-			wait.until(ExpectedConditions.visibilityOf(element));
-		} 
-		catch (Exception e) 
-		{
-			System.out.println("Element is not visible: " + e.getMessage());
-		}
-	}
+    // Wait until the element is visible
+    public static void waitUptoVisible(WebElement element) {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(element));
+        } catch (Exception e) {
+            System.err.println("Element not visible: " + e.getMessage());
+        }
+    }
 
-//Scroll to an element
-	public static void scrollToElement(WebElement element) 
-	{
-		try
-		{
-			js.executeScript("arguments[0].scrollIntoView(true);", element);
-		} 
-		catch (Exception e) 
-		{
-			System.out.println("Unale to locate element: " + e.getMessage());
-		}
-	}
+    // Scroll to a specific element using JavaScript
+    public static void scrollToElement(WebElement element) {
+        try {
+            js.executeScript("arguments[0].scrollIntoView(true);", element);
+        } catch (Exception e) {
+            System.err.println("Unable to scroll to element: " + e.getMessage());
+        }
+    }
 
-//Check if an element is Displayed
-	public static boolean isDisplayed(WebElement element) 
-	{
-		try 
-		{
-			waitUptoVisible(element);
-			return element.isDisplayed();
-		} 
-		catch (Exception e)
-		{
-			System.out.println("Element is not displayed: " + e.getMessage());
-			return false;
-		}
-	}
+    // Check if an element is displayed after waiting for visibility
+    public static boolean isDisplayed(WebElement element) {
+        try {
+            waitUptoVisible(element);
+            return element.isDisplayed();
+        } catch (Exception e) {
+            System.err.println("Element not displayed: " + e.getMessage());
+            return false;
+        }
+    }
 
-//Implicit wait
-	public static void implicitWait() 
-	{
-		try
-		{
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
-		} 
-		catch (Exception e) 
-		{
-			System.out.println("Unable to wait for element: " + e.getMessage());
-		}
-	}
+    // Set implicit wait for the driver
+    public static void implicitWait() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
+    }
 
-//JavaScript click Method
-	public static void jsClick(WebElement element) 
-	{
-		try
-		{
-			waitUptoClickable(element);
-			js.executeScript("arguments[0].click();", element);
-		} 
-		catch (Exception e) 
-		{
-			System.out.println("Unable to jsclick element: " + e.getMessage());
-		}
-	}
+    // Click an element using JavaScript after waiting for it to be clickable
+    public static void jsClick(WebElement element) {
+        try {
+            waitUptoClickable(element);
+            js.executeScript("arguments[0].click();", element);
+        } catch (Exception e) {
+            System.err.println("Unable to JS click: " + e.getMessage());
+        }
+    }
 
-//Robot class to press enter
-	public static void pressEnter() 
-	{
-		try 
-		{
-			Robot rb = new Robot();
-//			rb.keyPress(KeyEvent.VK_CONTROL);
-//			rb.keyPress(KeyEvent.VK_V);
-//			rb.keyRelease(KeyEvent.VK_V);
-//			rb.keyRelease(KeyEvent.VK_CONTROL);
-			rb.keyPress(KeyEvent.VK_ENTER);
-			rb.keyRelease(KeyEvent.VK_ENTER);
-		} 
-		catch (AWTException e) 
-		{
-			System.out.println("Unable to Press enter error: " + e.getMessage());
-		}
-	}
+    // Simulate pressing the Enter key using Robot class
+    public static void pressEnter() {
+        try {
+            Robot rb = new Robot();
+            rb.keyPress(KeyEvent.VK_ENTER);
+            rb.keyRelease(KeyEvent.VK_ENTER);
+        } catch (AWTException e) {
+            System.err.println("Unable to press Enter: " + e.getMessage());
+        }
+    }
 
-//Double click an element
-	public static void doubleClick(WebElement element) 
-	{
-		try 
-		{
-			wait.until(ExpectedConditions.visibilityOf(element));
-			actions.doubleClick(element).perform();
-		} 
-		catch (Exception e) 
-		{
-			System.out.println("Unable to double click: " + e.getMessage());
-		}
-	}
+    // Double-click on an element
+    public static void doubleClick(WebElement element) {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(element));
+            actions.doubleClick(element).perform();
+        } catch (Exception e) {
+            System.err.println("Unable to double click: " + e.getMessage());
+        }
+    }
 
-//Right click (context click) an element
-	public static void rightClick(WebElement element) 
-	{
-		try 
-		{
-			wait.until(ExpectedConditions.visibilityOf(element));
-			actions.contextClick(element).perform();
-		} catch (Exception e)
-		{
-			System.out.println("Unable to right click: " + e.getMessage());
-		}
-	}
+    // Right-click (context click) on an element
+    public static void rightClick(WebElement element) {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(element));
+            actions.contextClick(element).perform();
+        } catch (Exception e) {
+            System.err.println("Unable to right click: " + e.getMessage());
+        }
+    }
 
-//Drag and Drop from source to target
-	public static void dragAndDrop(WebElement source, WebElement target) 
-	{
-		try 
-		{
-			wait.until(ExpectedConditions.visibilityOf(source));
-			actions.dragAndDrop(source, target).perform();
-		}
-		catch (Exception e) 
-		{
-			System.out.println("Unable to drag and drop: " + e.getMessage());
-		}
-	}
+    // Drag and drop from source element to target element
+    public static void dragAndDrop(WebElement source, WebElement target) {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(source));
+            actions.dragAndDrop(source, target).perform();
+        } catch (Exception e) {
+            System.err.println("Unable to drag and drop: " + e.getMessage());
+        }
+    }
 
-//Hover over an element
-	public static void hoverOverElement(WebElement element) 
-	{
-		try 
-		{
-			wait.until(ExpectedConditions.visibilityOf(element));
-			actions.moveToElement(element).perform();
-		} catch (Exception e) 
-		{
-			System.out.println("Unable to hover over element: " + e.getMessage());
-		}
-	}
+    // Hover mouse over an element
+    public static void hoverOverElement(WebElement element) {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(element));
+            actions.moveToElement(element).perform();
+        } catch (Exception e) {
+            System.err.println("Unable to hover: " + e.getMessage());
+        }
+    }
 
-//Scroll to bottom of the page
-	public static void scrollToBottom()
-	{
-		try 
-		{
-			js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-		} 
-		catch (Exception e)
-		{
-			System.out.println("Unable to scroll to bottom: " + e.getMessage());
-		}
-	}
+    // Scroll to the bottom of the page
+    public static void scrollToBottom() {
+        try {
+            js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        } catch (Exception e) {
+            System.err.println("Unable to scroll to bottom: " + e.getMessage());
+        }
+    }
 
-//Scroll to the top of the page
-	public static void scrollToTop()
-	{
-		try
-		{
-			js.executeScript("window.scrollTo(0, 0);");
-		} 
-		catch (Exception e) 
-		{
-			System.out.println("Unable to scroll to top: " + e.getMessage());
-		}
-	}
+    // Scroll to the top of the page
+    public static void scrollToTop() {
+        try {
+            js.executeScript("window.scrollTo(0, 0);");
+        } catch (Exception e) {
+            System.err.println("Unable to scroll to top: " + e.getMessage());
+        }
+    }
 
-//Refresh the page
-	public static void refreshPage() 
-	{
-		try 
-		{
-			driver.navigate().refresh();
-		} 
-		catch (Exception e) 
-		{
-			System.out.println("Unable to refresh page: " + e.getMessage());
-		}
-	}
+    // Refresh the current page
+    public static void refreshPage() {
+        try {
+            driver.navigate().refresh();
+        } catch (Exception e) {
+            System.err.println("Unable to refresh page: " + e.getMessage());
+        }
+    }
 
-//Enter Text value used js
-	public static void setInputValue(WebElement element, String value) 
-	{
-		wait.until(ExpectedConditions.visibilityOf(element));
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].value = arguments[1]; arguments[0].dispatchEvent(new Event('input'));", element,
-				value);
-	}
+    // Set the value of an input element using JavaScript and dispatch input event
+    public static void setInputValue(WebElement element, String value) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+        js.executeScript(
+            "arguments[0].value = arguments[1]; arguments[0].dispatchEvent(new Event('input'));",
+            element, value
+        );
+    }
 }

@@ -19,6 +19,8 @@ import com.tech_Connect.Action.ActionClass;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class UserBaseClass extends BaseDriver {
+	
+	public boolean performValidLogin = false; // default true
 
 	@BeforeClass
 	public void preCondition() throws IOException, InterruptedException
@@ -54,12 +56,18 @@ public class UserBaseClass extends BaseDriver {
        driver.navigate().to(web_url);
    
         //Login
-       LoginPage lp = new LoginPage(driver);
- 	  lp.login_link.click();
- 	  lp.email_field.sendKeys(email);
- 	  lp.password_field.sendKeys(password);
- 	  lp.submit_button.click();
- 	  
+       if (performValidLogin) {
+           LoginPage lp = new LoginPage(driver);
+      	  lp.login_link.click();
+      	  lp.email_field.sendKeys(email);
+      	  lp.password_field.sendKeys(password);
+      	  lp.submit_button.click();
+      	  System.out.println("Valid login performed from base class.");
+       }
+       else {
+           System.out.println("Login skipped from base class (test will handle it).");
+       }
+
  		
  		Thread.sleep(2000); // Wait for the page to load after login
        }
@@ -96,8 +104,10 @@ public class UserBaseClass extends BaseDriver {
 	
 	
 	@AfterClass
-	public void postCondition()
+	public void postCondition() throws InterruptedException
 		{
+		
+	
 		     driver.quit();
 	     }
 	     

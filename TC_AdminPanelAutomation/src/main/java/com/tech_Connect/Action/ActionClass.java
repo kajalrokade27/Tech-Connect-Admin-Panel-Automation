@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.time.Duration;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -42,8 +43,17 @@ public class ActionClass extends BaseDriver {
     public static void enterText(WebElement element, String value) {
         try {
             wait.until(ExpectedConditions.visibilityOf(element));
-            element.clear();
+            // Scroll to the elements
+            Thread.sleep(1000);
+            element.click();               // Ensure field is focused
+            element.clear();               // Clear it
+            Thread.sleep(100);             // Small wait in case JS is triggered
+            element.sendKeys(Keys.CONTROL + "a");  // Select all text
+            element.sendKeys(Keys.DELETE);
+          //  element.clear();
+           
             applyBorder(element, "blue");
+            
             element.sendKeys(value);
         } catch (Exception e) {
             System.err.println("Unable to enter value: " + e.getMessage());

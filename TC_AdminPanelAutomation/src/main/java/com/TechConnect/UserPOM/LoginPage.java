@@ -1,6 +1,8 @@
 package com.TechConnect.UserPOM;
 
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -33,6 +35,22 @@ public class LoginPage
    
    public @FindBy(xpath="//button[@class='swal2-confirm swal2-styled swal2-default-outline']")
    WebElement confirm_logout_button;
+   
+   public @FindBy(xpath="//a[@class='fw-medium']")
+   WebElement Register_link;
+   
+   public @FindBy(xpath="//*[@class='shadow-sm p-2 mt-1 form-control']")
+   List<WebElement> register_fields;
+   
+   public @FindBy(xpath="//div[@class='recaptcha-checkbox-border']")
+   WebElement recaptcha_checkbox;
+   
+   
+   
+   
+   
+   
+
    
    
    

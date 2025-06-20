@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 import com.TechConnect.FileUtility.GetPropertyData;
@@ -18,7 +19,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class AdminBaseClass extends BaseDriver
 {
-	@BeforeMethod 
+	@BeforeClass
 	public void preCondition() throws IOException, InterruptedException
 	{
 		String browser = GetPropertyData.propData("browser");
@@ -64,10 +65,10 @@ public class AdminBaseClass extends BaseDriver
 	
 		
 	}
-	@AfterClass
-	public void postCondition()
-		{
-		driver.quit();
-	}
+//	@AfterClass
+//	public void postCondition()
+//		{
+//		driver.quit();
+//	}
 	
 }

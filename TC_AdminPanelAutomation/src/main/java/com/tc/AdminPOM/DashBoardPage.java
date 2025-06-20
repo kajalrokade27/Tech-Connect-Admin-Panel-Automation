@@ -16,7 +16,7 @@ public class DashBoardPage {
     public @FindBy(xpath="//div[@class='d-md-flex']")
     List<WebElement> redirecting_elements;
     
-    public @FindBy(xpath="//h2[@class='fs-1']")
+    public @FindBy(xpath="//h2[@class='fs-2 fw-medium mt-2 text-success mb-0 ms-auto']")
     List<WebElement> redirectingElements_count;
     
     

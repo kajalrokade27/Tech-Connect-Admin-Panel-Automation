@@ -6,6 +6,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.TechConnect.Base.AdminBaseClass;
+import com.tc.AdminPOM.BlogsPage;
 import com.tc.AdminPOM.DashBoardPage;
 import com.tc.AdminPOM.SpeakerPage;
 import com.tc.AdminPOM.SponsorsPage;
@@ -20,6 +21,7 @@ public class DashboardValidation extends AdminBaseClass
 	  SpeakerPage sp = new SpeakerPage(driver);
 	  UsersPage up = new UsersPage(driver);
 	  SponsorsPage so = new SponsorsPage(driver);
+	  BlogsPage bp = new BlogsPage(driver);
 	  
 	 for(int i=0; i<db.redirecting_elements.size()-1; i++)
 	 {
@@ -42,14 +44,22 @@ public class DashboardValidation extends AdminBaseClass
 		 assertEquals(expectedCount, up.users_list.size());
 			 System.out.println("Dashboard showing correct user count");
 		 }
-		 if(i==3)
+		 if(i==2)
 		 {
 			 assertEquals(expectedCount, so.sponsors_list.size());
 			 System.out.println("Dashboard showing correct sponsor count");
 		 }
+		 if(i==3)
+		 {
+			// Add your blogs validation here
+			 
+		        assertEquals(expectedCount, bp.blogs_list.size());
+		        System.out.println("Dashboard showing correct blogs count");
+		        break;
+		 }
 		 
 		 
-		 driver.navigate().back();
+		  driver.navigate().back();
 		 
 		 
 	 }

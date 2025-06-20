@@ -1,56 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
-    <line>
-      <![CDATA[🚀 Test Execution Started at: 2025.06.10.15.48.01]]>
-    </line>
-    <line>
-      <![CDATA[🟢 Executing Test: validateAddNew]]>
-    </line>
-    <line>
-      <![CDATA[❌ Test Failed: validateAddNew | Reason: element click intercepted: Element <div class="fui-avatar-label">...</div> is not clickable at point (443, 340). Other element would receive the click: <td data-value="..." data-month="5" data-year="2025" class="rdtDay">12</td>
-  (Session info: chrome=137.0.7151.69)
-Build info: version: '4.20.0', revision: '866c76ca80'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [78d9468cb31d856f91c0c02624c420ae, clickElement {id=f.5C3287C99B2D3CDCFA87BEE5890AEFA2.d.5EB1FEE909F14A7E072F6ADCEC5B966D.e.167}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.69, chrome: {chromedriverVersion: 137.0.7151.68 (2989ffee9373..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60287}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60287/devtoo..., se:cdpVersion: 137.0.7151.69, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (78d9468cb31d856f91c0c02624c420ae)] -> xpath: //div[@class='fui-avatar-label']]
-Session ID: 78d9468cb31d856f91c0c02624c420ae]]>
-    </line>
   </reporter-output>
-  <suite started-at="2025-06-10T15:48:01 IST" name="Default suite" finished-at="2025-06-10T15:48:27 IST" duration-ms="25783">
+  <suite started-at="2025-06-20T18:02:34 IST" name="Default suite" finished-at="2025-06-20T18:03:00 IST" duration-ms="25926">
     <groups>
     </groups>
-    <test started-at="2025-06-10T15:48:01 IST" name="Default test" finished-at="2025-06-10T15:48:27 IST" duration-ms="25783">
-      <class name="adminWorkshopValidation.VerifyAddNewFunctionality">
-        <test-method is-config="true" signature="preCondition()[pri:0, instance:adminWorkshopValidation.VerifyAddNewFunctionality@710f4dc7]" started-at="2025-06-10T15:48:02 IST" name="preCondition" finished-at="2025-06-10T15:48:10 IST" duration-ms="8399" status="PASS">
+    <test started-at="2025-06-20T18:02:34 IST" name="Default test" finished-at="2025-06-20T18:03:00 IST" duration-ms="25926">
+      <class name="adminConferenceValidation.AddNewFunctionalityValidation">
+        <test-method is-config="true" signature="preCondition()[pri:0, instance:adminConferenceValidation.AddNewFunctionalityValidation@3c3d9b6b]" started-at="2025-06-20T18:02:34 IST" name="preCondition" finished-at="2025-06-20T18:02:44 IST" duration-ms="10192" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- preCondition -->
-        <test-method signature="validateAddNew()[pri:0, instance:adminWorkshopValidation.VerifyAddNewFunctionality@710f4dc7]" started-at="2025-06-10T15:48:10 IST" name="validateAddNew" finished-at="2025-06-10T15:48:27 IST" duration-ms="16623" status="FAIL">
+        <test-method signature="addNewFunctionalityTest()[pri:0, instance:adminConferenceValidation.AddNewFunctionalityValidation@3c3d9b6b]" started-at="2025-06-20T18:02:44 IST" name="addNewFunctionalityTest" finished-at="2025-06-20T18:03:00 IST" duration-ms="15663" status="FAIL">
           <exception class="org.openqa.selenium.ElementClickInterceptedException">
             <message>
               <![CDATA[element click intercepted: Element <div class="fui-avatar-label">...</div> is not clickable at point (443, 340). Other element would receive the click: <td data-value="..." data-month="5" data-year="2025" class="rdtDay">12</td>
-  (Session info: chrome=137.0.7151.69)
+  (Session info: chrome=137.0.7151.104)
 Build info: version: '4.20.0', revision: '866c76ca80'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [78d9468cb31d856f91c0c02624c420ae, clickElement {id=f.5C3287C99B2D3CDCFA87BEE5890AEFA2.d.5EB1FEE909F14A7E072F6ADCEC5B966D.e.167}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.69, chrome: {chromedriverVersion: 137.0.7151.68 (2989ffee9373..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60287}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60287/devtoo..., se:cdpVersion: 137.0.7151.69, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (78d9468cb31d856f91c0c02624c420ae)] -> xpath: //div[@class='fui-avatar-label']]
-Session ID: 78d9468cb31d856f91c0c02624c420ae]]>
+Command: [c13ffa34f14c89f3b75de11079b702c9, clickElement {id=f.9AF61A975BBD781D911FB99FB4BCB2B9.d.E2F3BBEEE2A30DD2A764B6488027B8C8.e.180}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.104, chrome: {chromedriverVersion: 137.0.7151.119 (e0ac9d12dff..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55530}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55530/devtoo..., se:cdpVersion: 137.0.7151.104, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (c13ffa34f14c89f3b75de11079b702c9)] -> xpath: //div[@class='fui-avatar-label']]
+Session ID: c13ffa34f14c89f3b75de11079b702c9]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <div class="fui-avatar-label">...</div> is not clickable at point (443, 340). Other element would receive the click: <td data-value="..." data-month="5" data-year="2025" class="rdtDay">12</td>
-  (Session info: chrome=137.0.7151.69)
+  (Session info: chrome=137.0.7151.104)
 Build info: version: '4.20.0', revision: '866c76ca80'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [78d9468cb31d856f91c0c02624c420ae, clickElement {id=f.5C3287C99B2D3CDCFA87BEE5890AEFA2.d.5EB1FEE909F14A7E072F6ADCEC5B966D.e.167}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.69, chrome: {chromedriverVersion: 137.0.7151.68 (2989ffee9373..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60287}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60287/devtoo..., se:cdpVersion: 137.0.7151.69, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (78d9468cb31d856f91c0c02624c420ae)] -> xpath: //div[@class='fui-avatar-label']]
-Session ID: 78d9468cb31d856f91c0c02624c420ae
+Command: [c13ffa34f14c89f3b75de11079b702c9, clickElement {id=f.9AF61A975BBD781D911FB99FB4BCB2B9.d.E2F3BBEEE2A30DD2A764B6488027B8C8.e.180}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.104, chrome: {chromedriverVersion: 137.0.7151.119 (e0ac9d12dff..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55530}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55530/devtoo..., se:cdpVersion: 137.0.7151.104, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (c13ffa34f14c89f3b75de11079b702c9)] -> xpath: //div[@class='fui-avatar-label']]
+Session ID: c13ffa34f14c89f3b75de11079b702c9
 at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
 at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
 at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
@@ -66,8 +49,8 @@ at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
-at jdk.proxy2/jdk.proxy2.$Proxy17.click(Unknown Source)
-at adminWorkshopValidation.VerifyAddNewFunctionality.validateAddNew(VerifyAddNewFunctionality.java:70)
+at jdk.proxy2/jdk.proxy2.$Proxy12.click(Unknown Source)
+at adminConferenceValidation.AddNewFunctionalityValidation.addNewFunctionalityTest(AddNewFunctionalityValidation.java:74)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -98,27 +81,9 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
             </full-stacktrace>
           </exception> <!-- org.openqa.selenium.ElementClickInterceptedException -->
           <reporter-output>
-            <line>
-              <![CDATA[🟢 Executing Test: validateAddNew]]>
-            </line>
-            <line>
-              <![CDATA[❌ Test Failed: validateAddNew | Reason: element click intercepted: Element <div class="fui-avatar-label">...</div> is not clickable at point (443, 340). Other element would receive the click: <td data-value="..." data-month="5" data-year="2025" class="rdtDay">12</td>
-  (Session info: chrome=137.0.7151.69)
-Build info: version: '4.20.0', revision: '866c76ca80'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [78d9468cb31d856f91c0c02624c420ae, clickElement {id=f.5C3287C99B2D3CDCFA87BEE5890AEFA2.d.5EB1FEE909F14A7E072F6ADCEC5B966D.e.167}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.69, chrome: {chromedriverVersion: 137.0.7151.68 (2989ffee9373..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60287}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60287/devtoo..., se:cdpVersion: 137.0.7151.69, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (78d9468cb31d856f91c0c02624c420ae)] -> xpath: //div[@class='fui-avatar-label']]
-Session ID: 78d9468cb31d856f91c0c02624c420ae]]>
-            </line>
           </reporter-output>
-        </test-method> <!-- validateAddNew -->
-        <test-method is-config="true" signature="postCondition()[pri:0, instance:adminWorkshopValidation.VerifyAddNewFunctionality@710f4dc7]" started-at="2025-06-10T15:48:27 IST" name="postCondition" finished-at="2025-06-10T15:48:27 IST" duration-ms="302" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- postCondition -->
-      </class> <!-- adminWorkshopValidation.VerifyAddNewFunctionality -->
+        </test-method> <!-- addNewFunctionalityTest -->
+      </class> <!-- adminConferenceValidation.AddNewFunctionalityValidation -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

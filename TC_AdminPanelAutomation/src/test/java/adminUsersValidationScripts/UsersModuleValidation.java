@@ -20,21 +20,34 @@ public class UsersModuleValidation extends AdminBaseClass
      public void addUsersWithValidInput() throws EncryptedDocumentException, IOException, InterruptedException
      {
     	 UsersPage up = new UsersPage(driver);
-    	 up.users.click();
+    	 ActionClass.click(up.users);
     	 ActionClass.waitUptoVisible(up.add_users);
-    	 up.add_users.click();
-    	 
-    	 up.u_name.sendKeys("kajal");
-    	 up.u_email.sendKeys("kajal"+RandomNumClass.randomNum()+"@gmail.com");
-    	 up.u_company.sendKeys("metapercept");
-    	 up.u_jobTitle.sendKeys("QA");
-    	 
-    	 up.submitButton.click();
-    	 Thread.sleep(2000);
+    	 ActionClass.click(up.add_users);
+    	 ActionClass.enterText(up.u_name, "kajal");
+    	 ActionClass.enterText(up.u_email, "kajal.jr@metapercept.com");
+    	 ActionClass.enterText(up.u_company, "metapercept");
+    	 ActionClass.enterText(up.u_jobTitle, "QA");
+    	 ActionClass.click(up.submitButton);
+    	 ActionClass.waitUptoVisible(up.success_msg);
     	 assertTrue(up.success_msg.isDisplayed());
     	 Reporter.log("User is added successfully with valid data");
+    	 ActionClass.click(up.delete_user);
     	 
-    	 up.delete_user.click();
+//    	 up.users.click();
+//    	 ActionClass.waitUptoVisible(up.add_users);
+//    	 up.add_users.click();
+//    	 
+//    	 up.u_name.sendKeys("kajal");
+//    	 up.u_email.sendKeys("kajal"+RandomNumClass.randomNum()+"@gmail.com");
+//    	 up.u_company.sendKeys("metapercept");
+//    	 up.u_jobTitle.sendKeys("QA");
+//    	 
+//    	 up.submitButton.click();
+//    	 Thread.sleep(2000);
+//    	 assertTrue(up.success_msg.isDisplayed());
+//    	 Reporter.log("User is added successfully with valid data");
+//    	 
+//    	 up.delete_user.click();
      }
      
      @Test(priority=2)

@@ -6,7 +6,7 @@
       <class name="adminConferenceValidation.AddNewFunctionalityValidation">
         <methods>
           <include name="preCondition"/>
-          <include name="addNewFunctionalityTest"/>
+          <include name="addNewFunctionalityTest" invocation-numbers="0"/>
         </methods>
       </class> <!-- adminConferenceValidation.AddNewFunctionalityValidation -->
     </classes>

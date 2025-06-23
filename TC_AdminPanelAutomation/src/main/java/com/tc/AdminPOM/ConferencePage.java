@@ -17,6 +17,9 @@ public class ConferencePage {
 	 
 	 public @FindBy(xpath="(//span[@class='hide-mini'])[5]")
 	    WebElement conferenceLink;
+        
+	 public @FindBy(xpath="//div[@class=' css-1hwfws3']")
+	 WebElement industryTags;
 	 
 	 
 }

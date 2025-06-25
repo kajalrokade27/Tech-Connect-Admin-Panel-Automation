@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="adminConferenceValidation.AddNewFunctionalityValidation">
+      <class name="adminConferenceValidation.ConferenceUpdateTest">
         <methods>
           <include name="preCondition"/>
-          <include name="addNewFunctionalityTest" invocation-numbers="0"/>
+          <include name="navigateToConferencePage"/>
+          <include name="TestWithValidData" invocation-numbers="0"/>
         </methods>
-      </class> <!-- adminConferenceValidation.AddNewFunctionalityValidation -->
+      </class> <!-- adminConferenceValidation.ConferenceUpdateTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

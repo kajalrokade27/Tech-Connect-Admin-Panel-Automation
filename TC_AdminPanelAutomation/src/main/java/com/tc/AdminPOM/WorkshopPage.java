@@ -2,6 +2,8 @@ package com.tc.AdminPOM;
 
 
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,6 +14,8 @@ public class WorkshopPage {
     {
  	   PageFactory.initElements(driver, this);
     }
+	public @FindBy(xpath="//div[@class='mb-3']")
+	List<WebElement> formFields;
     
     public @FindBy(xpath="(//span[@class='d-block'])[1]")
     WebElement EventDropdown;

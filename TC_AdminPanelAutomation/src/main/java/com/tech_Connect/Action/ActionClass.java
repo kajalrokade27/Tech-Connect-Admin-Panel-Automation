@@ -3,6 +3,8 @@ package com.tech_Connect.Action;
 
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.time.Duration;
 
@@ -11,6 +13,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.TechConnect.Base.BaseDriver;
@@ -22,6 +25,7 @@ public class ActionClass extends BaseDriver {
     private static final JavascriptExecutor js = (JavascriptExecutor) driver;
     // Actions class for advanced user interactions
     private static final Actions actions = new Actions(driver);
+     Select select;
 
     // Apply a colored border to a WebElement (for debugging/highlighting)
     public static void applyBorder(WebElement element, String color) {
@@ -134,6 +138,12 @@ public class ActionClass extends BaseDriver {
             System.err.println("Unable to JS click: " + e.getMessage());
         }
     }
+    
+    public static void setValueUsingJS( WebElement element, String value) 
+    {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].value = arguments[1];", element, value);
+    }
 
     // Simulate pressing the Enter key using Robot class
     public static void pressEnter() {
@@ -185,6 +195,12 @@ public class ActionClass extends BaseDriver {
             System.err.println("Unable to hover: " + e.getMessage());
         }
     }
+    
+    // Type text into an element using Actions class
+    public static void typeUsingActions( WebElement element, String text) {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).click().sendKeys(text).perform();
+    }
 
     // Scroll to the bottom of the page
     public static void scrollToBottom() {
@@ -221,4 +237,30 @@ public class ActionClass extends BaseDriver {
             element, value
         );
     }
+    
+    public static void selectByIndex(WebElement element, int index) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+        new Select(element).selectByIndex(index);
+    }
+
+    public static void selectByVisibleText(WebElement element, String text) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+        new Select(element).selectByVisibleText(text);
+    }
+    
+    public static void uploadFile(String filePath) throws InterruptedException, AWTException {
+    	 StringSelection filePathSelection = new StringSelection(filePath);
+ 	    Toolkit.getDefaultToolkit().getSystemClipboard().setContents(filePathSelection, null);
+ 	    Thread.sleep(3000);
+
+ 	    Robot rb = new Robot();
+ 	    rb.keyPress(KeyEvent.VK_CONTROL);
+ 	    rb.keyPress(KeyEvent.VK_V);
+ 	    rb.keyRelease(KeyEvent.VK_V);
+ 	    rb.keyRelease(KeyEvent.VK_CONTROL);
+
+ 	    Thread.sleep(1000);
+ 	    rb.keyPress(KeyEvent.VK_ENTER);
+ 	    rb.keyRelease(KeyEvent.VK_ENTER);
+	}
 }

@@ -17,7 +17,7 @@ import com.TechConnect.Base.AdminBaseClass;
 import com.TechConnect.JavaUtility.DateClass;
 import com.tc.AdminPOM.WorkshopPage;
 import com.tech_Connect.Action.ActionClass;
-@Listeners(com.TechConnect.Listeners.ListenersClass.class)
+//@Listeners(com.TechConnect.Listeners.ListenersClass.class)
 public class VerifyAddNewFunctionality extends AdminBaseClass
 {
    @Test 
@@ -90,7 +90,5 @@ public class VerifyAddNewFunctionality extends AdminBaseClass
 	     
 	     Reporter.log("Workshop Created successfully",true);
 	     
-	     
-	   
-   }
+	     }
 }

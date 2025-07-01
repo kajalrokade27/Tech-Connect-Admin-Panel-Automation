@@ -63,6 +63,15 @@ public class ActionClass extends BaseDriver {
             System.err.println("Unable to enter value: " + e.getMessage());
         }
     }
+    public static boolean isElementVisible(WebElement element, int timeout) {
+        try {
+        	waitUptoVisible(element);
+            return new WebDriverWait(driver, Duration.ofSeconds(timeout))
+                .until(ExpectedConditions.visibilityOf(element)).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
     // Wait until the element is clickable
     public static void waitUptoClickable(WebElement element) {

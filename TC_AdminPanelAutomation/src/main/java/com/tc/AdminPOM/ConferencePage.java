@@ -82,8 +82,168 @@ public class ConferencePage {
 	 
 	 
 	 
+	   //WebElements for the webinar details section
+     //Webinars Overview Info image upload or change
+     public @FindBy(xpath = "//div[@class='fui-avatar-main-container fui-avatar-border-2']")
+     WebElement conferenceUpdateImage;
+     public @FindBy(xpath = "//button[text()='Change']")
+     WebElement changeImageButton;
+     public @FindBy(xpath = "//div[text()='Conference image updated successfully.']")
+     WebElement ConfImageChangeSuccess;
+     
+     public @FindBy(xpath = "//button[@type='submit']")
+     WebElement submitButton;
+     
+     //Create a session to get started
+     public @FindBy(xpath = "//small[normalize-space()='Sessions']")
+     WebElement sessionTab;
+     public @FindBy(xpath = "//button[normalize-space()='Add New']")
+     WebElement createSessionButton;
+     public @FindBy(xpath = "//input[@name='title']")
+     WebElement sessionTitle;
+     public @FindBy(xpath = "//select[@name='speakerId']")
+     WebElement sessionSpeakerDropdown;
+     //WebElements for the session start and end date
+     public @FindBy(xpath = "(//input[@class='form-control'])[2]")
+     WebElement sessionStartDate;
+     public @FindBy(xpath = "(//input[@class='form-control'])[3]")
+     WebElement sessionEndDate;
+     public @FindBy(xpath = "//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr']")
+     WebElement sessionDesc;
+     public @FindBy(xpath = "//div[text()='Session added successfully.']")
+     WebElement sessionAddSuccessMessage;
+     public @FindBy(xpath = "//div[text()='Session updated successfully.']")
+     WebElement sessionUpdateSuccessMessage;
+     // Update or edit session 
+     public @FindBy(xpath = "//button[@title='Edit']")
+     WebElement editSessionButton;
+     // Delete session
+     public @FindBy(xpath = "//button[@title='Delete']")
+     WebElement deleteSessionButton;
+     public @FindBy(xpath = "//button[@class='swal2-confirm swal2-styled swal2-default-outline']")
+     WebElement confirmDeleteSessionButton;
+     public @FindBy(xpath = "//div[text()='Session deleted successfully.']")
+     WebElement sessionDeleteSuccessMessage;
+     //Navigate to the Speaker section  
+     public @FindBy(xpath = "//small[text()='Speakers']")
+     WebElement speakersSection;
+     // Add new speaker button
+     public @FindBy(xpath = "//button[text()='Add New Speaker']")
+     WebElement addNewSpeakerButton;
+     // Speaker form fields
+     public @FindBy(name = "name")
+     WebElement speakerName;
+     public @FindBy(name = "email")
+     WebElement speakerEmail;
+     public @FindBy(name = "position")
+     WebElement speakerPosition;
+     public @FindBy(name = "linkedInUrl")
+     WebElement speakerLinkedInUrl;
+     public @FindBy(name = "about")
+     WebElement speakerAbout;
+     // Speaker image upload
+     public @FindBy(xpath = "//div[@class='fui-avatar-label'][contains(text(),'Select image')]")
+     WebElement speakerImage;
+     // Speaker Category *
+     public @FindBy(name = "who")
+     WebElement speakerCategory;
+     //close buttons
+     public @FindBy(xpath = "//button[@class='btn-close']")
+     WebElement closeButton;
+     //Add Existing Speakers in the webinar session
+     public @FindBy(xpath = "//button[text()='Add Existing Speakers']")
+     WebElement addExistingSpeakersButton;
+     public @FindBy(xpath = "//div[@class=' css-yk16xz-control']")
+     WebElement existingSpeakersDropdown;
+     //Existing Speakers
+     //Create new Speaker
+     public @FindBy(xpath = "//div[text()='Speaker added successfully.']")
+     WebElement speakerAddedSuccessMessage;
+     
+     //Update Speaker
+     public @FindBy(xpath = "//input[@id='searchUser']")
+     WebElement searchSpeakerField;
+     
+     public @FindBy(xpath = "//h5[@class='mb-0 text-truncate']")
+     List<WebElement> speakerList;
+     
+     
+     public @FindBy(xpath = "//div[text()='Speaker updated successfully.']")
+     WebElement speakerUpdateSuccessMessage;
+     public @FindBy(xpath = "//img[@width='100%']")
+     WebElement speakerImageChenge;
+     //Webinar Session Speaker Update Details and Delete 
+     public @FindBy(xpath = "//h5[@class='mb-0 text-truncate']")
+     List<WebElement> sessionSpeakersList;
+     public @FindBy(xpath = "//div[@title='Delete']")
+     List<WebElement> deleteSpeakerIcon;
+     //All success messages Create, Update, Delete
+     public @FindBy(xpath = "//div[@class='Toastify__toast-container Toastify__toast-container--top-right']")
+     WebElement successMessageContainer;
+     public @FindBy(xpath = "//div[text()='Speakers removed successfully.']")
+     WebElement speakerDeleteSuccessMessage;
+     
+     public @FindBy(xpath = "//button[text()='Update']")
+     WebElement updateButton;
+     //Webinar Sponsors
+     public @FindBy(xpath = "//small[text()='Sponsors']")
+     WebElement sponsorsSection;
+     public @FindBy(xpath = "//button[text()='Add New Sponsor']")
+     WebElement addNewSponsorButton;
+     // Sponsor form fields
+     public @FindBy(name = "name")
+     WebElement companyName;
+     public @FindBy(name = "websiteUrl")
+     WebElement companyWebsiteUrl;
+     //Company's Logo and *Banner Image *
+     public @FindBy(xpath = "//div[@class='fui-avatar-label'][contains(text(),'Select image')]")
+     List<WebElement> sponsorlogoBannerImage;
+     public @FindBy(name = "tier")
+     WebElement sponsorTier;
+     public @FindBy(name = "category")
+     WebElement sponsorCategory;
+     public @FindBy(css = ".notranslate.public-DraftEditor-content")
+     WebElement sponsorDescription;
+     //addExistingSponsors
+     public @FindBy(xpath = "//button[text()='Add Existing Sponsors']")
+     WebElement addExistingSponsorsButton;
+     
+     public @FindBy(xpath = "//div[@class=' css-1hwfws3']")
+     WebElement existingSponsorsDropdown;
+     
+     public @FindBy(xpath = "//div[contains(text(),'Sponsors added successfully.')]")
+     WebElement sponsorsAddedSuccessMessage;
+     
+     public @FindBy(xpath="//div[contains(text(),'Sponsor created successfully.')]")
+	 WebElement sponsorCreateSuccessMessage;
+     
+     public @FindBy(xpath = "//h5[@class='mb-0 text-truncate']")
+     	 List<WebElement> sponsorsList;
+     
 	 
+	 public @FindBy(xpath = "//div[contains(text(),'Sponsor updated successfully.')]")
+	 WebElement sponsorUpdateSuccessMessage;
 	 
-	 
-	 
+     public @FindBy(xpath = "//i[@class='bi bi-trash']")
+     	 List<WebElement> deleteSponsorIcon;
+     
+     public @FindBy(xpath = "//div[contains(text(),'Sponsor removed successfully.')]")
+     	 WebElement sponsorDeleteSuccessMessage;
+     
+     public @FindBy(xpath = "//div[contains(text(),'Duplicate email found.')]")
+     WebElement speakerDuplicateErrorMessage;
+     
+     
+     public @FindBy(xpath = "//div[contains(text(),'Session time overlaps with existing sessions.')]")
+     WebElement sessionTimeOverlapErrorMessage;
+     
+     public @FindBy(xpath = "//div[contains(@class, 'Toastify__toast--error')]//div[text()='Duplicate name found.']")
+     WebElement duplicateSponsorNameErrorMessage;
 }
+	 
+	 
+	 
+	 
+	 
+	 
+

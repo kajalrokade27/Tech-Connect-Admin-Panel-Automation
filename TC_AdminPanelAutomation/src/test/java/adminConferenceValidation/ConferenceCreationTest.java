@@ -31,14 +31,14 @@ public class ConferenceCreationTest extends AdminBaseClass
     public Object[][] getEventData() throws IOException 
     {
         List<Object[]> dataList = new ArrayList<>();
-        String[] keys = { "Workshop1" }; // Update with your actual keys
+        String[] keys = { "ConferenceDetails" }; // Update with your actual keys
         for (String key : keys)
         {
             String value = GetPropertyData.propData(key); 
-            String[] parts = value.split(":");
-            if (parts.length == 6)
+            String[] parts = value.split("\\|");
+            if (parts.length == 8)
             {
-                dataList.add(new Object[] { parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]});
+                dataList.add(new Object[] { parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], parts[7] });
             }
         }
         return dataList.toArray(new Object[0][0]);
@@ -46,7 +46,7 @@ public class ConferenceCreationTest extends AdminBaseClass
 
     @Test(dataProvider = "eventData", dependsOnMethods = "navigateToConferencePage")
     public void TestWithValidData(String eventName,String description,String location,
-    		String industry,String poweredBy,String regBenefits) throws InterruptedException, AWTException 
+    		String industry,String event_url,String poweredBy,String meet_link,String regBenefits) throws InterruptedException, AWTException, IOException 
     {
         ConferencePage cp = new ConferencePage(driver);
         WorkshopPage wp = new WorkshopPage(driver);
@@ -79,7 +79,7 @@ public class ConferenceCreationTest extends AdminBaseClass
         ActionClass.click(cp.outside_Click); // Click outside to close the date picker
 
         wp.workshop_image.click();
-        ActionClass.uploadFile("C:\\Users\\Admin\\Pictures\\cropped-workshop images");
+        ActionClass.uploadFile(GetPropertyData.propData("ConferenceImagePath")); // Update with the actual image path
         ActionClass.scrollToElement(wp.reg_benefits);
       
         ActionClass.enterText(wp.reg_benefits, regBenefits);
@@ -87,7 +87,7 @@ public class ConferenceCreationTest extends AdminBaseClass
         ActionClass.click(wp.submit_button);
 //        assertTrue(cp.successMessage.isDisplayed(), "Success message not displayed after creating conference");
 //        ActionClass.waitUptoVisible(cp.successMessage);
-//        Reporter.log("Conference created successfully with name: " + eventName,true);
+       Reporter.log("Conference created successfully with name: " + eventName,true);
         
   }
     

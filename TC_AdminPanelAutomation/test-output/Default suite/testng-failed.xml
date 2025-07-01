@@ -7,7 +7,7 @@
         <methods>
           <include name="preCondition"/>
           <include name="navigateToConferencePage"/>
-          <include name="TestWithValidData" invocation-numbers="0"/>
+          <include name="updateSpeaker"/>
         </methods>
       </class> <!-- adminConferenceValidation.ConferenceUpdateTest -->
     </classes>

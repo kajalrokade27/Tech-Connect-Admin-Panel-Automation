@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [ConferenceUpdateTestSuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="ConferenceUpdateTest(failed)">
+    <parameter name="preserve-order" value="true"/>
+    <classes>
+      <class name="adminConferenceValidation.ConferenceUpdateTest">
+        <methods>
+          <include name="deleteSession"/>
+          <include name="addExistingSponsors"/>
+          <include name="addNewSpeakers"/>
+          <include name="addSessions"/>
+          <include name="addExistingSpeakers"/>
+          <include name="preCondition"/>
+          <include name="addNewSponsor"/>
+          <include name="deleteSpeaker"/>
+          <include name="sponsorUpdate"/>
+          <include name="deleteSponsor"/>
+          <include name="updateSpeaker"/>
+          <include name="navigateToConferencePage"/>
+          <include name="updateSession"/>
+        </methods>
+      </class> <!-- adminConferenceValidation.ConferenceUpdateTest -->
+    </classes>
+  </test> <!-- ConferenceUpdateTest(failed) -->
+</suite> <!-- Failed suite [ConferenceUpdateTestSuite] -->

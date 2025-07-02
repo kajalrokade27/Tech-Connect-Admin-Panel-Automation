@@ -3,11 +3,12 @@ package com.TechConnect.Base;
 import java.io.IOException;
 import java.time.Duration;
 
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
@@ -56,11 +57,7 @@ public class AdminBaseClass extends BaseDriver
 	    ActionClass.enterText(lp.password_field, password);
 	    ActionClass.click(lp.submit_button);
 	}
-
-//	@AfterClass
-//	public void postCondition()
-//		{
-//		driver.quit();
-//	}
 	
+	
+
 }

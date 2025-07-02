@@ -14,6 +14,9 @@ public class ConferencePage {
 		PageFactory.initElements(driver, this);
 	}
 	
+	public @FindBy(xpath="//img[@alt='logo-text']")
+	WebElement techLogo;
+	
 	 public @FindBy(xpath="(//span[@class='d-block'])[1]")
 	    WebElement EventDropdown;
 	 
@@ -160,6 +163,7 @@ public class ConferencePage {
      public @FindBy(xpath = "//div[text()='Speaker added successfully.']")
      WebElement speakerAddedSuccessMessage;
      
+     
      //Update Speaker
      public @FindBy(xpath = "//input[@id='searchUser']")
      WebElement searchSpeakerField;
@@ -198,6 +202,8 @@ public class ConferencePage {
      //Company's Logo and *Banner Image *
      public @FindBy(xpath = "//div[@class='fui-avatar-label'][contains(text(),'Select image')]")
      List<WebElement> sponsorlogoBannerImage;
+     
+     
      public @FindBy(name = "tier")
      WebElement sponsorTier;
      public @FindBy(name = "category")
@@ -214,12 +220,14 @@ public class ConferencePage {
      public @FindBy(xpath = "//div[contains(text(),'Sponsors added successfully.')]")
      WebElement sponsorsAddedSuccessMessage;
      
-     public @FindBy(xpath="//div[contains(text(),'Sponsor created successfully.')]")
+     public @FindBy(xpath="//div[contains(text(),'Sponsor added successfully.')]")
 	 WebElement sponsorCreateSuccessMessage;
      
      public @FindBy(xpath = "//h5[@class='mb-0 text-truncate']")
      	 List<WebElement> sponsorsList;
      
+     public @FindBy(xpath = "//img[@class='fui-avatar-image']")
+     	 List<WebElement> updateSponsorImages;
 	 
 	 public @FindBy(xpath = "//div[contains(text(),'Sponsor updated successfully.')]")
 	 WebElement sponsorUpdateSuccessMessage;
@@ -239,6 +247,51 @@ public class ConferencePage {
      
      public @FindBy(xpath = "//div[contains(@class, 'Toastify__toast--error')]//div[text()='Duplicate name found.']")
      WebElement duplicateSponsorNameErrorMessage;
+     
+     
+     
+     //Registration Section
+     public @FindBy(xpath = "//small[normalize-space()='Registrations']")
+     WebElement registrationsSection;
+     
+     public @FindBy(xpath = "//button[normalize-space()='Add new Ticket']")
+     WebElement addNewTicketButton;
+     
+     public @FindBy(xpath = "//input[contains(@name,'type')]")
+     WebElement ticketName;
+     
+     public @FindBy(xpath = "//input[@name='description']")
+     WebElement ticketDesc;
+     
+     public @FindBy(xpath = "//input[@name='price']")
+     WebElement ticketPrice;
+     
+     public @FindBy(xpath = "//input[@placeholder='Select date']")
+     WebElement ticketExpData;
+     
+     public @FindBy(xpath = "//input[@name='quantity']")
+     WebElement ticketQuantity;
+     
+     public @FindBy(xpath = "//div[contains(text(),'Ticket added successfully.')]")
+     WebElement ticketAddSuccessMessage;
+     
+     public @FindBy(xpath = "//button[contains(@class,'btn btn-light btn-sm text-success')]//*[name()='svg']")
+     WebElement editTicketButton;
+     
+     public @FindBy(xpath = "//div[contains(text(),'Ticket updated successfully.')]")
+     WebElement ticketUpdateSuccessMessage;
+     
+     public @FindBy(xpath = "//*[name()='line' and contains(@x1,'10')]")
+     WebElement deleteTicketButton;
+     
+     public @FindBy(xpath = "//div[contains(text(),'Ticket deleted successfully.')]")
+     WebElement ticketDeleteSuccessMessage;
+     
+     public @FindBy(xpath = "//div[contains(text(),'Ticket already exists with same name.')]")
+     WebElement duplicateTicketNameErrorMessage;
+     
+     
+     
 }
 	 
 	 

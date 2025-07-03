@@ -1,6 +1,8 @@
 
 package com.tech_Connect.Action;
 
+import static org.testng.Assert.assertTrue;
+
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.Toolkit;
@@ -15,6 +17,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
 
 import com.TechConnect.Base.BaseDriver;
 
@@ -272,4 +275,15 @@ public class ActionClass extends BaseDriver {
  	    rb.keyPress(KeyEvent.VK_ENTER);
  	    rb.keyRelease(KeyEvent.VK_ENTER);
 	}
+    public static void verifySuccessMsg(org.openqa.selenium.WebElement element, String msg) {
+    	try {
+      ActionClass.waitUptoVisible(element);
+        assertTrue(element.isDisplayed(), msg + " message not displayed");
+        Reporter.log(msg + ".", true);
+    	}
+    	catch (Exception e) {
+			Reporter.log("Verification failed: " + msg, true);
+			throw e; // Re-throw the exception to fail the test
+		}
+    }
 }

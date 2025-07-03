@@ -3,16 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="adminConferenceValidation.ConferenceRegValidationTest">
+      <class name="adminConferenceValidation.ConferenceCountValidations">
         <methods>
-          <include name="ticketDeleteTest"/>
+          <include name="validateConferenceCount"/>
           <include name="preCondition"/>
-          <include name="ticketEditTest"/>
-          <include name="ticketAddTest"/>
-          <include name="navigateToDashboard"/>
-          <include name="navigateToConferencePage"/>
+          <include name="postCondition"/>
+          <include name="setup"/>
         </methods>
-      </class> <!-- adminConferenceValidation.ConferenceRegValidationTest -->
+      </class> <!-- adminConferenceValidation.ConferenceCountValidations -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

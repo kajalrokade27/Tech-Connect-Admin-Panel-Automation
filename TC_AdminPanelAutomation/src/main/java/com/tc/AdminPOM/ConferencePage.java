@@ -83,7 +83,14 @@ public class ConferencePage {
 	 public @FindBy(xpath = "//button[contains(text(),'Reset')]")
 	 WebElement  resetButton;
 	 
+	 public @FindBy(xpath = "//div[contains(text(),'Your event has been published successfully.')]")
+	 WebElement publishSuccessMessage;
 	 
+	 public @FindBy(xpath= "//div[contains(text(),'Your event has been saved as a draft.')]")
+	 WebElement saveAsDraftSuccessMessage;
+	 
+	 public @FindBy(xpath = "//div[contains(text(),'Conference deleted successfully.')]")
+	 WebElement conferenceDeleteSuccessMessage;
 	 
 	   //WebElements for the webinar details section
      //Webinars Overview Info image upload or change
@@ -93,9 +100,14 @@ public class ConferencePage {
      WebElement changeImageButton;
      public @FindBy(xpath = "//div[text()='Conference image updated successfully.']")
      WebElement ConfImageChangeSuccess;
+     public @FindBy(xpath = "//div[contains(text(),'Conference updated successfully.')]")
+     WebElement conferenceUpdateSuccessMessage;
      
      public @FindBy(xpath = "//button[@type='submit']")
      WebElement submitButton;
+     
+     public @FindBy(xpath="//a[2]//div[1]")
+     WebElement detailsTab;
      
      //Create a session to get started
      public @FindBy(xpath = "//small[normalize-space()='Sessions']")
@@ -146,7 +158,7 @@ public class ConferencePage {
      WebElement speakerAbout;
      // Speaker image upload
      public @FindBy(xpath = "//div[@class='fui-avatar-label'][contains(text(),'Select image')]")
-     WebElement speakerImage;
+     WebElement speakerImageAdd;
      // Speaker Category *
      public @FindBy(name = "who")
      WebElement speakerCategory;
@@ -175,7 +187,7 @@ public class ConferencePage {
      public @FindBy(xpath = "//div[text()='Speaker updated successfully.']")
      WebElement speakerUpdateSuccessMessage;
      public @FindBy(xpath = "//img[@width='100%']")
-     WebElement speakerImageChenge;
+     WebElement speakerImageUpdate;
      //Webinar Session Speaker Update Details and Delete 
      public @FindBy(xpath = "//h5[@class='mb-0 text-truncate']")
      List<WebElement> sessionSpeakersList;
@@ -289,6 +301,83 @@ public class ConferencePage {
      
      public @FindBy(xpath = "//div[contains(text(),'Ticket already exists with same name.')]")
      WebElement duplicateTicketNameErrorMessage;
+     
+   // Video Upload
+     public @FindBy(xpath = "//small[text()='Videos']")
+     WebElement videosSection;
+     public @FindBy(xpath = "//span[text()='Add Video']")
+     WebElement addVideoButton;
+     public @FindBy(xpath = "//button[text()='Upload Video']")
+     WebElement uploadVideoButton;
+     public @FindBy(xpath = "//button[text()='Yes, upload it!']")
+     WebElement confirmUploadVideoButton;
+     public @FindBy(xpath = "//div[text()='Upload completed successfully!']")
+     WebElement videoUploadSuccessMessage;
+     public @FindBy(xpath = "//button[@class='btn btn-sm '][@type='button']")
+     WebElement deleteVideoButton;
+     public @FindBy(xpath = "//button[text()='Yes']")
+     WebElement confirmDeleteVideoButton;
+     public @FindBy(xpath = "//div[text()='Video deleted successfully!']")
+     WebElement videoDeleteSuccessMessage;
+     
+     //purchased info
+     public @FindBy(xpath = "//div[@class='d-flex gap-2 justify-content-between']//*[name()='svg']")
+     WebElement editPaymentStatusButton;
+     
+     public @FindBy(xpath = "//select[@name='status']")
+     WebElement statusDropdown;
+     
+     public @FindBy(xpath = "//button[@type='submit']")
+     WebElement changeStatus;
+     
+     public @FindBy(xpath = "//div[contains(text(),'Status updated successfully.')]")
+     WebElement statusUpdateSuccessMessage;
+     
+     public @FindBy(xpath = "//small[normalize-space()='Attendees']")
+     WebElement attendeesSection;
+     
+     public @FindBy(xpath = "//small[normalize-space()='Purchased Info']")
+     WebElement purchasedInfoSection;
+     
+     public @FindBy(xpath = "//div[@class='card-body']")
+	 List<WebElement> filter_Cards;
+	
+	 
+	 public @FindBy(xpath = "//table[@class='align-middle table']/tbody/tr")
+	 List<WebElement> attendeesList;
+	 
+	 public @FindBy(xpath = "//table[@class='align-middle table']/tbody/tr/td[2]")
+	 List<WebElement> attendeeNames;
+	 
+	 public @FindBy(xpath = "//table[@class='align-middle table']/tbody/tr/td[3]")
+	 List<WebElement> attendeeEmail;
+	 
+	 public @FindBy(xpath="//table[@class='align-middle table']/tbody/tr/td[4]")
+	 List<WebElement> attendeeTicketName;
+	 
+	 public @FindBy(xpath="//table[@class='align-middle table']/tbody/tr/td[5]")
+	 List<WebElement> AttendeeTicketPrice;
+	 
+	 public @FindBy(xpath="//table[@class='align-middle table']/tbody/tr/td[6]")
+	 List<WebElement> amount;
+	 
+	 public @FindBy(xpath="//table[@class='align-middle table']/tbody/tr/td[6]")
+	 List<WebElement> purchaseDate;
+	 
+	 
+	 //Dashboard elements
+	 public @FindBy(xpath = "//span[@class='ms-2']")
+	 List<WebElement> dashboardElements;
+	 
+	 //conference page 
+	 public @FindBy(xpath = "//div[@class='card-body']")
+	 List<WebElement> conferenceCards;
+	 
+	 public @FindBy(xpath = "div[@class='card-title mb-3']")
+	 List<WebElement> conferenceEvents;
+	 
+	 
+     
      
      
      

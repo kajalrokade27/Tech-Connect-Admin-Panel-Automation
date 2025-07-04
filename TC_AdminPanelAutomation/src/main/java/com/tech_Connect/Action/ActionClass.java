@@ -101,7 +101,7 @@ public class ActionClass extends BaseDriver {
         try {
             new WebDriverWait(driver, Duration.ofSeconds(timeOutInSec))
                 .until(webDriver -> js.executeScript("return document.readyState").equals("complete"));
-            System.out.println("Page loaded successfully.");
+         
         } catch (Exception e) {
             System.err.println("Page did not load: " + e.getMessage());
         }
@@ -138,7 +138,7 @@ public class ActionClass extends BaseDriver {
 
     // Set implicit wait for the driver
     public static void implicitWait() {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(70000));
     }
 
     // Click an element using JavaScript after waiting for it to be clickable

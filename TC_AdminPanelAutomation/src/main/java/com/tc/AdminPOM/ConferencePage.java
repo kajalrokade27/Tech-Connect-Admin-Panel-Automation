@@ -377,6 +377,39 @@ public class ConferencePage {
 	 List<WebElement> conferenceEvents;
 	 
 	 
+	public @FindBy(xpath="//div[@class='d-flex flex-column']/span[2]")
+	WebElement fullDateRange;
+	
+	public @FindBy(xpath="//a[@class='text-decoration-none text-black']")
+	List<WebElement> eventInfoCards;  // session - 2 speaker 3, sponsor-4
+	
+	public @FindBy(xpath="//strong[@class='fs-6']")
+	List<WebElement> eventNumbers;
+	
+	public @FindBy(xpath="//span[@class='text-muted']")
+	List<WebElement> eventNumbersLabels;
+	
+	public @FindBy(xpath="//div[@class='card-body']")
+	List<WebElement> sessionList;
+	
+	public @FindBy(xpath="//h5[@class='mb-0 text-truncate']")
+	List<WebElement> sponsorList;
+	
+	public @FindBy(xpath="//span[@class='apexcharts-legend-text']")
+	List<WebElement> breakdownList;
+	
+	public @FindBy(xpath="//div[@class='d-flex gap-2 justify-content-between']/span")
+	List<WebElement> attendeeStatusList;
+	
+	
+	
+	
+	
+	
+	
+	
+	 
+	 
      
      
      

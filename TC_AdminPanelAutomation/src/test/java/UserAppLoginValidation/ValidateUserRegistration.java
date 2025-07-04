@@ -58,6 +58,7 @@ public class ValidateUserRegistration extends UserBaseClass
     ActionClass.click(lp.Register_link);
     
     ActionClass.enterText(lp.register_fields.get(0), name);
+    
     ActionClass.enterText(lp.register_fields.get(1), email);
     ActionClass.enterText(lp.register_fields.get(2), companyName);
     ActionClass.scrollToElement(lp.register_fields.get(1)); // Scroll to the job title field

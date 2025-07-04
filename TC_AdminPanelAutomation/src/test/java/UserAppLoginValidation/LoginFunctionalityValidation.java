@@ -1,13 +1,9 @@
 package UserAppLoginValidation;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import com.TechConnect.Base.UserBaseClass;
 import com.TechConnect.FileUtility.GetPropertyData;
 import com.TechConnect.UserPOM.LoginPage;

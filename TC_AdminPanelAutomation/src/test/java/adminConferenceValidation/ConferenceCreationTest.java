@@ -65,7 +65,7 @@ public class ConferenceCreationTest extends AdminBaseClass {
     public void publishConference() throws IOException {
         String name = GetPropertyData.propData("ConferenceDetails").split("\\|")[1];
         assertTrue(name.equals(cp.eventCardName.getText()));
-        ActionClass.jsClick(cp.eventCardName);
+        ActionClass.click(cp.eventCardName);
         ActionClass.click(cp.publishButton);
         ActionClass.click(cp.confirmPublishButton);
         ActionClass.verifySuccessMsg(cp.publishSuccessMessage,name+ " Conference published successfully");

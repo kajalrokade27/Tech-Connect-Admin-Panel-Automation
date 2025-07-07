@@ -44,6 +44,9 @@ public class ConferencePage {
 	 public @FindBy(xpath = "(//th[@class='rdtNext'])[2]")
 	 WebElement end_nextButton;
 	 
+	 public @FindBy(xpath = "//div[@class='rdt rdtOpen']//span[contains(text(),'‹')]")
+	 WebElement previousMonthButton;
+	 
 	 public @FindBy(xpath = "(//div[@class='mb-3'])[11]")
 	 WebElement outside_Click;
 	 
@@ -401,8 +404,14 @@ public class ConferencePage {
 	public @FindBy(xpath="//div[@class='d-flex gap-2 justify-content-between']/span")
 	List<WebElement> attendeeStatusList;
 	
+	 public @FindBy(xpath = "//div[@class='card-body d-flex flex-column']/h6")
+	List< WebElement> allConferenceCards;
 	
-	
+	 public @FindBy(xpath = "//button[contains(@aria-label,'Next')]//*[name()='svg']")
+	 WebElement nextPageButton;
+	 
+	 public @FindBy(xpath = "//div[@class='card-body']/h2")
+	 List<WebElement> filterNumbers;
 	
 	
 	

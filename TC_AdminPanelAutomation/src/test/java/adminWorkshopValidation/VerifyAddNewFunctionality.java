@@ -68,21 +68,7 @@ public class VerifyAddNewFunctionality extends AdminBaseClass
 	  Actions actions = new Actions(driver);
 	  actions.sendKeys(Keys.ESCAPE).perform();
 	  wp.workshop_image.click();
-	  StringSelection filePathSelection =new StringSelection("C:\\Users\\Admin\\git\\TechConnect\\TC_AdminPanelAutomation\\src\\test\\resources\\workshopImage.jpg");
-
-	     Toolkit.getDefaultToolkit().getSystemClipboard().setContents(filePathSelection, null);
-	     Thread.sleep(3000);
-	     
-	    
-	     rb.keyPress(KeyEvent.VK_CONTROL);
-	     rb.keyPress(KeyEvent.VK_V);
-	     rb.keyRelease(KeyEvent.VK_V);
-	     rb.keyRelease(KeyEvent.VK_CONTROL);
-	     
-	     Thread.sleep(1000);
-	     rb.keyPress(KeyEvent.VK_ENTER);
-	     rb.keyRelease(KeyEvent.VK_ENTER);
-	     Thread.sleep(5000);
+	 ActionClass.uploadFile("C:\\Users\\Admin\\Pictures\\image.jpg");
 	     
 	     wp.reg_benefits.sendKeys("Access of all the sessions");
 	     

@@ -55,7 +55,7 @@ public class WorkshopPage {
     public @FindBy(xpath="//div[@class=' css-1hwfws3']")
     WebElement related_topics_dropdown;
     
-    public @FindBy(xpath="//div[@class='fui-avatar-label']")
+    public @FindBy(xpath="(//div[contains(@class,'fui-avatar-label')])[1]")
     WebElement workshop_image;
     
     public @FindBy(xpath="(//div[@class='notranslate public-DraftEditor-content'])[1]")
@@ -184,6 +184,16 @@ public class WorkshopPage {
     
     public @FindBy(xpath="//div[contains(text(),'Workshop updated successfully.')]")
     WebElement update_msg;
+    
+    public @FindBy(xpath="//input[@name='price']")
+    WebElement price;
+    
+    public @FindBy(xpath="//input[@name='zoomLink']")
+    WebElement zoom_meeting;
+    
+    
+    public @FindBy(xpath="//div[contains(text(),'new workshop created successfully.')]")
+    WebElement success_msg;
     
     
     

@@ -1,106 +1,78 @@
 package adminWorkshopValidation;
-
 import com.TechConnect.Base.AdminBaseClass;
 import com.TechConnect.FileUtility.GetPropertyData;
+import com.TechConnect.JavaUtility.DateClass;
+import com.tc.AdminPOM.ConferencePage;
 import com.tc.AdminPOM.WorkshopPage;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.*;
+import com.tech_Connect.Action.ActionClass;
 import org.testng.annotations.*;
-
 import java.awt.*;
-import java.awt.List;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
-import java.time.Duration;
 import java.util.*;
 
 public class addWorkshop extends AdminBaseClass {
+	
+	@DataProvider(name = "workshopData")
+	public Object[][] provideWorkshopData() {
+	    java.util.List<Object[]> data = new ArrayList<>();
 
-    WorkshopPage wp;
+	    for (int i = 1; ; i++) {
+	        String key = "Workshop" + i;
+	        try {
+	            String value = GetPropertyData.propData(key);
+	            if (value == null || value.trim().isEmpty()) break;
 
-    @BeforeMethod
-    public void initPage() {
-        wp = new WorkshopPage(driver);
-    }
+	            String[] values = value.split("~", -1); // split using ~ instead of :
+	            data.add(values);
+	        } catch (Exception e) {
+	            break;
+	        }
+	    }
 
-    @DataProvider(name = "workshopData")
-    public Object[][] getWorkshopData() throws Exception {
-        String workshop = GetPropertyData.propData("Workshop1");
+	    return data.toArray(new Object[0][]);
+	}
 
-        // Format: category:name:type:poweredBy:description:industry:location:start:end:regBenefits:zoom
-        String[] data = workshop.split(":");
+	@Test(dataProvider = "workshopData")
+	public void validateAddNewWorkshop(String category, String name, String type, String scope,
+	                                   String poweredBy, String desc, String industryTags, String location, String benefits,
+	                                   String price, String zoomLink, String imagePath)
+	        throws InterruptedException, AWTException {
 
-        java.util.List<String> fieldData = Arrays.asList(
-            data[0],  // Event Category
-            data[1],  // Event Name
-            data[2],  // Event Type
-            data[3],  // Powered By
-            data[4],  // Description
-            data[5],  // Industry Tag
-            data[6],  // Location
-            data[7],  // Start Date
-            data[8],  // End Date
-            "",       // Placeholder for file input
-            data[9],  // Registration Benefits
-            "0",      // Price
-            data[10]  // Zoom Link
-        );
+	    WorkshopPage wp = new WorkshopPage(driver);
+	    ConferencePage cp = new ConferencePage(driver);
+	    ActionClass.click(wp.EventDropdown);
+	    ActionClass.click(wp.workshop);
+	    Thread.sleep(2000);
+	    ActionClass.click(wp.addnew_button);
+	    Thread.sleep(2000);
 
-        return new Object[][] {
-            { fieldData, "C:\\path\\to\\image.jpg" }
-        };
-    }
-
-    @Test(dataProvider = "workshopData")
-    public void addWorkshop(java.util.List<String> fieldData, String imagePath) throws Exception {
-        // Navigate to Workshop > Add New
-        wp.EventDropdown.click();
-        wp.workshop.click();
-        Thread.sleep(1000);
-        wp.addnew_button.click();
-        Thread.sleep(1000);
-
-        // Fill form dynamically from list
-        for (int i = 0; i < fieldData.size(); i++) {
-            WebElement container = wp.formFields.get(i);
-            try {
-                WebElement element = container.findElement(By.xpath(".//select | .//textarea | .//input"));
-
-                String tag = element.getTagName();
-                if ("select".equals(tag)) {
-                    new Select(element).selectByVisibleText(fieldData.get(i));
-                } else if ("textarea".equals(tag)) {
-                    element.sendKeys(fieldData.get(i));
-                } else if ("input".equals(tag)) {
-                    String type = element.getAttribute("type");
-                    if ("file".equals(type)) {
-                        element.click();
-                        uploadFileUsingRobot(imagePath);
-                    } else {
-                        element.clear();
-                        element.sendKeys(fieldData.get(i));
-                    }
-                }
-            } catch (Exception e) {
-                System.out.println("Skipping index " + i + ": " + e.getMessage());
-            }
-            Thread.sleep(300); // optional stability
-        }
-
-        wp.submit_button.click();
-    }
-
-    public void uploadFileUsingRobot(String filePath) throws Exception {
-        StringSelection sel = new StringSelection(filePath);
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(sel, null);
-        Robot robot = new Robot();
-        robot.delay(1000);
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.keyPress(KeyEvent.VK_V);
-        robot.keyRelease(KeyEvent.VK_V);
-        robot.keyRelease(KeyEvent.VK_CONTROL);
-        robot.delay(500);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-    }
+	    ActionClass.selectByVisibleText(wp.event_cat_dropdown, category);
+	    ActionClass.enterText(wp.name_field, name);
+	    ActionClass.selectByVisibleText(wp.event_type_dropdown, type);
+	    ActionClass.selectByVisibleText(wp.event_scope_dropdown, scope);
+	    ActionClass.selectByVisibleText(wp.powered_by_dropdown, poweredBy);
+	    ActionClass.enterText(wp.description_field, desc);
+	    
+	    ActionClass.typeUsingActions(cp.industryTags, industryTags );
+	    ActionClass.pressEnter();
+        ActionClass.scrollToElement(wp.location_field);
+	    ActionClass.enterText(wp.location_field, location);
+        ActionClass.scrollToElement(wp.workshop_image);
+        ActionClass.click(wp.start_date);
+        DateClass.selectDatePro(cp.start_monthElem, cp.start_nextButton, cp.previousMonthButton, cp.dateElements, "July", 2025, "25");
+        ActionClass.scrollToElement(wp.workshop_image);
+        ActionClass.click(wp.end_date);
+        DateClass.selectDatePro(cp.end_monthElem, cp.end_nextButton, cp.previousMonthButton, cp.dateElements, "July", 2025, "30");
+        ActionClass.click(cp.outside_Click);
+        ActionClass.implicitWait();
+        ActionClass.scrollToElement(wp.workshop_image);
+        ActionClass.click(wp.workshop_image);
+        ActionClass.uploadFile(imagePath);
+        ActionClass.scrollToElement(wp.reg_benefits);
+	    ActionClass.enterText(wp.reg_benefits, benefits);
+	    ActionClass.enterText(wp.price, price);
+	    ActionClass.enterText(wp.zoom_meeting, zoomLink);
+	    ActionClass.scrollToElement(wp.submit_button);
+	    ActionClass.click(wp.submit_button);
+	    ActionClass.verifySuccessMsg(wp.success_msg, name + " Workshop created successfully");
+      }
 }

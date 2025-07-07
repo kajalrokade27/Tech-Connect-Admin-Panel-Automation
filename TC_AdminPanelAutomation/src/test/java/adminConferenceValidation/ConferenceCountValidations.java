@@ -1,11 +1,11 @@
 package adminConferenceValidation;
-
+import org.openqa.selenium.NoSuchElementException;
+import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import com.TechConnect.Base.AdminBaseClass;
 import com.tc.AdminPOM.ConferencePage;
-import com.tc.AdminPOM.WorkshopPage;
 import com.tech_Connect.Action.ActionClass;
 
 public class ConferenceCountValidations extends AdminBaseClass
@@ -18,21 +18,43 @@ public class ConferenceCountValidations extends AdminBaseClass
 	        ActionClass.click(cp.EventDropdown);
 	        ActionClass.click(cp.conferenceLink);
 	    }
-   @Test()
-   public void validateConferenceCount() 
-   {
-	   String TotalconferenceCount = cp.filter_Cards.get(0).getText();
-	   ActionClass.click(cp.filter_Cards.get(0));
-	   String totalConferenceEvents = cp.conferenceEvents.size() + "";
-	   System.out.println("Total conference count from UI: " + TotalconferenceCount);
-	   System.out.println("Total conference events from UI: " + totalConferenceEvents);
-	   if (TotalconferenceCount.equals(totalConferenceEvents)) 
-	   {
-		   System.out.println("Total conference count matches: " + TotalconferenceCount);
-	   } 
-	   else 
-	   {
-		   System.out.println("Total conference count does not match: " + TotalconferenceCount + " != " + totalConferenceEvents);
-	   }
-   }
+	    @Test
+	    public void validateAllConferenceFilters() throws InterruptedException {
+	        String[] filterNames = {"Total Conferences", "Live Conferences", "Upcoming Conferences", "Past Conferences", "Pending Conferences"};
+	        
+	        for (int i = 0; i < filterNames.length; i++) {
+	            // Step 1: Get dashboard filter count (e.g., "6 Total Conferences")
+	        	ActionClass.waitForPageLoad(1000);// Ensure the page is loaded
+	            String countText = cp.filterNumbers.get(i).getText();  // e.g., "6"
+	            int dashboardCount = Integer.parseInt(countText.replaceAll("[^0-9]", ""));
+	            Reporter.log(filterNames[i] + " → Dashboard Count: " + dashboardCount, true);
+
+	            // Step 2: Click filter box (simulate UI filter selection)
+	            cp.filterNumbers.get(i).click();  // assuming you store all filter boxes in a list
+	           ActionClass.waitForPageLoad(1000);// Replace with WebDriverWait ideally
+
+	            // Step 3: Count cards across paginated pages
+	            int totalEvents = 0;
+	            while (true) {
+	                totalEvents += cp.allConferenceCards.size();
+	                try {
+	                    if (cp.nextPageButton.isDisplayed() && cp.nextPageButton.isEnabled()) {
+	                        cp.nextPageButton.click();
+	                        ActionClass.waitForPageLoad(1000);  // Wait for the next page to load
+	                    } else {
+	                        break;
+	                    }
+	                    
+	                } catch (NoSuchElementException e) {
+	                    break;  // No next button means single page
+	                }
+	            }
+
+	            Reporter.log(filterNames[i] + " → Found Events: " + totalEvents, true);
+	            Assert.assertEquals(totalEvents, dashboardCount, "Mismatch in " + filterNames[i]);
+
+	            Reporter.log("✔ " + filterNames[i] + " count matches actual filtered events.", true);
+	        }
+	    }
+   
 }

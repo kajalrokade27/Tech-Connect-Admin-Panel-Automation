@@ -1,4 +1,4 @@
-package adminConferenceValidation;
+package adminWorkshopValidation;
 import java.util.List;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -13,7 +13,7 @@ import com.tc.AdminPOM.ConferencePage;
 import com.tc.AdminPOM.WorkshopPage;
 import com.tech_Connect.Action.ActionClass;
 
-public class DashboardValidation extends AdminBaseClass
+public class WorkshopDashboardValidation extends AdminBaseClass
 {
 	  private ConferencePage cp;
 	  WorkshopPage wp ;
@@ -36,7 +36,7 @@ public class DashboardValidation extends AdminBaseClass
 		ActionClass.click(cp.dashboardElements.get(0)); // Click on the first dash board element
         
         double totalAttendeePrice = 0.0;
-        for (WebElement priceElement : cp.amount) {
+        for (WebElement priceElement : wp.purchasedAmount) {
             String priceText = priceElement.getText().replace("₹", "").replace(",", "").trim();
             totalAttendeePrice += Double.parseDouble(priceText);
         }
@@ -77,6 +77,7 @@ public class DashboardValidation extends AdminBaseClass
 	  @Test(priority = 2)
 	  public void verifyAttendeeCount() throws InterruptedException
 	  {
+		  ActionClass.implicitWait(); // Ensure the dash board is fully loaded
 		  String text = cp.dashboardElements.get(1).getText();
 		  int dashboardAttendeeCount = Integer.parseInt(text.replaceAll("[^0-9]", ""));
 		  ActionClass.click(cp.dashboardElements.get(1)); // Click on the second dashboard element
@@ -90,7 +91,7 @@ public class DashboardValidation extends AdminBaseClass
 	 }
 	  @Test(priority = 3)
 	  public void verifyRegistrationBreakdownWithAttendeeData() throws InterruptedException {
-	      Thread.sleep(4000); // Ensure the dashboard is fully loaded
+		  Thread.sleep(4000);// Ensure the dashboard is fully loaded
 	      // Step 1: Get counts from Registration Breakdown
 	      int dashboardPaid = Integer.parseInt(cp.breakdownList.get(0).getText().replaceAll("[^0-9]", ""));
 	      int dashboardRefunded = Integer.parseInt(cp.breakdownList.get(1).getText().replaceAll("[^0-9]", ""));
@@ -110,11 +111,11 @@ public class DashboardValidation extends AdminBaseClass
 	          if (stat.equalsIgnoreCase("paid")) paidCount++;
 	          else if (stat.equalsIgnoreCase("Refunded")) refundedCount++;
 	          else if (stat.equalsIgnoreCase("canceled")) canceledCount++;
-	         
+	      } 
 	          Reporter.log("Paid Attendee Count: " + paidCount, true);
 	          Reporter.log("Refunded Attendee Count: " + refundedCount, true);
 	          Reporter.log("Canceled Attendee Count: " + canceledCount, true);
-	      }
+	      
 
 	      // Step 4: Validate counts
 	      Assert.assertEquals(paidCount, dashboardPaid, "Paid count mismatch!");

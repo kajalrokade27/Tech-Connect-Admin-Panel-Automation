@@ -9,115 +9,39 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">2</td><td class="num">449,060</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">555,000</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="2">adminWorkshopValidation.addWorkshop</td><td><a href="#m0">validateAddNewWorkshop</a></td><td rowspan="2">1751885393605</td><td rowspan="2">397975</td></tr><tr class="failedeven"><td><a href="#m1">validateAddNewWorkshop</a></td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="5">adminWorkshopValidation.AllEventFilterValidation</td><td><a href="#m0">runConferenceValidation</a></td><td rowspan="1">1752058661621</td><td rowspan="1">82598</td></tr><tr class="passedeven"><td><a href="#m1">runPanelValidation</a></td><td rowspan="1">1752058278739</td><td rowspan="1">142442</td></tr><tr class="passedeven"><td><a href="#m2">runPodcastValidation</a></td><td rowspan="1">1752058421187</td><td rowspan="1">128233</td></tr><tr class="passedeven"><td><a href="#m3">runWebinarValidation</a></td><td rowspan="1">1752058195817</td><td rowspan="1">82908</td></tr><tr class="passedeven"><td><a href="#m4">runWorkshopValidation</a></td><td rowspan="1">1752058549430</td><td rowspan="1">112183</td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">adminWorkshopValidation.addWorkshop#validateAddNewWorkshop</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th><th>Parameter #5</th><th>Parameter #6</th><th>Parameter #7</th><th>Parameter #8</th><th>Parameter #9</th><th>Parameter #10</th><th>Parameter #11</th><th>Parameter #12</th></tr><tr class="param stripe"><td>Internal</td><td>Generative AI Bootcamp</td><td>In-Person</td><td>Public</td><td>metR</td><td>Hands-on on GenAI</td><td>AI</td><td>Bangalore</td><td>Certificate included</td><td>2000</td><td>https://zoom.us/my/genai</td><td>C:\Eclipse Project\Tech-Connect-Admin-Panel-Automation\TC_AdminPanelAutomation\src\test\resources\workshopImage.jpg</td></tr><tr><th colspan="12">Messages</th></tr><tr><td colspan="12"><div class="messages">Verification failed: Generative AI Bootcamp Workshop created successfully</div></td></tr><tr><th colspan="12">Exception</th></tr><tr><td colspan="12"><div class="stacktrace">org.openqa.selenium.TimeoutException: java.util.concurrent.TimeoutException
-Build info: version: &apos;4.20.0&apos;, revision: &apos;866c76ca80&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.7&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [1f209d2ad56f30da8180fd49f3cfb2e0, findElement {value=//div[contains(text(),&apos;new workshop created successfully.&apos;)], using=xpath}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.97, chrome: {chromedriverVersion: 138.0.7204.92 (f079b9bc781e..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59783}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59783/devtoo..., se:cdpVersion: 138.0.7204.97, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 1f209d2ad56f30da8180fd49f3cfb2e0
-	at org.openqa.selenium.remote.http.jdk.JdkHttpClient.execute0(JdkHttpClient.java:396)
-	at org.openqa.selenium.remote.http.AddSeleniumUserAgent.lambda$apply$0(AddSeleniumUserAgent.java:42)
-	at org.openqa.selenium.remote.http.Filter.lambda$andFinally$1(Filter.java:55)
-	at org.openqa.selenium.remote.http.jdk.JdkHttpClient.execute(JdkHttpClient.java:352)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:187)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy14.isDisplayed(Unknown Source)
-	at com.tech_Connect.Action.ActionClass.verifySuccessMsg(ActionClass.java:281)
-	at adminWorkshopValidation.addWorkshop.validateAddNewWorkshop(addWorkshop.java:81)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:741)
-	at org.testng.TestRunner.run(TestRunner.java:616)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: java.util.concurrent.TimeoutException
-	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
-	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
-	at org.openqa.selenium.remote.http.jdk.JdkHttpClient.execute0(JdkHttpClient.java:379)
-	... 42 more
+<h2>Default test</h2><h3 id="m0">adminWorkshopValidation.AllEventFilterValidation#runConferenceValidation</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">▶ conference → Total Dashboard Count: 6<br/>→ Found: 6<br/>✔ Total filter validated
+<br/>▶ conference → Live Dashboard Count: 1<br/>→ Found: 1<br/>✔ Live filter validated
+<br/>▶ conference → Upcoming Dashboard Count: 2<br/>→ Found: 2<br/>✔ Upcoming filter validated
+<br/>▶ conference → Past Dashboard Count: 2<br/>→ Found: 2<br/>✔ Past filter validated
+<br/>▶ conference → Pending Dashboard Count: 1<br/>→ Found: 1<br/>✔ Pending filter validated
 </div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">adminWorkshopValidation.addWorkshop#validateAddNewWorkshop</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th><th>Parameter #5</th><th>Parameter #6</th><th>Parameter #7</th><th>Parameter #8</th><th>Parameter #9</th><th>Parameter #10</th><th>Parameter #11</th><th>Parameter #12</th></tr><tr class="param stripe"><td>Internal</td><td>AI Automation Workshop</td><td>In-Person</td><td>Private</td><td>metR</td><td>AI workshop</td><td>AI</td><td>Pune</td><td>Access to all sessions</td><td>1500</td><td>https://zoom.us/my/aiworkshop</td><td>C:\Eclipse Project\Tech-Connect-Admin-Panel-Automation\TC_AdminPanelAutomation\src\test\resources\workshopImage.jpg</td></tr><tr><th colspan="12">Exception</th></tr><tr><td colspan="12"><div class="stacktrace">org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element is not clickable at point (392, 635)
-  (Session info: chrome=138.0.7204.97)
-Build info: version: &apos;4.20.0&apos;, revision: &apos;866c76ca80&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.7&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [1f209d2ad56f30da8180fd49f3cfb2e0, clickElement {id=f.BE19930C9D19CBA0A8E944774A082C81.d.CBBBDB50749016CD752F710529ECC7A1.e.813}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.97, chrome: {chromedriverVersion: 138.0.7204.92 (f079b9bc781e..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59783}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59783/devtoo..., se:cdpVersion: 138.0.7204.97, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (1f209d2ad56f30da8180fd49f3cfb2e0)] -&gt; xpath: //td[@class=&apos;rdtDay&apos;]]
-Session ID: 1f209d2ad56f30da8180fd49f3cfb2e0
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
-	at com.TechConnect.JavaUtility.DateClass.selectDatePro(DateClass.java:135)
-	at adminWorkshopValidation.addWorkshop.validateAddNewWorkshop(addWorkshop.java:66)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:741)
-	at org.testng.TestRunner.run(TestRunner.java:616)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+<h3 id="m1">adminWorkshopValidation.AllEventFilterValidation#runPanelValidation</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">▶ panel → Total Dashboard Count: 7<br/>→ Found: 7<br/>✔ Total filter validated
+<br/>▶ panel → Live Dashboard Count: 0<br/>→ Found: 0<br/>✔ Live filter validated
+<br/>▶ panel → Upcoming Dashboard Count: 0<br/>→ Found: 0<br/>✔ Upcoming filter validated
+<br/>▶ panel → Past Dashboard Count: 0<br/>→ Found: 0<br/>✔ Past filter validated
+<br/>▶ panel → Pending Dashboard Count: 7<br/>→ Found: 7<br/>✔ Pending filter validated
+</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">adminWorkshopValidation.AllEventFilterValidation#runPodcastValidation</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">▶ podcast → Total Dashboard Count: 1<br/>→ Found: 1<br/>✔ Total filter validated
+<br/>▶ podcast → Live Dashboard Count: 0<br/>→ Found: 0<br/>✔ Live filter validated
+<br/>▶ podcast → Upcoming Dashboard Count: 1<br/>→ Found: 1<br/>✔ Upcoming filter validated
+<br/>▶ podcast → Past Dashboard Count: 0<br/>→ Found: 0<br/>✔ Past filter validated
+<br/>▶ podcast → Pending Dashboard Count: 0<br/>→ Found: 0<br/>✔ Pending filter validated
+</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">adminWorkshopValidation.AllEventFilterValidation#runWebinarValidation</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">▶ webinar → Total Dashboard Count: 7<br/>→ Found: 7<br/>✔ Total filter validated
+<br/>▶ webinar → Live Dashboard Count: 2<br/>→ Found: 2<br/>✔ Live filter validated
+<br/>▶ webinar → Upcoming Dashboard Count: 1<br/>→ Found: 1<br/>✔ Upcoming filter validated
+<br/>▶ webinar → Past Dashboard Count: 2<br/>→ Found: 2<br/>✔ Past filter validated
+<br/>▶ webinar → Pending Dashboard Count: 2<br/>→ Found: 2<br/>✔ Pending filter validated
+</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">adminWorkshopValidation.AllEventFilterValidation#runWorkshopValidation</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">▶ workshop → Total Dashboard Count: 7<br/>→ Found: 7<br/>✔ Total filter validated
+<br/>▶ workshop → Live Dashboard Count: 1<br/>→ Found: 1<br/>✔ Live filter validated
+<br/>▶ workshop → Upcoming Dashboard Count: 3<br/>→ Found: 3<br/>✔ Upcoming filter validated
+<br/>▶ workshop → Past Dashboard Count: 3<br/>→ Found: 3<br/>✔ Past filter validated
+<br/>▶ workshop → Pending Dashboard Count: 0<br/>→ Found: 0<br/>✔ Pending filter validated
 </div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

@@ -1,15 +1,9 @@
 package adminConferenceValidation;
-
-import static org.testng.Assert.assertTrue;
 import java.awt.AWTException;
 import java.io.IOException;
-
-import org.openqa.selenium.By;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.TechConnect.Base.AdminBaseClass;
@@ -197,7 +191,6 @@ public class ConferenceUpdateTest extends AdminBaseClass {
     }
     @Test( priority = 8)
     public void deleteSpeaker() throws InterruptedException {
-       
         ActionClass.click(cp.speakersSection);
         ActionClass.click(cp.speakerList.get(0));
         ActionClass.click(cp.deleteSpeakerIcon.get(0));

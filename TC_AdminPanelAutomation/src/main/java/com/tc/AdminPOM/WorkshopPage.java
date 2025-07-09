@@ -19,6 +19,15 @@ public class WorkshopPage {
     public @FindBy(xpath="(//span[@class='hide-mini'])[4]")
     WebElement workshop;
     
+    public @FindBy(xpath="//span[contains(text(),'Webinars')]")
+    WebElement webinarLink;
+    
+    public @FindBy(xpath="//span[contains(text(),'Panel Discussion')]")
+    WebElement panelDiscussionLink;
+    
+    public @FindBy(xpath="//span[contains(text(),'Podcasts')]")
+    WebElement podcastLink;
+    
     public @FindBy(xpath="//button[@class='btn btn btn-success']")
     WebElement addnew_button;
     
@@ -66,6 +75,9 @@ public class WorkshopPage {
     
     public @FindBy(xpath="//button[@class='button btn-info me-3 btn btn-secondary']")
     WebElement submit_button;
+    
+    public @FindBy(xpath="//button[@class=\"btn btn-info me-3 btn btn-secondary\"]")
+    WebElement updateWorkshop;
     
     public @FindBy(xpath="(//img[@class='card-img-top rounded-top'])[1]")
     WebElement re_created_workshop;
@@ -195,7 +207,11 @@ public class WorkshopPage {
     public @FindBy(xpath="//div[contains(text(),'new workshop created successfully.')]")
     WebElement success_msg;
     
+    public @FindBy(xpath = "//div[@class='Toastify__toast-body']")
+    WebElement toastMessage;
     
+    public @FindBy(xpath="//table[@class='align-middle table']/tbody/tr/td[4]")
+    List<WebElement> purchasedAmount;
     
    
     

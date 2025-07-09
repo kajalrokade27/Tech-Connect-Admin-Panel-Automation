@@ -137,8 +137,9 @@ public class ActionClass extends BaseDriver {
     }
 
     // Set implicit wait for the driver
-    public static void implicitWait() {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(70000));
+    public static void implicitWait() throws InterruptedException {
+    	Thread.sleep(2000); // Adding a small delay to ensure the driver is ready
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(80000));
     }
 
     // Click an element using JavaScript after waiting for it to be clickable

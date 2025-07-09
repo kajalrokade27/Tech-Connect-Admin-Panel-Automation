@@ -106,6 +106,12 @@ public class ConferencePage {
      public @FindBy(xpath = "//div[contains(text(),'Conference updated successfully.')]")
      WebElement conferenceUpdateSuccessMessage;
      
+     @FindBy(xpath = "//div[contains(text(), 'image updated successfully.')]")
+     public WebElement imageUpdatedMsg;
+     
+     @FindBy(xpath = "//div[contains(text(), 'updated successfully.')]")
+     public WebElement eventUpdatedMsg;
+     
      public @FindBy(xpath = "//button[@type='submit']")
      WebElement submitButton;
      

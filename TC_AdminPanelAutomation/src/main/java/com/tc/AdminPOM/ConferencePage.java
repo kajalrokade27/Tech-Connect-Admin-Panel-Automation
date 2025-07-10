@@ -17,6 +17,10 @@ public class ConferencePage {
 	public @FindBy(xpath="//img[@alt='logo-text']")
 	WebElement techLogo;
 	
+	public @FindBy(xpath="//input[@placeholder='Search events...']")
+	WebElement searchEventField;
+	
+	
 	 public @FindBy(xpath="(//span[@class='d-block'])[1]")
 	    WebElement EventDropdown;
 	 

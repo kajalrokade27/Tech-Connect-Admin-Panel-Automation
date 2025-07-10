@@ -20,8 +20,8 @@ public class ConferenceCountValidations extends AdminBaseClass
 	        cp = new ConferencePage(driver);
 	        wp = new WorkshopPage(driver);
 	        ActionClass.click(cp.EventDropdown);
-	       // ActionClass.click(cp.conferenceLink);
-	        ActionClass.click(wp.workshop);
+	       ActionClass.click(cp.conferenceLink);
+	       // ActionClass.click(wp.workshop);
 	    }
 	    @Test
 	    public void validateAllConferenceFilters() throws InterruptedException

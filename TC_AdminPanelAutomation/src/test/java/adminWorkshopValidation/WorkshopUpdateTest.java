@@ -88,14 +88,14 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
                 String poweredBy, String desc, String industryTags, String location, String benefits,
                 String price, String zoomLink, String imagePath) throws InterruptedException, AWTException, IOException {
 	    
-	    	 WorkshopPage wp = new WorkshopPage(driver);
+	        WorkshopPage wp = new WorkshopPage(driver);
 	 	    ConferencePage cp = new ConferencePage(driver);
 	        ActionClass.click(cp.conferenceUpdateImage);
 	        ActionClass.uploadFile(GetPropertyData.propData("ConferenceImagePath"));
 	        ActionClass.click(cp.changeImageButton);
-	       ActionClass.verifySuccessMsg(cp.imageUpdatedMsg, "Workshop image updated successfully");
+	        ActionClass.verifySuccessMsg(cp.imageUpdatedMsg, "Workshop image updated successfully");
 	        
-	       ActionClass.selectByVisibleText(wp.event_cat_dropdown, category);
+	        ActionClass.selectByVisibleText(wp.event_cat_dropdown, category);
 		    ActionClass.enterText(wp.name_field, name);
 		    ActionClass.selectByVisibleText(wp.event_type_dropdown, type);
 		    ActionClass.selectByVisibleText(wp.event_scope_dropdown, scope);

@@ -12,6 +12,9 @@ public class WorkshopPage {
     }
 	public @FindBy(xpath="//div[@class='mb-3']")
 	List<WebElement> formFields;
+	
+	public @FindBy(xpath="//input[@placeholder='Search events...']")
+	WebElement searchEventField;
     
     public @FindBy(xpath="(//span[@class='d-block'])[1]")
     WebElement EventDropdown;

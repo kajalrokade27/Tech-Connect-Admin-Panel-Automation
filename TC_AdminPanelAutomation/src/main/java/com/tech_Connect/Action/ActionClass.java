@@ -57,7 +57,7 @@ public class ActionClass extends BaseDriver {
             Thread.sleep(100);             // Small wait in case JS is triggered
             element.sendKeys(Keys.CONTROL + "a");  // Select all text
             element.sendKeys(Keys.DELETE);
-          //  element.clear();
+            //  element.clear();
            
             applyBorder(element, "blue");
             
@@ -111,6 +111,7 @@ public class ActionClass extends BaseDriver {
     public static void waitUptoVisible(WebElement element) {
         try {
             wait.until(ExpectedConditions.visibilityOf(element));
+            applyBorder(element, "green");
         } catch (Exception e) {
             System.err.println("Element not visible: " + e.getMessage());
         }
@@ -129,6 +130,7 @@ public class ActionClass extends BaseDriver {
     public static boolean isDisplayed(WebElement element) {
         try {
             waitUptoVisible(element);
+            applyBorder(element, "green");
             return element.isDisplayed();
         } catch (Exception e) {
             System.err.println("Element not displayed: " + e.getMessage());
@@ -146,6 +148,7 @@ public class ActionClass extends BaseDriver {
     public static void jsClick(WebElement element) {
         try {
             waitUptoClickable(element);
+            applyBorder(element, "blue");
             js.executeScript("arguments[0].click();", element);
         } catch (Exception e) {
             System.err.println("Unable to JS click: " + e.getMessage());
@@ -264,7 +267,7 @@ public class ActionClass extends BaseDriver {
     public static void uploadFile(String filePath) throws InterruptedException, AWTException {
     	 StringSelection filePathSelection = new StringSelection(filePath);
  	    Toolkit.getDefaultToolkit().getSystemClipboard().setContents(filePathSelection, null);
- 	    Thread.sleep(3000);
+ 	    Thread.sleep(1000);
 
  	    Robot rb = new Robot();
  	    rb.keyPress(KeyEvent.VK_CONTROL);

@@ -30,7 +30,7 @@ public class WorkshopDashboardValidation extends AdminBaseClass
 	  @Test(priority = 1)
 	  public void verifyRegTktData() throws InterruptedException 
 	  {
-		  Thread.sleep(2000); // Ensure the dashboard is fully loaded
+		Thread.sleep(2000); // Ensure the dashboard is fully loaded
 		String ticketSales= cp.dashboardElements.get(0).getText().replace("₹", "").replace(",", "").trim();
 		double ticketSalesAmount = Double.parseDouble(ticketSales);
 		ActionClass.click(cp.dashboardElements.get(0)); // Click on the first dash board element
@@ -145,16 +145,13 @@ public class WorkshopDashboardValidation extends AdminBaseClass
 		        driver.navigate().back(); // Navigate back to the dashboard
 		        ActionClass.waitUptoVisible(numbers);
 		        ActionClass.waitForPageLoad(6000);
-		      
 		      }
 		       
 		       @Test(priority = 4)
 		       public void sessionCountValidation() throws InterruptedException
 		       {
 		    	   verifyDashboardToDetailMatch(cp.eventInfoCards.get(2),cp.eventNumbers.get(0) ,cp.sessionList, "Session Count");
-		    	   
-		       }
-		       
+		     }
 		       @Test(priority = 5)
 		       public void verifySpeakerCount() throws InterruptedException
 		       {

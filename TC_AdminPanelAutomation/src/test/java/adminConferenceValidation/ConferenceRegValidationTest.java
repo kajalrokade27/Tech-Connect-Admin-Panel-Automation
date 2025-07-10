@@ -13,10 +13,12 @@ public class ConferenceRegValidationTest extends AdminBaseClass
 	    private ConferencePage cp;
 	    
 	    @BeforeClass
-	    public void setup() {
+	    public void setup() throws IOException {
 	        cp = new ConferencePage(driver);
 	        ActionClass.click(cp.EventDropdown);
 	        ActionClass.click(cp.conferenceLink);
+	        ActionClass.enterText(cp.searchEventField, GetPropertyData.propData("ConferenceDetails").split("\\|")[1]);
+	        ActionClass.pressEnter();
 	        ActionClass.click(cp.eventCardName);
 	        ActionClass.click(cp.registrationsSection);
 	    }
@@ -44,15 +46,13 @@ public class ConferenceRegValidationTest extends AdminBaseClass
 	   fillTicketForm("edit");
 	   ActionClass.verifySuccessMsg(cp.ticketUpdateSuccessMessage, "Ticket edited successfully");
 	    }
-   
-   @Test(priority = 3)
+    @Test(priority = 3)
    public void ticketDeleteTest() throws IOException, InterruptedException
    {
 	   ActionClass.click(cp.deleteSessionButton);
 	   ActionClass.click(cp.confirmDeleteButton);
 	   ActionClass.verifySuccessMsg(cp.ticketDeleteSuccessMessage, "Ticket deleted successfully");
    }
-   
    @Test(priority = 4)
    public void changePaymentStatus() throws IOException
    {

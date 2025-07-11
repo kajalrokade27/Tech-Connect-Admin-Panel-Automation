@@ -119,6 +119,9 @@ public class ConferencePage {
      public @FindBy(xpath = "//button[@type='submit']")
      WebElement submitButton;
      
+     public @FindBy(xpath = "//button[@class='button btn-info btn btn-secondary']")
+     WebElement submitButton2;
+     
      public @FindBy(xpath="//a[2]//div[1]")
      WebElement detailsTab;
      
@@ -187,6 +190,7 @@ public class ConferencePage {
      //Create new Speaker
      public @FindBy(xpath = "//div[text()='Speaker added successfully.']")
      WebElement speakerAddedSuccessMessage;
+     
      
      
      //Update Speaker
@@ -422,6 +426,8 @@ public class ConferencePage {
 	 
 	 public @FindBy(xpath = "//div[@class='card-body']/h2")
 	 List<WebElement> filterNumbers;
+	 
+	 
 	
 	
 	

@@ -3,14 +3,25 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="adminSponsorValidationScript.PoweredByValidation">
+      <class name="adminConferenceValidation.ConferenceUpdateTest">
         <methods>
-          <include name="preCondition"/>
-          <include name="setup"/>
-          <include name="deletePoweredByValidation" invocation-numbers="0"/>
           <include name="postCondition"/>
+          <include name="addNewSpeakers"/>
+          <include name="addExistingSpeakers"/>
+          <include name="preCondition"/>
+          <include name="addNewSponsor"/>
+          <include name="deleteSpeaker"/>
+          <include name="deleteSponsor"/>
+          <include name="updateSpeaker"/>
+          <include name="updateSession"/>
+          <include name="deleteSession"/>
+          <include name="addExistingSponsors"/>
+          <include name="addSessions"/>
+          <include name="updateConference"/>
+          <include name="sponsorUpdate"/>
+          <include name="setup"/>
         </methods>
-      </class> <!-- adminSponsorValidationScript.PoweredByValidation -->
+      </class> <!-- adminConferenceValidation.ConferenceUpdateTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

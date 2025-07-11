@@ -290,4 +290,36 @@ public class ActionClass extends BaseDriver {
 			throw e; // Re-throw the exception to fail the test
 		}
     }
+    
+    public static void verifyToastMessage(WebElement toastMessage, WebElement cancelButton) throws InterruptedException {
+        implicitWait(); // Ensure toast is ready
+        String message = toastMessage.getText().trim().toLowerCase();
+
+        if (message.contains("success")) {
+            Reporter.log("✅ Toast Success: " + message, true);
+        } else if (message.contains("duplicate")) {
+            Reporter.log("⚠️ Toast Duplicate: " + message, true);
+            cancelButton.click(); // Close the form
+            Reporter.log("ℹ️ Form closed via Cancel Button due to duplicate entry.", true);
+        } else {
+            Reporter.log("❌ Unexpected Toast Message: " + message, true);
+            throw new AssertionError("❌ Unexpected toast message: " + message);
+        }
+    }
+    public static void verifyToastMessage1(WebElement toastMessage, WebElement cancelButton,  String entityName) throws InterruptedException {
+       
+    	waitUptoVisible(toastMessage);
+        String message = toastMessage.getText().toLowerCase().trim();
+        implicitWait(); // Ensure toast is ready
+        if (message.contains("success")) {
+            Reporter.log("✅ " +  entityName + "  " + message, true);
+        } else if (message.contains("duplicate") || message.contains("already exists")) {
+            Reporter.log("⚠️ Duplicate " + entityName + "  " + message, true);
+            cancelButton.click();  // Close the form
+            Reporter.log("🛑 " + " form closed after duplicate toast.", true);
+        } else {
+            Reporter.log("❌ Unexpected toast message for " + entityName + "\": " + message, true);
+            throw new AssertionError("Unexpected toast message: " + message);
+        }
+    }
 }

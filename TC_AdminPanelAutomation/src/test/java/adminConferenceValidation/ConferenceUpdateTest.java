@@ -1,6 +1,7 @@
 package adminConferenceValidation;
 import java.awt.AWTException;
 import java.io.IOException;
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -8,10 +9,13 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.TechConnect.Base.AdminBaseClass;
 import com.TechConnect.FileUtility.GetPropertyData;
+import com.TechConnect.FileUtility.SheetName;
+import com.TechConnect.FileUtility.UniversalDataProvider;
 import com.TechConnect.JavaUtility.DateClass;
 import com.tc.AdminPOM.ConferencePage;
 import com.tc.AdminPOM.WorkshopPage;
 import com.tech_Connect.Action.ActionClass;
+
 
 public class ConferenceUpdateTest extends AdminBaseClass {
 	 private ConferencePage cp;
@@ -27,9 +31,7 @@ public class ConferenceUpdateTest extends AdminBaseClass {
 	        ActionClass.click(cp.detailsTab);
 	    }
     
-   
-    
-    private void fillSessionForm(String prefix) throws IOException, InterruptedException {
+	   private void fillSessionForm(String prefix) throws IOException, InterruptedException {
         ActionClass.enterText(cp.sessionTitle, GetPropertyData.propData(prefix + "Title"));
         ActionClass.typeUsingActions(cp.sessionSpeakerDropdown, GetPropertyData.propData(prefix + "Speaker"));
         ActionClass.pressEnter();
@@ -77,51 +79,43 @@ public class ConferenceUpdateTest extends AdminBaseClass {
         ActionClass.selectByVisibleText(cp.sponsorTier, GetPropertyData.propData(prefix + "Tier"));
         ActionClass.selectByVisibleText(cp.sponsorCategory, GetPropertyData.propData(prefix + "Category"));
     }
-    
-    
-
-    @DataProvider(name = "eventData")
-    public Object[][] getEventData() throws IOException {
-        String value = GetPropertyData.propData("UpdateConferenceDetails");
-        String[] parts = value.split("\\|");
-        return parts.length == 8 ? new Object[][]{{parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], parts[7]}} : new Object[0][0];
-    }
-
-    @Test(dataProvider = "eventData", priority = 1)
-    public void TestWithValidData(String eventName, String description, String location,
-            String industry, String event_url, String poweredBy, String meet_link, String regBenefits) throws InterruptedException, AWTException, IOException {
-    
-        
+   
+    @Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 1)
+    @SheetName("UpdateConferenceDetails")
+    public void updateConference(String[] testData) throws InterruptedException, AWTException, IOException {
         ActionClass.click(cp.conferenceUpdateImage);
         ActionClass.uploadFile(GetPropertyData.propData("ConferenceImagePath"));
         ActionClass.click(cp.changeImageButton);
         ActionClass.verifySuccessMsg(cp.ConfImageChangeSuccess, "Conference image updated successfully");
-        
+
         ActionClass.scrollToElement(wp.event_cat_dropdown);
         ActionClass.selectByIndex(wp.event_cat_dropdown, 0);
-        ActionClass.enterText(wp.name_field, eventName);
+        ActionClass.enterText(wp.name_field, testData[0]);
         ActionClass.selectByIndex(wp.event_type_dropdown, 0);
         ActionClass.selectByIndex(wp.event_scope_dropdown, 1);
-        ActionClass.selectByVisibleText(wp.powered_by_dropdown, poweredBy);
-        ActionClass.enterText(wp.description_field, description);
-        ActionClass.typeUsingActions(cp.industryTags, industry);
+        ActionClass.selectByVisibleText(wp.powered_by_dropdown, testData[5]);
+        ActionClass.enterText(wp.description_field, testData[1]);
+        ActionClass.typeUsingActions(cp.industryTags, testData[3]);
         ActionClass.pressEnter();
-        ActionClass.enterText(wp.location_field, location);
-        
+        ActionClass.enterText(wp.location_field, testData[2]);
+
         ActionClass.scrollToElement(wp.start_date);
         ActionClass.click(wp.start_date);
-        DateClass.selectDate(cp.start_monthElem, cp.start_nextButton, cp.dateElements, 
-            GetPropertyData.propData("conference.startMonth"), GetPropertyData.propData("conference.startDay"));
+        DateClass.selectDate(cp.start_monthElem, cp.start_nextButton, cp.dateElements,
+                GetPropertyData.propData("conference.startMonth"), GetPropertyData.propData("conference.startDay"));
+
         ActionClass.scrollToElement(wp.end_date);
         ActionClass.click(wp.end_date);
-        DateClass.selectDate(cp.end_monthElem, cp.end_nextButton, cp.dateElements, 
-            GetPropertyData.propData("conference.endMonth"), GetPropertyData.propData("conference.endDay"));
-        ActionClass.enterText(cp.zoomLinkField, meet_link);
+        DateClass.selectDate(cp.end_monthElem, cp.end_nextButton, cp.dateElements,
+                GetPropertyData.propData("conference.endMonth"), GetPropertyData.propData("conference.endDay"));
+
         ActionClass.scrollToElement(wp.reg_benefits);
-        ActionClass.enterText(wp.reg_benefits, regBenefits);
+        ActionClass.enterText(wp.reg_benefits, testData[7]);
         ActionClass.click(cp.submitButton);
-        ActionClass.verifySuccessMsg(cp.conferenceUpdateSuccessMessage, "Conference details updated successfully");
+ Assert.assertEquals(wp.toastMessage.getText(), "Conference updated successfully.", "Conference update failed");
+        Reporter.log("Conference updated with: " + testData[0], true);
     }
+
 
     @Test( priority = 2)
     public void addSessions() throws IOException, InterruptedException {
@@ -130,8 +124,7 @@ public class ConferenceUpdateTest extends AdminBaseClass {
         ActionClass.click(cp.createSessionButton);
         fillSessionForm("addSession");
         ActionClass.click(cp.submitButton);
-       
-        ActionClass.verifySuccessMsg(cp.sessionAddSuccessMessage, "Session added successfully");
+        ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
           
         
     }
@@ -143,7 +136,7 @@ public class ConferenceUpdateTest extends AdminBaseClass {
         ActionClass.click(cp.editSessionButton);
         fillSessionForm("updateSession");
         ActionClass.click(cp.submitButton);
-        ActionClass.verifySuccessMsg(cp.sessionUpdateSuccessMessage, "Session updated successfully");
+       ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
     }
 
     @Test(priority = 4)
@@ -153,7 +146,7 @@ public class ConferenceUpdateTest extends AdminBaseClass {
         ActionClass.click(cp.deleteSessionButton);
         ActionClass.waitUptoVisible(cp.confirmDeleteSessionButton);
         ActionClass.click(cp.confirmDeleteSessionButton);
-        ActionClass.verifySuccessMsg(cp.sessionDeleteSuccessMessage, "Session deleted successfully");
+      ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
     }
 
     @Test(priority = 5)
@@ -164,7 +157,7 @@ public class ConferenceUpdateTest extends AdminBaseClass {
         fillSpeakerForm("addSpeaker");
         ActionClass.click(cp.submitButton);
         ActionClass.implicitWait();
-        ActionClass.verifySuccessMsg(cp.speakerAddedSuccessMessage, "Speaker added successfully");
+      ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
     }
     @Test(priority = 6)
     public void updateSpeaker() throws IOException, InterruptedException, AWTException {
@@ -174,7 +167,7 @@ public class ConferenceUpdateTest extends AdminBaseClass {
         if (cp.speakerName.isEnabled()) {
             fillSpeakerForm("updateSpeaker");
             ActionClass.click(cp.submitButton);
-            ActionClass.verifySuccessMsg(cp.speakerUpdateSuccessMessage, "Speaker updated successfully");
+            ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
         } else {
             Reporter.log("Speaker not enabled for update.", true);
         }
@@ -186,8 +179,8 @@ public class ConferenceUpdateTest extends AdminBaseClass {
         ActionClass.click(cp.addExistingSpeakersButton);
         ActionClass.typeUsingActions(cp.existingSpeakersDropdown, GetPropertyData.propData("existingSpeaker"));
         ActionClass.pressEnter();
-        ActionClass.click(cp.submitButton);
-        ActionClass.verifySuccessMsg(cp.speakerAddedSuccessMessage, "Existing speaker added successfully");
+        ActionClass.click(cp.submitButton2);
+       ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
     }
     @Test( priority = 8)
     public void deleteSpeaker() throws InterruptedException {
@@ -196,7 +189,7 @@ public class ConferenceUpdateTest extends AdminBaseClass {
         ActionClass.click(cp.deleteSpeakerIcon.get(0));
         ActionClass.waitUptoVisible(cp.confirmDeleteButton);
         ActionClass.click(cp.confirmDeleteButton);
-        ActionClass.verifySuccessMsg(cp.speakerDeleteSuccessMessage, "Speaker deleted successfully");
+       ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
     }
 
     @Test(priority = 9)
@@ -206,7 +199,7 @@ public class ConferenceUpdateTest extends AdminBaseClass {
         ActionClass.click(cp.addNewSponsorButton);
         fillSponsorForm("addSponsor");
         ActionClass.click(cp.submitButton);
-        ActionClass.verifySuccessMsg(cp.sponsorCreateSuccessMessage, "New Sponsor added successfully");
+         ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
     }
     @Test(priority = 10)
     public void sponsorUpdate() throws IOException, InterruptedException, AWTException 
@@ -224,26 +217,29 @@ public class ConferenceUpdateTest extends AdminBaseClass {
  	   ActionClass.selectByVisibleText(cp.sponsorTier, GetPropertyData.propData("updateSponsorTier"));
  	   ActionClass.selectByVisibleText(cp.sponsorCategory, GetPropertyData.propData("updateSponsorCategory"));
  	   ActionClass.click(cp.submitButton);
- 	  ActionClass.verifySuccessMsg(cp.sponsorUpdateSuccessMessage, "Sponsor updated successfully");
+ 	  ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
     }
     @Test(priority = 11)
-    public void addExistingSponsors() throws IOException {
+    public void addExistingSponsors() throws IOException, InterruptedException {
        
         ActionClass.click(cp.sponsorsSection);
         ActionClass.click(cp.addExistingSponsorsButton);
         ActionClass.typeUsingActions(cp.existingSponsorsDropdown, GetPropertyData.propData("addSponsorName"));
         ActionClass.pressEnter();
         ActionClass.click(cp.submitButton);
-        ActionClass.verifySuccessMsg(cp.sponsorsAddedSuccessMessage, "Existing sponsor added successfully");
+       ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
     }
     @Test( priority = 12)
-    public void deleteSponsor() throws InterruptedException {
-      
+    public void deleteSponsor() throws InterruptedException, IOException {
+      String sponsorName = GetPropertyData.propData("addSponsorName");
         ActionClass.click(cp.sponsorsSection);
+       ActionClass.enterText(cp.searchSpeakerField,sponsorName);
         ActionClass.click(cp.deleteSponsorIcon.get(0));
         ActionClass.waitUptoVisible(cp.confirmDeleteButton);
         ActionClass.click(cp.confirmDeleteButton);
-        ActionClass.verifySuccessMsg(cp.sponsorDeleteSuccessMessage, "Sponsor deleted successfully");
+       ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton, sponsorName);
+		Reporter.log("Sponsor deleted successfully: " + sponsorName, true);
+    	
     }
     @AfterClass
     public void postCondition()

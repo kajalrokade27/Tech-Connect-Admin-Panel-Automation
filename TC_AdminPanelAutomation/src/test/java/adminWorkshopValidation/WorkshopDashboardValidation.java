@@ -27,6 +27,7 @@ public class WorkshopDashboardValidation extends AdminBaseClass
 	        ActionClass.click(wp.workshop);
 	        ActionClass.click(cp.eventCardName);
 	    }
+	    
 	  @Test(priority = 1)
 	  public void verifyRegTktData() throws InterruptedException 
 	  {

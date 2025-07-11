@@ -182,8 +182,6 @@ public class WorkshopPage {
     public @FindBy(xpath="(//div[@class='d-flex align-items-center sub-menu-tab false'])[3]")
     WebElement sponsors;
     
-     
-    
     public @FindBy(xpath="(//div[@class='text-center menu-tab false'])[2]")
     WebElement Regstr_tab;
     
@@ -206,6 +204,11 @@ public class WorkshopPage {
     public @FindBy(xpath="//input[@name='zoomLink']")
     WebElement zoom_meeting;
     
+    public @FindBy(xpath="//input[@name='eventUrl']")
+    WebElement pre_recordedUrl;
+    
+    public @FindBy(xpath="//input[@name='eventUrl']")
+    WebElement eventUrl;
     
     public @FindBy(xpath="//div[contains(text(),'new workshop created successfully.')]")
     WebElement success_msg;

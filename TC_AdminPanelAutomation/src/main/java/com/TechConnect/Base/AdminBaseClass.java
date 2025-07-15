@@ -55,6 +55,10 @@ public class AdminBaseClass extends BaseDriver
 	@AfterClass
 	public void postCondition()
 	{
+		LoginPage lp = new LoginPage(driver);
+		lp.profileIcon.click();
+		ActionClass.click(lp.logoutButton);
+		Reporter.log("Admin logout successful", true);
 		driver.quit();
 	}
 

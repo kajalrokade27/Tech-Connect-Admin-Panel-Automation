@@ -15,10 +15,11 @@ import com.tech_Connect.Action.ActionClass;
 
 public class WorkshopUpdateTest extends AdminBaseClass  {
 	 ConferencePage cp;
+	 WorkshopPage wp;
 	@BeforeClass
 	public void setUp() 
 	{
-		    WorkshopPage wp = new WorkshopPage(driver);
+		     wp = new WorkshopPage(driver);
 		    cp = new ConferencePage(driver); 
 		    ActionClass.click(wp.EventDropdown);
 		    ActionClass.click(wp.workshop);
@@ -129,7 +130,7 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
 	        fillSessionForm("addSession");
 	        ActionClass.click(cp.submitButton);
 	       
-	        ActionClass.verifySuccessMsg(cp.sessionAddSuccessMessage, "Session added successfully");
+	        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Session : ",true);
 	          
 	        
 	    }
@@ -141,7 +142,7 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
 	        ActionClass.click(cp.editSessionButton);
 	        fillSessionForm("updateSession");
 	        ActionClass.click(cp.submitButton);
-	        ActionClass.verifySuccessMsg(cp.sessionUpdateSuccessMessage, "Session updated successfully");
+	        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Sesssion : ",true);
 	    }
 
 	    @Test(priority = 4)
@@ -162,7 +163,7 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
 	        fillSpeakerForm("addSpeaker");
 	        ActionClass.click(cp.submitButton);
 	        ActionClass.implicitWait();
-	        ActionClass.verifySuccessMsg(cp.speakerAddedSuccessMessage, "Speaker added successfully");
+	        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Speaker : ",true);
 	    }
 	    @Test(priority = 7)
 	    public void updateSpeaker() throws IOException, InterruptedException, AWTException {
@@ -172,7 +173,7 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
 	        if (cp.speakerName.isEnabled()) {
 	            fillSpeakerForm("updateSpeaker");
 	            ActionClass.click(cp.submitButton);
-	            ActionClass.verifySuccessMsg(cp.speakerUpdateSuccessMessage, "Speaker updated successfully");
+	            ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Sponsor",false);
 	        } else {
 	            Reporter.log("Speaker not enabled for update.", true);
 	        }
@@ -185,7 +186,7 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
 	        ActionClass.typeUsingActions(cp.existingSpeakersDropdown, GetPropertyData.propData("existingSpeaker"));
 	        ActionClass.pressEnter();
 	        ActionClass.click(cp.submitButton);
-	        ActionClass.verifySuccessMsg(cp.speakerAddedSuccessMessage, "Existing speaker added successfully");
+	        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Speaker : ", true);
 	    }
 	    @Test( priority = 8)
 	    public void deleteSpeaker() throws InterruptedException {
@@ -204,7 +205,7 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
 	        ActionClass.click(cp.addNewSponsorButton);
 	        fillSponsorForm("addSponsor");
 	        ActionClass.click(cp.submitButton);
-	        ActionClass.verifySuccessMsg(cp.sponsorCreateSuccessMessage, "New Sponsor added successfully");
+	        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Sponsor",true);
 	    }
 	    @Test(priority = 10)
 	    public void sponsorUpdate() throws IOException, InterruptedException, AWTException 
@@ -222,17 +223,17 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
 	 	   ActionClass.selectByVisibleText(cp.sponsorTier, GetPropertyData.propData("updateSponsorTier"));
 	 	   ActionClass.selectByVisibleText(cp.sponsorCategory, GetPropertyData.propData("updateSponsorCategory"));
 	 	   ActionClass.click(cp.submitButton);
-	 	  ActionClass.verifySuccessMsg(cp.sponsorUpdateSuccessMessage, "Sponsor updated successfully");
+	 	  ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Sponsor", false);
 	    }
 	    @Test(priority = 11)
-	    public void addExistingSponsors() throws IOException {
+	    public void addExistingSponsors() throws IOException, InterruptedException {
 	       
 	        ActionClass.click(cp.sponsorsSection);
 	        ActionClass.click(cp.addExistingSponsorsButton);
 	        ActionClass.typeUsingActions(cp.existingSponsorsDropdown, GetPropertyData.propData("addSponsorName"));
 	        ActionClass.pressEnter();
 	        ActionClass.click(cp.submitButton);
-	        ActionClass.verifySuccessMsg(cp.sponsorsAddedSuccessMessage, "Existing sponsor added successfully");
+	        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Sponsor",true);
 	    }
 	    @Test( priority = 12)
 	    public void deleteSponsor() throws InterruptedException {

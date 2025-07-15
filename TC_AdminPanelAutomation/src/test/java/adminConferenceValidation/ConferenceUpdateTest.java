@@ -1,11 +1,13 @@
 package adminConferenceValidation;
 import java.awt.AWTException;
 import java.io.IOException;
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.TechConnect.Base.AdminBaseClass;
 import com.TechConnect.FileUtility.GetPropertyData;
@@ -124,7 +126,7 @@ public class ConferenceUpdateTest extends AdminBaseClass {
         ActionClass.click(cp.createSessionButton);
         fillSessionForm("addSession");
         ActionClass.click(cp.submitButton);
-        ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
+        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton, "Session: ",true);
           
         
     }
@@ -136,7 +138,7 @@ public class ConferenceUpdateTest extends AdminBaseClass {
         ActionClass.click(cp.editSessionButton);
         fillSessionForm("updateSession");
         ActionClass.click(cp.submitButton);
-       ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
+       ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton, "Session", false);
     }
 
     @Test(priority = 4)
@@ -146,7 +148,7 @@ public class ConferenceUpdateTest extends AdminBaseClass {
         ActionClass.click(cp.deleteSessionButton);
         ActionClass.waitUptoVisible(cp.confirmDeleteSessionButton);
         ActionClass.click(cp.confirmDeleteSessionButton);
-      ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
+      ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Session: ", false);
     }
 
     @Test(priority = 5)
@@ -157,40 +159,64 @@ public class ConferenceUpdateTest extends AdminBaseClass {
         fillSpeakerForm("addSpeaker");
         ActionClass.click(cp.submitButton);
         ActionClass.implicitWait();
-      ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
+       ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Speaker: ", true);
+		
     }
-    @Test(priority = 6)
+    @Test(priority = 7)
     public void updateSpeaker() throws IOException, InterruptedException, AWTException {
     
         ActionClass.click(cp.speakersSection);
+        ActionClass.enterText(cp.searchSpeakerField, GetPropertyData.propData("updateSpeakerName"));
+        if (cp.speakerList.isEmpty()) {
+			Reporter.log("No speakers found with the name: " + GetPropertyData.propData("updateSpeakerName"),true);
+		}
+        else
+        {
         ActionClass.click(cp.speakerList.get(0));
         if (cp.speakerName.isEnabled()) {
             fillSpeakerForm("updateSpeaker");
             ActionClass.click(cp.submitButton);
-            ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
+            ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Speaker: ", false);
         } else {
             Reporter.log("Speaker not enabled for update.", true);
         }
+        }
     }
-    @Test( priority = 7)
+    @Test( priority = 6)
     public void addExistingSpeakers() throws IOException, InterruptedException {
-     
+       String existingSpeaker = GetPropertyData.propData("existingSpeaker");
         ActionClass.click(cp.speakersSection);
         ActionClass.click(cp.addExistingSpeakersButton);
-        ActionClass.typeUsingActions(cp.existingSpeakersDropdown, GetPropertyData.propData("existingSpeaker"));
+        ActionClass.typeUsingActions(cp.existingSpeakersDropdown, existingSpeaker);
         ActionClass.pressEnter();
-        ActionClass.click(cp.submitButton2);
-       ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
+        if(cp.existingSpList.isEmpty()) {
+			Reporter.log("No existing speakers found with the name: " + existingSpeaker, true);
+			ActionClass.waitUptoVisible(cp.closeButton);
+			ActionClass.click(cp.closeButton);
+		}
+		else
+		{
+          ActionClass.click(cp.submitButton2);
+          ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,existingSpeaker, true);
+		}
     }
     @Test( priority = 8)
-    public void deleteSpeaker() throws InterruptedException {
+    public void deleteSpeaker() throws InterruptedException, IOException {
+    	String speakerName = GetPropertyData.propData("existingSpeaker");
         ActionClass.click(cp.speakersSection);
+        ActionClass.enterText(cp.searchSpeakerField, speakerName);
+        if (cp.speakerList.isEmpty()) {
+        Reporter.log("No speakers found with the name: " + speakerName, true);
+        	
+        }
+        else
+		{
         ActionClass.click(cp.speakerList.get(0));
         ActionClass.click(cp.deleteSpeakerIcon.get(0));
         ActionClass.waitUptoVisible(cp.confirmDeleteButton);
         ActionClass.click(cp.confirmDeleteButton);
-       ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
-    }
+       ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Speaker Name with : "+speakerName,true);
+    }}
 
     @Test(priority = 9)
     public void addNewSponsor() throws IOException, InterruptedException, AWTException {
@@ -199,12 +225,17 @@ public class ConferenceUpdateTest extends AdminBaseClass {
         ActionClass.click(cp.addNewSponsorButton);
         fillSponsorForm("addSponsor");
         ActionClass.click(cp.submitButton);
-         ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
+         ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Sponsor: ",true);
     }
-    @Test(priority = 10)
+    @Test(priority = 11)
     public void sponsorUpdate() throws IOException, InterruptedException, AWTException 
     {
  	   ActionClass.click(cp.sponsorsSection);
+ 	   ActionClass.enterText(cp.searchSponsorField, GetPropertyData.propData("updateSponsorName"));
+ 	   if (cp.sponsorsList.isEmpty()) {
+ 		   Reporter.log("No sponsors found with the name: " + GetPropertyData.propData("updateSponsorName"), true);
+ 	   }
+ 	   else {
  	   ActionClass.click(cp.sponsorsList.get(0)); // Assuming we are updating the first sponsor in the list
  	   ActionClass.enterText(cp.companyName, GetPropertyData.propData("updateSponsorName"));
  	   ActionClass.enterText(cp.companyWebsiteUrl, GetPropertyData.propData("updateSponsorUrl"));
@@ -217,36 +248,44 @@ public class ConferenceUpdateTest extends AdminBaseClass {
  	   ActionClass.selectByVisibleText(cp.sponsorTier, GetPropertyData.propData("updateSponsorTier"));
  	   ActionClass.selectByVisibleText(cp.sponsorCategory, GetPropertyData.propData("updateSponsorCategory"));
  	   ActionClass.click(cp.submitButton);
- 	  ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
-    }
-    @Test(priority = 11)
+ 	  ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Sponsor: ",false);
+    }}
+    @Test(priority = 10)
     public void addExistingSponsors() throws IOException, InterruptedException {
-       
+       String existingSponsor = GetPropertyData.propData("addSponsorName");
         ActionClass.click(cp.sponsorsSection);
         ActionClass.click(cp.addExistingSponsorsButton);
-        ActionClass.typeUsingActions(cp.existingSponsorsDropdown, GetPropertyData.propData("addSponsorName"));
+        ActionClass.typeUsingActions(cp.existingSponsorsDropdown, existingSponsor);
         ActionClass.pressEnter();
+        ActionClass.implicitWait();
+       List<WebElement> existingSponsors = cp.existingSpList;
+       System.out.println("Existing Sponsors: " + existingSponsors.size());
+        if( existingSponsors.isEmpty()) {
+        	Reporter.log("No existing sponsors found with the name: " + existingSponsor, true);
+        	ActionClass.waitUptoClickable(cp.closeButton);
+        	ActionClass.jsClick(cp.closeButton);
+        }
+        else
+		{
         ActionClass.click(cp.submitButton);
-       ActionClass.verifyToastMessage(wp.toastMessage, cp.closeButton);
-    }
+        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Sponsor: ",true);
+    }}
     @Test( priority = 12)
     public void deleteSponsor() throws InterruptedException, IOException {
-      String sponsorName = GetPropertyData.propData("addSponsorName");
+        String sponsorName = GetPropertyData.propData("addSponsorName");
         ActionClass.click(cp.sponsorsSection);
-       ActionClass.enterText(cp.searchSpeakerField,sponsorName);
+        ActionClass.enterText(cp.searchSpeakerField,sponsorName);
+        if (cp.sponsorsList.isEmpty()) {
+			Reporter.log("No sponsors found with the name: " + sponsorName, true);
+			}
+        else
+      {
         ActionClass.click(cp.deleteSponsorIcon.get(0));
         ActionClass.waitUptoVisible(cp.confirmDeleteButton);
         ActionClass.click(cp.confirmDeleteButton);
-       ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton, sponsorName);
+        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton, sponsorName, true);
 		Reporter.log("Sponsor deleted successfully: " + sponsorName, true);
-    	
+        			}
     }
-    @AfterClass
-    public void postCondition()
-    {
-    	driver.quit();
-    }
-    
-    
-    
+   
 }

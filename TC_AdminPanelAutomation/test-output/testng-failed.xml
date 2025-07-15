@@ -5,20 +5,12 @@
     <classes>
       <class name="adminConferenceValidation.ConferenceUpdateTest">
         <methods>
-          <include name="postCondition"/>
-          <include name="addNewSpeakers"/>
-          <include name="addExistingSpeakers"/>
-          <include name="preCondition"/>
-          <include name="addNewSponsor"/>
-          <include name="deleteSpeaker"/>
-          <include name="deleteSponsor"/>
-          <include name="updateSpeaker"/>
-          <include name="updateSession"/>
-          <include name="deleteSession"/>
           <include name="addExistingSponsors"/>
-          <include name="addSessions"/>
-          <include name="updateConference"/>
+          <include name="preCondition"/>
+          <include name="updateConference" invocation-numbers="0"/>
           <include name="sponsorUpdate"/>
+          <include name="postCondition"/>
+          <include name="deleteSponsor"/>
           <include name="setup"/>
         </methods>
       </class> <!-- adminConferenceValidation.ConferenceUpdateTest -->

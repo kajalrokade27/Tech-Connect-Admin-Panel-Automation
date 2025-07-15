@@ -179,18 +179,30 @@ public class ConferencePage {
      public @FindBy(name = "who")
      WebElement speakerCategory;
      //close buttons
-     public @FindBy(xpath = "//button[@class='btn-close']")
+     public @FindBy(xpath = "//button[normalize-space()='Cancel']")
      WebElement closeButton;
      //Add Existing Speakers in the webinar session
      public @FindBy(xpath = "//button[text()='Add Existing Speakers']")
      WebElement addExistingSpeakersButton;
      public @FindBy(xpath = "//div[@class=' css-yk16xz-control']")
      WebElement existingSpeakersDropdown;
+     
+     public @FindBy(xpath = "//div[@class='css-12jo7m5']")
+     List<WebElement> existingSpList;
+     
+     public @FindBy(xpath = "//div[@class='css-1rhvuft-multiValue']//div[contains(@class,'css-12jo7m5')]")
+     List<WebElement> selectedSponsorList;
+     
+     public @FindBy(xpath = "//button[@class='btn-close']")
+     WebElement crossButton;
+     
      //Existing Speakers
      //Create new Speaker
      public @FindBy(xpath = "//div[text()='Speaker added successfully.']")
      WebElement speakerAddedSuccessMessage;
      
+     public @FindBy(xpath = "//div[@class='text-danger']")
+     WebElement requiredMsg;
      
      
      //Update Speaker
@@ -221,6 +233,10 @@ public class ConferencePage {
      //Webinar Sponsors
      public @FindBy(xpath = "//small[text()='Sponsors']")
      WebElement sponsorsSection;
+     
+     public @FindBy(xpath = "//input[@id='searchUser']")
+     WebElement searchSponsorField;
+     
      public @FindBy(xpath = "//button[text()='Add New Sponsor']")
      WebElement addNewSponsorButton;
      // Sponsor form fields

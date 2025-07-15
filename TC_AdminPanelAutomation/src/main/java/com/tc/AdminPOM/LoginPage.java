@@ -27,6 +27,11 @@ public class LoginPage
        public @FindBy(xpath="//button[@class='me-2 btn btn-primary']")
        WebElement submit_button;
        
+       public @FindBy(xpath="//button[@class='btn btn-gray-700']")
+       WebElement profileIcon;
+       
+       public @FindBy(xpath="//button[@class='btn btn-danger btn-sm']")
+       WebElement logoutButton;
        
        
        

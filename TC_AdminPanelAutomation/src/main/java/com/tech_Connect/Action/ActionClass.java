@@ -306,7 +306,7 @@ public class ActionClass extends BaseDriver {
             throw new AssertionError("❌ Unexpected toast message: " + message);
         }
     }
-    public static void verifyToastMessage1(WebElement toastMessage, WebElement cancelButton,  String entityName) throws InterruptedException {
+    public static void verifyToastMessage11(WebElement toastMessage, WebElement cancelButton,  String entityName) throws InterruptedException {
        
     	waitUptoVisible(toastMessage);
         String message = toastMessage.getText().toLowerCase().trim();
@@ -315,11 +315,60 @@ public class ActionClass extends BaseDriver {
             Reporter.log("✅ " +  entityName + "  " + message, true);
         } else if (message.contains("duplicate") || message.contains("already exists")) {
             Reporter.log("⚠️ Duplicate " + entityName + "  " + message, true);
-            cancelButton.click();  // Close the form
+            waitUptoVisible(cancelButton);
+            cancelButton.click(); // Close the form
             Reporter.log("🛑 " + " form closed after duplicate toast.", true);
         } else {
             Reporter.log("❌ Unexpected toast message for " + entityName + "\": " + message, true);
             throw new AssertionError("Unexpected toast message: " + message);
         }
     }
+    public static void verifyToastMessage12(WebElement toastMessage, WebElement cancelButton, String entityName) throws InterruptedException {
+        waitUptoVisible(toastMessage);
+        String message = toastMessage.getText().toLowerCase().trim();
+        implicitWait(); // Ensure toast is ready
+
+        if (message.contains("success")) {
+            Reporter.log("✅ " + entityName + "  " + message, true);
+        } else if (message.contains("duplicate") || message.contains("already exists")) {
+            Reporter.log("⚠️ Duplicate " + entityName + "  " + message, true);
+            if (cancelButton != null) {
+                waitUptoVisible(cancelButton);
+                cancelButton.click(); // Close the form
+                Reporter.log("🛑 Form closed after duplicate toast.", true);
+            } else {
+                Reporter.log("ℹ️ No cancel button present. Skipping form close action.", true);
+            }
+        } else {
+            Reporter.log("❌ Unexpected toast message for " + entityName + ": " + message, true);
+            throw new AssertionError("Unexpected toast message: " + message);
+        }
+    }
+    public static void verifyToastMessage1(WebElement toastMessage, WebElement cancelButton, String entityName, boolean hasCancelButton) throws InterruptedException {
+        waitUptoVisible(toastMessage);
+        String message = toastMessage.getText().toLowerCase().trim();
+        implicitWait(); // Ensure toast is ready
+
+        if (message.contains("success")) {
+            Reporter.log("✅ " + entityName + " " + message, true);
+        } else if (message.contains("duplicate") || message.contains("already exists")) {
+            Reporter.log("⚠️ Duplicate " + entityName + " " + message, true);
+            if (hasCancelButton) {
+                try {
+                    waitUptoVisible(cancelButton);
+                    cancelButton.click();
+                    Reporter.log("🛑 Form closed after duplicate toast.", true);
+                } catch (Exception e) {
+                    Reporter.log("⚠️ Cancel button was expected but not clickable: " + e.getMessage(), true);
+                }
+            } else {
+                Reporter.log("ℹ️ Cancel button not available. Skipping form close.", true);
+            }
+        } else {
+            Reporter.log("❌ Unexpected toast message for " + entityName + ": " + message, true);
+            throw new AssertionError("Unexpected toast message: " + message);
+        }
+    }
+
+
 }

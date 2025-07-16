@@ -2,11 +2,9 @@ package adminConferenceValidation;
 import java.awt.AWTException;
 import java.io.IOException;
 import java.util.List;
-
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.Reporter;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import com.TechConnect.Base.AdminBaseClass;
@@ -114,22 +112,20 @@ public class ConferenceUpdateTest extends AdminBaseClass {
         ActionClass.scrollToElement(wp.reg_benefits);
         ActionClass.enterText(wp.reg_benefits, testData[7]);
         ActionClass.click(cp.submitButton);
- Assert.assertEquals(wp.toastMessage.getText(), "Conference updated successfully.", "Conference update failed");
+        Assert.assertEquals(wp.toastMessage.getText(), "Conference updated successfully.", "Conference update failed");
         Reporter.log("Conference updated with: " + testData[0], true);
     }
 
 
     @Test( priority = 2)
-    public void addSessions() throws IOException, InterruptedException {
-       
+    public void addSessions() throws IOException, InterruptedException 
+    {
         ActionClass.click(cp.sessionTab);
         ActionClass.click(cp.createSessionButton);
         fillSessionForm("addSession");
         ActionClass.click(cp.submitButton);
         ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton, "Session: ",true);
-          
-        
-    }
+      }
 
     @Test( priority = 3)
     public void updateSession() throws IOException, InterruptedException {
@@ -159,7 +155,7 @@ public class ConferenceUpdateTest extends AdminBaseClass {
         fillSpeakerForm("addSpeaker");
         ActionClass.click(cp.submitButton);
         ActionClass.implicitWait();
-       ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Speaker: ", true);
+        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Speaker: ", true);
 		
     }
     @Test(priority = 7)

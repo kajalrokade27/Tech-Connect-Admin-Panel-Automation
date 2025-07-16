@@ -140,7 +140,7 @@ public class ActionClass extends BaseDriver {
 
     // Set implicit wait for the driver
     public static void implicitWait() throws InterruptedException {
-    	Thread.sleep(2000); // Adding a small delay to ensure the driver is ready
+    	Thread.sleep(3000); // Adding a small delay to ensure the driver is ready
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(80000));
     }
 
@@ -216,6 +216,7 @@ public class ActionClass extends BaseDriver {
     public static void typeUsingActions( WebElement element, String text) {
         Actions actions = new Actions(driver);
         actions.moveToElement(element).click().sendKeys(text).perform();
+        pressEnter(); // Simulate pressing Enter after typing
     }
 
     // Scroll to the bottom of the page
@@ -350,9 +351,9 @@ public class ActionClass extends BaseDriver {
         implicitWait(); // Ensure toast is ready
 
         if (message.contains("success")) {
-            Reporter.log("✅ " + entityName + " " + message, true);
+            Reporter.log("✅ " + entityName + " : " + message, true);
         } else if (message.contains("duplicate") || message.contains("already exists")) {
-            Reporter.log("⚠️ Duplicate " + entityName + " " + message, true);
+            Reporter.log("⚠️ Duplicate " + entityName + " : " + message, true);
             if (hasCancelButton) {
                 try {
                     waitUptoVisible(cancelButton);
@@ -365,7 +366,7 @@ public class ActionClass extends BaseDriver {
                 Reporter.log("ℹ️ Cancel button not available. Skipping form close.", true);
             }
         } else {
-            Reporter.log("❌ Unexpected toast message for " + entityName + ": " + message, true);
+            Reporter.log("❌ Unexpected toast message for " + entityName + " : " + message, true);
             throw new AssertionError("Unexpected toast message: " + message);
         }
     }

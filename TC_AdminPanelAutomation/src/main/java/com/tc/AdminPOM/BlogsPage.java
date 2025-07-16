@@ -15,7 +15,7 @@ public class BlogsPage
 	  PageFactory.initElements(driver, this);
    }
    
-  public  @FindBy(xpath="//div[@class='d-md-flex']")
+  public  @FindBy(xpath="//span[contains(text(),'Resources')]")
    WebElement resources_dropdown;
   
   public @FindBy(xpath="(//span[@class='hide-mini'])[7]")
@@ -23,6 +23,47 @@ public class BlogsPage
   
   public @FindBy(xpath="//h5[@class='mb-0 mt-2']")
    List<WebElement> blogs_list;
+  
+  public @FindBy(xpath="//button[@class='btn btn btn-success']")
+   WebElement addBlogButton;
+  
+  public @FindBy(xpath="//input[@name='title']")
+   WebElement blogTitleField;
+  
+  public @FindBy(xpath="//input[@name='author']")
+   WebElement blogAuthorField;
+  
+  public @FindBy(xpath="//div[@class='ce-paragraph cdx-block']")
+   WebElement blogContentField;
+  
+  public @FindBy(xpath="//img[@class='fui-avatar-image']")
+   WebElement blogUploadImage;
+  
+  public @FindBy(xpath="//div[@class='fui-avatar-label']")
+  WebElement blogAddImage;
+  
+  public @FindBy(xpath="//div[@class=' css-1hwfws3']")
+   WebElement blogTags;
+  
+  public @FindBy(xpath="//button[@type='submit']")
+   WebElement submitButton;
+  
+  public @FindBy(xpath="//tbody//tr//td//a//i[@id='TooltipExample']")
+   WebElement editBlogIcon;
+  
+  public @FindBy(xpath="//input[@type='text']")
+   WebElement searchField;
+  
+  public @FindBy(xpath="//i[@title='Delete']")
+   List<WebElement> deleteBlogIcons;
+  
+  public @FindBy(xpath="//span[contains(text(),'Articles')]")
+   WebElement articles_link;
+  
+  public @FindBy(xpath="//span[contains(text(),'Magazines')]")
+   WebElement magazines_link;
+  
+  
    
   
 }

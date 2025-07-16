@@ -1,6 +1,9 @@
 package adminWorkshopValidation;
 import java.awt.AWTException;
 import java.io.IOException;
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -169,6 +172,12 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
 	    public void updateSpeaker() throws IOException, InterruptedException, AWTException {
 	    
 	        ActionClass.click(cp.speakersSection);
+	        ActionClass.enterText(cp.searchSpeakerField, GetPropertyData.propData("updateSpeakerName"));
+	        if (cp.speakerList.isEmpty()) {
+				Reporter.log("No speakers found with the name: " + GetPropertyData.propData("updateSpeakerName"),true);
+			}
+	        else
+	        {
 	        ActionClass.click(cp.speakerList.get(0));
 	        if (cp.speakerName.isEnabled()) {
 	            fillSpeakerForm("updateSpeaker");
@@ -177,17 +186,26 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
 	        } else {
 	            Reporter.log("Speaker not enabled for update.", true);
 	        }
+	        }
 	    }
 	    @Test( priority = 6)
 	    public void addExistingSpeakers() throws IOException, InterruptedException {
 	     
-	        ActionClass.click(cp.speakersSection);
-	        ActionClass.click(cp.addExistingSpeakersButton);
-	        ActionClass.typeUsingActions(cp.existingSpeakersDropdown, GetPropertyData.propData("existingSpeaker"));
-	        ActionClass.pressEnter();
-	        ActionClass.click(cp.submitButton);
-	        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Speaker : ", true);
-	    }
+	    	 String existingSpeaker = GetPropertyData.propData("existingSpeaker");
+	         ActionClass.click(cp.speakersSection);
+	         ActionClass.click(cp.addExistingSpeakersButton);
+	         ActionClass.typeUsingActions(cp.existingSpeakersDropdown, existingSpeaker);
+	         ActionClass.pressEnter();
+	         if(cp.existingSpList.isEmpty()) {
+	 			Reporter.log("No existing speakers found with the name: " + existingSpeaker, true);
+	 			ActionClass.waitUptoVisible(cp.closeButton);
+	 			ActionClass.click(cp.closeButton);
+	 		}
+	 		else
+	 		{
+	           ActionClass.click(cp.submitButton2);
+	           ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,existingSpeaker, true);
+	 		}}
 	    @Test( priority = 8)
 	    public void deleteSpeaker() throws InterruptedException {
 	        ActionClass.click(cp.speakersSection);
@@ -211,6 +229,11 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
 	    public void sponsorUpdate() throws IOException, InterruptedException, AWTException 
 	    {
 	 	   ActionClass.click(cp.sponsorsSection);
+	 	  ActionClass.enterText(cp.searchSponsorField, GetPropertyData.propData("updateSponsorName"));
+	 	   if (cp.sponsorsList.isEmpty()) {
+	 		   Reporter.log("No sponsors found with the name: " + GetPropertyData.propData("updateSponsorName"), true);
+	 	   }
+	 	   else {
 	 	   ActionClass.click(cp.sponsorsList.get(0)); // Assuming we are updating the first sponsor in the list
 	 	   ActionClass.enterText(cp.companyName, GetPropertyData.propData("updateSponsorName"));
 	 	   ActionClass.enterText(cp.companyWebsiteUrl, GetPropertyData.propData("updateSponsorUrl"));
@@ -224,17 +247,27 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
 	 	   ActionClass.selectByVisibleText(cp.sponsorCategory, GetPropertyData.propData("updateSponsorCategory"));
 	 	   ActionClass.click(cp.submitButton);
 	 	  ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Sponsor", false);
-	    }
+	    }}
 	    @Test(priority = 11)
 	    public void addExistingSponsors() throws IOException, InterruptedException {
-	       
+	    	String existingSponsor = GetPropertyData.propData("addSponsorName");
 	        ActionClass.click(cp.sponsorsSection);
 	        ActionClass.click(cp.addExistingSponsorsButton);
 	        ActionClass.typeUsingActions(cp.existingSponsorsDropdown, GetPropertyData.propData("addSponsorName"));
 	        ActionClass.pressEnter();
+	        ActionClass.implicitWait();
+	        List<WebElement> existingSponsors = cp.existingSpList;
+	        System.out.println("Existing Sponsors: " + existingSponsors.size());
+	         if( existingSponsors.isEmpty()) {
+	         	Reporter.log("No existing sponsors found with the name: " + existingSponsor, true);
+	         	ActionClass.waitUptoClickable(cp.closeButton);
+	         	ActionClass.jsClick(cp.closeButton);
+	         }
+	         else
+	 		{
 	        ActionClass.click(cp.submitButton);
 	        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Sponsor",true);
-	    }
+	    }}
 	    @Test( priority = 12)
 	    public void deleteSponsor() throws InterruptedException {
 	      

@@ -1,26 +1,35 @@
 package adminWorkshopValidation;
 
 import com.TechConnect.Base.AdminBaseClass;
+import com.TechConnect.FileUtility.GetPropertyData;
 import com.TechConnect.FileUtility.SheetName;
 import com.TechConnect.FileUtility.UniversalDataProvider;
 import com.TechConnect.JavaUtility.DateClass;
 import com.tc.AdminPOM.ConferencePage;
+import com.tc.AdminPOM.ModeratorPage;
 import com.tc.AdminPOM.WorkshopPage;
 import com.tech_Connect.Action.ActionClass;
+
+import AdminCommonEventActions.EventsActionsTest;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class addWorkshop extends AdminBaseClass {
 	 WorkshopPage wp ;
      ConferencePage cp;
+     EventsActionsTest eventActions;
+     ModeratorPage mp;
 	@BeforeClass
 	public void setup() throws InterruptedException
 	{
 		   wp = new WorkshopPage(driver);
 	       cp = new ConferencePage(driver);
+	       mp = new ModeratorPage(driver);
+	       eventActions = new EventsActionsTest();
            ActionClass.click(wp.EventDropdown);
 	       ActionClass.click(wp.workshop);
 	       ActionClass.implicitWait();
@@ -100,7 +109,16 @@ public class addWorkshop extends AdminBaseClass {
 	    // Validate toast
 	    ActionClass.verifySuccessMsg(wp.success_msg, testData[1] + " Workshop created successfully");
 	}
-
+	
+	@Test(priority = 2)
+	public void deleteWorkshop() throws IOException, InterruptedException
+	{
+		eventActions.searchEvent(GetPropertyData.propData("UpdateWorkshop").split("~")[1]);
+		eventActions.performDelete();
+		ActionClass.verifyToastMessage1(wp.toastMessage, mp.cancelButton, "Workshop", true);
+		
+	}
+     
     
    
 }

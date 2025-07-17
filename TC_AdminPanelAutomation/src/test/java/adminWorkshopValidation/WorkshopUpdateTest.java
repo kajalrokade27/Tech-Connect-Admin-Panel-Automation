@@ -13,20 +13,32 @@ import com.TechConnect.Base.AdminBaseClass;
 import com.TechConnect.FileUtility.GetPropertyData;
 import com.TechConnect.JavaUtility.DateClass;
 import com.tc.AdminPOM.ConferencePage;
+import com.tc.AdminPOM.ModeratorPage;
 import com.tc.AdminPOM.WorkshopPage;
 import com.tech_Connect.Action.ActionClass;
+
+import AdminCommonEventActions.EventsActionsTest;
 
 public class WorkshopUpdateTest extends AdminBaseClass  {
 	 ConferencePage cp;
 	 WorkshopPage wp;
+	 EventsActionsTest et;
+	 ModeratorPage mp;
 	@BeforeClass
-	public void setUp() 
+	public void setUp() throws IOException, InterruptedException 
 	{
 		     wp = new WorkshopPage(driver);
 		    cp = new ConferencePage(driver); 
+		    et = new EventsActionsTest();
+		    mp = new ModeratorPage(driver);
 		    ActionClass.click(wp.EventDropdown);
 		    ActionClass.click(wp.workshop);
-		    ActionClass.click(cp.eventCardName);
+		   et.searchEvent(GetPropertyData.propData("UpdateWorkshop").split("~")[1]);
+		   ActionClass.click(cp.eventCardName);
+		   
+		   
+		   
+		   
 	        ActionClass.click(cp.detailsTab);
 	}
 	 private void fillSessionForm(String prefix) throws IOException, InterruptedException {
@@ -233,6 +245,7 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
 	 	   if (cp.sponsorsList.isEmpty()) {
 	 		   Reporter.log("No sponsors found with the name: " + GetPropertyData.propData("updateSponsorName"), true);
 	 	   }
+	 	   
 	 	   else {
 	 	   ActionClass.click(cp.sponsorsList.get(0)); // Assuming we are updating the first sponsor in the list
 	 	   ActionClass.enterText(cp.companyName, GetPropertyData.propData("updateSponsorName"));
@@ -277,11 +290,21 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
 	        ActionClass.click(cp.confirmDeleteButton);
 	        ActionClass.verifySuccessMsg(cp.sponsorDeleteSuccessMessage, "Sponsor deleted successfully");
 	    }
-	    @AfterClass
-	    public void postCondition()
-	    {
-	    	driver.quit();
+	   
+	    @Test(priority = 13)
+	    public void publishWorkshop() throws IOException, InterruptedException {
+	    			    et.performPublish();
+	    			    ActionClass.verifyToastMessage1(wp.toastMessage, mp.cancelButton,  " published successfully", false);
+	    		        ActionClass.implicitWait();
+	    		}
+	    @Test(priority = 14)
+	    public void saveAsDraftWorkshop() throws IOException, InterruptedException {
+	    	et.performSaveAsDraft();
+	    	ActionClass.verifyToastMessage1(wp.toastMessage, mp.cancelButton, " saved as draft successfully", false);
+	    	ActionClass.implicitWait();
 	    }
+	   
+	    
 	    
 	    
 }

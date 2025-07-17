@@ -66,8 +66,14 @@ public class ConferencePage {
 	 public @FindBy(xpath = "(//div[@class='card-body d-flex flex-column']/h6)[1]")
 	 WebElement eventCardName;
 	 
+	 public @FindBy(xpath = "//div[@class='card-body d-flex flex-column']/h6")
+	List< WebElement> eventList;
+	 
 	 public @FindBy(xpath = "//button[contains(text(),'Publish')]")
 	 WebElement publishButton;
+	 
+	 public @FindBy(xpath = "//button[@class='btn btn-success btn btn-success']")
+	 WebElement publishOrDraftButton;
 	 
 	 public @FindBy(xpath = "//button[contains(text(),'Yes, publish it!')]")
 	 WebElement confirmPublishButton;

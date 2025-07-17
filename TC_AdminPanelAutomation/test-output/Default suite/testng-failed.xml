@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="adminModeratorValidation.ModeratorValidation">
+      <class name="AdminSubscriptionSubDomainScripts.SubdomainValidation">
         <methods>
           <include name="setup"/>
           <include name="preCondition"/>
           <include name="postCondition"/>
-          <include name="validateDeleteModeratorFunctionality" invocation-numbers="0"/>
+          <include name="deleteSubdomainValidation"/>
         </methods>
-      </class> <!-- adminModeratorValidation.ModeratorValidation -->
+      </class> <!-- AdminSubscriptionSubDomainScripts.SubdomainValidation -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

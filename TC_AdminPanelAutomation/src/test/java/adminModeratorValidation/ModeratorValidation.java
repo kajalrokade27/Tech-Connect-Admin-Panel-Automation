@@ -23,14 +23,12 @@ public class ModeratorValidation extends AdminBaseClass {
         wp = new WorkshopPage(driver);
         mp.moderatorLink.click();
     }
-
     private void fillModeratorForm(String[] data) throws InterruptedException, AWTException {
         ActionClass.enterText(mp.nameField, data[0]);
         ActionClass.enterText(mp.emailField, data[3]);
         ActionClass.scrollToElement(mp.categoryDropdown);
         ActionClass.enterText(mp.positionField, data[1]);
         ActionClass.enterText(mp.linkedInField, data[2]);
-        
         ActionClass.selectByVisibleText(mp.categoryDropdown, data[4]);
         ActionClass.enterText(mp.aboutField, data[6]);
     }
@@ -55,7 +53,6 @@ public class ModeratorValidation extends AdminBaseClass {
         if(mp.moderatorList.isEmpty()) {
         	Reporter.log("No moderators found with the name: " + data[0], true);
         }
-        
         else {	
         ActionClass.pressEnter();
         ActionClass.click(mp.moderatorList.get(0)); // Click on the first moderator in the list
@@ -68,8 +65,7 @@ public class ModeratorValidation extends AdminBaseClass {
         ActionClass.click(mp.submitButton);
         ActionClass.verifyToastMessage1(wp.toastMessage, mp.cancelButton, data[0], true);
     }}
-    
-    @Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 3)
+     @Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 3)
     @SheetName("UpdateModeratorData")
     public void validateDeleteModeratorFunctionality(String[] data) throws InterruptedException, AWTException {
 		ActionClass.enterText(mp.searchField, data[0]); // Assuming search by name

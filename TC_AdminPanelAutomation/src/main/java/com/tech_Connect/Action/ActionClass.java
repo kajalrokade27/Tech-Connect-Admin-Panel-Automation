@@ -121,6 +121,7 @@ public class ActionClass extends BaseDriver {
     public static void scrollToElement(WebElement element) {
         try {
             js.executeScript("arguments[0].scrollIntoView(true);", element);
+            waitUptoVisible(element);
         } catch (Exception e) {
             System.err.println("Unable to scroll to element: " + e.getMessage());
         }
@@ -347,6 +348,7 @@ public class ActionClass extends BaseDriver {
     }
     public static void verifyToastMessage1(WebElement toastMessage, WebElement cancelButton, String entityName, boolean hasCancelButton) throws InterruptedException {
         waitUptoVisible(toastMessage);
+        
         String message = toastMessage.getText().toLowerCase().trim();
         implicitWait(); // Ensure toast is ready
 

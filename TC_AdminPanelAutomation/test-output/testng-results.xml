@@ -1,180 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="2" total="3" passed="0" failed="0" skipped="1">
+<testng-results ignored="6" total="7" passed="1" failed="0" skipped="0">
   <reporter-output>
+    <line>
+      <![CDATA[Admin login successful]]>
+    </line>
+    <line>
+      <![CDATA[Events found with the name: AI Automation Webinar]]>
+    </line>
+    <line>
+      <![CDATA[No existing speakers found with the name: Kajal]]>
+    </line>
+    <line>
+      <![CDATA[Admin logout successful]]>
+    </line>
   </reporter-output>
-  <suite started-at="2025-07-17T17:11:14 IST" name="Default suite" finished-at="2025-07-17T17:13:02 IST" duration-ms="107174">
+  <suite started-at="2025-07-21T18:15:08 IST" name="Default suite" finished-at="2025-07-21T18:15:36 IST" duration-ms="28232">
     <groups>
     </groups>
-    <test started-at="2025-07-17T17:11:14 IST" name="Default test" finished-at="2025-07-17T17:13:02 IST" duration-ms="107174">
-      <class name="AdminSubscriptionSubDomainScripts.SubdomainValidation">
-        <test-method is-config="true" signature="preCondition()[pri:0, instance:AdminSubscriptionSubDomainScripts.SubdomainValidation@ed7f8b4]" started-at="2025-07-17T17:11:14 IST" name="preCondition" finished-at="2025-07-17T17:13:02 IST" duration-ms="107106" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchWindowException">
-            <message>
-              <![CDATA[no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=138.0.7204.102)
-Build info: version: '4.20.0', revision: '866c76ca80'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [54112054a5ee9e5b0b7cc51271934f2c, findElement {using=xpath, value=//button[@class='me-2 btn btn-primary']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.102, chrome: {chromedriverVersion: 138.0.7204.157 (e533e98b126..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61313}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61313/devtoo..., se:cdpVersion: 138.0.7204.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 54112054a5ee9e5b0b7cc51271934f2c]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=138.0.7204.102)
-Build info: version: '4.20.0', revision: '866c76ca80'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [54112054a5ee9e5b0b7cc51271934f2c, findElement {using=xpath, value=//button[@class='me-2 btn btn-primary']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.102, chrome: {chromedriverVersion: 138.0.7204.157 (e533e98b126..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61313}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61313/devtoo..., se:cdpVersion: 138.0.7204.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 54112054a5ee9e5b0b7cc51271934f2c
-at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-at jdk.proxy2/jdk.proxy2.$Proxy14.toString(Unknown Source)
-at java.base/java.lang.String.valueOf(String.java:4465)
-at org.openqa.selenium.support.ui.ExpectedConditions$23.toString(ExpectedConditions.java:669)
-at java.base/java.lang.String.valueOf(String.java:4465)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:225)
-at com.tech_Connect.Action.ActionClass.click(ActionClass.java:40)
-at com.TechConnect.Base.AdminBaseClass.preCondition(AdminBaseClass.java:51)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
-at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:188)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:741)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
+    <test started-at="2025-07-21T18:15:08 IST" name="Default test" finished-at="2025-07-21T18:15:36 IST" duration-ms="28232">
+      <class name="adminWebinarValidationScript.UpdateWebinar">
+        <test-method is-config="true" signature="preCondition()[pri:0, instance:adminWebinarValidationScript.UpdateWebinar@37883b97]" started-at="2025-07-21T18:15:08 IST" name="preCondition" finished-at="2025-07-21T18:15:14 IST" duration-ms="6313" status="PASS">
           <reporter-output>
+            <line>
+              <![CDATA[Admin login successful]]>
+            </line>
           </reporter-output>
         </test-method> <!-- preCondition -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:AdminSubscriptionSubDomainScripts.SubdomainValidation@ed7f8b4]" started-at="2025-07-17T17:13:02 IST" name="setup" finished-at="2025-07-17T17:13:02 IST" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:adminWebinarValidationScript.UpdateWebinar@37883b97]" started-at="2025-07-21T18:15:14 IST" name="setUp" finished-at="2025-07-21T18:15:19 IST" duration-ms="4833" status="PASS">
           <reporter-output>
+            <line>
+              <![CDATA[Events found with the name: AI Automation Webinar]]>
+            </line>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="deleteSubdomainValidation([Ljava.lang.String;)[pri:3, instance:AdminSubscriptionSubDomainScripts.SubdomainValidation@ed7f8b4]" started-at="2025-07-17T17:13:02 IST" name="deleteSubdomainValidation" data-provider="dynamicData" finished-at="2025-07-17T17:13:02 IST" duration-ms="0" status="SKIP">
+        </test-method> <!-- setUp -->
+        <test-method signature="addExistingSpeaker([Ljava.lang.String;)[pri:9, instance:adminWebinarValidationScript.UpdateWebinar@37883b97]" started-at="2025-07-21T18:15:19 IST" name="addExistingSpeaker" data-provider="dynamicData" finished-at="2025-07-21T18:15:35 IST" duration-ms="16177" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[Ljava.lang.String;@5d5c04f9]]>
+                <![CDATA[[Ljava.lang.String;@6bda1d19]]>
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.NoSuchWindowException">
-            <message>
-              <![CDATA[no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=138.0.7204.102)
-Build info: version: '4.20.0', revision: '866c76ca80'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [54112054a5ee9e5b0b7cc51271934f2c, findElement {using=xpath, value=//button[@class='me-2 btn btn-primary']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.102, chrome: {chromedriverVersion: 138.0.7204.157 (e533e98b126..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61313}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61313/devtoo..., se:cdpVersion: 138.0.7204.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 54112054a5ee9e5b0b7cc51271934f2c]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=138.0.7204.102)
-Build info: version: '4.20.0', revision: '866c76ca80'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [54112054a5ee9e5b0b7cc51271934f2c, findElement {using=xpath, value=//button[@class='me-2 btn btn-primary']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.102, chrome: {chromedriverVersion: 138.0.7204.157 (e533e98b126..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61313}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61313/devtoo..., se:cdpVersion: 138.0.7204.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 54112054a5ee9e5b0b7cc51271934f2c
-at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-at jdk.proxy2/jdk.proxy2.$Proxy14.toString(Unknown Source)
-at java.base/java.lang.String.valueOf(String.java:4465)
-at org.openqa.selenium.support.ui.ExpectedConditions$23.toString(ExpectedConditions.java:669)
-at java.base/java.lang.String.valueOf(String.java:4465)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:225)
-at com.tech_Connect.Action.ActionClass.click(ActionClass.java:40)
-at com.TechConnect.Base.AdminBaseClass.preCondition(AdminBaseClass.java:51)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
-at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:188)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:741)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
           <reporter-output>
+            <line>
+              <![CDATA[No existing speakers found with the name: Kajal]]>
+            </line>
           </reporter-output>
-        </test-method> <!-- deleteSubdomainValidation -->
-        <test-method is-config="true" signature="postCondition()[pri:0, instance:AdminSubscriptionSubDomainScripts.SubdomainValidation@ed7f8b4]" started-at="2025-07-17T17:13:02 IST" name="postCondition" finished-at="2025-07-17T17:13:02 IST" duration-ms="0" status="SKIP">
+        </test-method> <!-- addExistingSpeaker -->
+        <test-method is-config="true" signature="postCondition()[pri:0, instance:adminWebinarValidationScript.UpdateWebinar@37883b97]" started-at="2025-07-21T18:15:35 IST" name="postCondition" finished-at="2025-07-21T18:15:36 IST" duration-ms="836" status="PASS">
           <reporter-output>
+            <line>
+              <![CDATA[Admin logout successful]]>
+            </line>
           </reporter-output>
         </test-method> <!-- postCondition -->
-      </class> <!-- AdminSubscriptionSubDomainScripts.SubdomainValidation -->
+      </class> <!-- adminWebinarValidationScript.UpdateWebinar -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

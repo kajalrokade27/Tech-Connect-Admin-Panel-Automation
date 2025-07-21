@@ -35,11 +35,7 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
 		    ActionClass.click(wp.workshop);
 		   et.searchEvent(GetPropertyData.propData("UpdateWorkshop").split("~")[1]);
 		   ActionClass.click(cp.eventCardName);
-		   
-		   
-		   
-		   
-	        ActionClass.click(cp.detailsTab);
+		   ActionClass.click(cp.detailsTab);
 	}
 	 private void fillSessionForm(String prefix) throws IOException, InterruptedException {
 	        ActionClass.enterText(cp.sessionTitle, GetPropertyData.propData(prefix + "Title"));

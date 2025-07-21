@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="AdminSubscriptionSubDomainScripts.SubdomainValidation">
+      <class name="adminWebinarValidationScript.UpdateWebinar">
         <methods>
-          <include name="setup"/>
           <include name="preCondition"/>
           <include name="postCondition"/>
-          <include name="deleteSubdomainValidation"/>
+          <include name="updateWebinarSpeaker" invocation-numbers="0"/>
+          <include name="setUp"/>
         </methods>
-      </class> <!-- AdminSubscriptionSubDomainScripts.SubdomainValidation -->
+      </class> <!-- adminWebinarValidationScript.UpdateWebinar -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

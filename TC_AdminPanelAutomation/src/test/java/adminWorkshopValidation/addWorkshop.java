@@ -18,6 +18,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
+
 public class addWorkshop extends AdminBaseClass {
 	 WorkshopPage wp ;
      ConferencePage cp;

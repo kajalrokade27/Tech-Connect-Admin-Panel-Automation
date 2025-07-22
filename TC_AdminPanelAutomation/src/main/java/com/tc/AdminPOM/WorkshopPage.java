@@ -219,6 +219,10 @@ public class WorkshopPage {
     public @FindBy(xpath="//table[@class='align-middle table']/tbody/tr/td[4]")
     List<WebElement> purchasedAmount;
     
+    
+    public @FindBy(xpath="//div[contains(text(),'No sponsors available')]")
+    WebElement noSponsorMessage;
+    
    
     
     }

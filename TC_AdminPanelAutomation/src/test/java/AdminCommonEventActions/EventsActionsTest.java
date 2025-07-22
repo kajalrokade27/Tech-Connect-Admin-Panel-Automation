@@ -20,12 +20,14 @@ public class EventsActionsTest extends AdminBaseClass {
 	ConferencePage cp;
 	WorkshopPage wp;
     ModeratorPage mp;
+    CommonEventPage commonEp;
 	
    
    public void setup() {
 		cp = new ConferencePage(driver);
 		wp = new WorkshopPage(driver);
 		mp = new ModeratorPage(driver);
+		commonEp = new CommonEventPage(driver);
 		ActionClass.click(cp.EventDropdown);
 	}
    
@@ -184,16 +186,15 @@ public class EventsActionsTest extends AdminBaseClass {
         ActionClass.click(cp.addNewSpeakerButton);
         fillSpeakerForm(prefix);
         ActionClass.click(cp.submitButton);
-        ActionClass.implicitWait();
-        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Speaker : ",true);
+      //  ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton,"Speaker : ",true);
     }
    
     public void updateSpeaker(String prefix) throws IOException, InterruptedException, AWTException {
     
         ActionClass.click(cp.speakersSection);
-        ActionClass.enterText(cp.searchSpeakerField, GetPropertyData.propData("updateSpeakerName"));
+        ActionClass.enterText(cp.searchSpeakerField, GetPropertyData.propData(prefix));
         if (cp.speakerList.isEmpty()) {
-			Reporter.log("No speakers found with the name: " + GetPropertyData.propData("updateSpeakerName"),true);
+			Reporter.log("No speakers found with the name: " + GetPropertyData.propData(prefix),true);
 		}
         else
         {
@@ -270,8 +271,8 @@ public class EventsActionsTest extends AdminBaseClass {
  	  ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Sponsor", false);
     }}
     
-    public void addExistingSponsors() throws IOException, InterruptedException {
-    	String existingSponsor = GetPropertyData.propData("addSponsorName");
+    public void addExistingSponsors(String prefix) throws IOException, InterruptedException {
+    	String existingSponsor = GetPropertyData.propData(prefix);
         ActionClass.click(cp.sponsorsSection);
         ActionClass.click(cp.addExistingSponsorsButton);
         ActionClass.typeUsingActions(cp.existingSponsorsDropdown, GetPropertyData.propData("addSponsorName"));

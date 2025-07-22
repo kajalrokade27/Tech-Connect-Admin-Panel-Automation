@@ -5,8 +5,10 @@
     <classes>
       <class name="adminWebinarValidationScript.UpdateWebinar">
         <methods>
+          <include name="addExistingSpeaker" invocation-numbers="0"/>
           <include name="preCondition"/>
           <include name="postCondition"/>
+          <include name="deleteWebinarSpeaker" invocation-numbers="0"/>
           <include name="updateWebinarSpeaker" invocation-numbers="0"/>
           <include name="setUp"/>
         </methods>

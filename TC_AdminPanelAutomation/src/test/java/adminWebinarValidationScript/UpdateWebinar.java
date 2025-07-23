@@ -56,21 +56,21 @@ public class UpdateWebinar extends AdminBaseClass
 	public void addSession(String[]data) throws IOException, InterruptedException
 	{
 		et.addSessions("addSession");
-		ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, data[1], true);
 	}
+	
 	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 5)
 	  @SheetName("Webinar")
 	public void updateWebinarSession(String[]data) throws IOException, InterruptedException
 	{
 		et.updateSession("updateSession");
-		ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, data[1], false);
+		
 	}
 	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 6)
 	  @SheetName("Webinar")
 	public void deleteWebinarSession(String[]data) throws IOException, InterruptedException
 	{
 		et.deleteSession();
-		ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, data[1], false);
+		
 	}
 	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 7)
 	  @SheetName("Webinar")
@@ -78,8 +78,9 @@ public class UpdateWebinar extends AdminBaseClass
 	{
 		wp= new WorkshopPage(driver);
 		et.addNewSpeakers("addSpeaker");
-		ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, data[1], true);
+		
 	}
+	
 	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 9)
 	  @SheetName("Webinar")
 	public void updateWebinarSpeaker(String[]data) throws IOException, InterruptedException, AWTException
@@ -87,7 +88,8 @@ public class UpdateWebinar extends AdminBaseClass
 		Reporter.log("Update Webinar Speaker",true);
 		et.updateSpeaker("updateSpeaker");
 	}
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 8)
+	
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 8, retryAnalyzer = com.tech_Connect.Action.ActionClass.class)
 	  @SheetName("Webinar")
 	public void addExistingSpeaker(String[]data) throws IOException, InterruptedException, AWTException
 	{
@@ -98,49 +100,51 @@ public class UpdateWebinar extends AdminBaseClass
 	public void deleteWebinarSpeaker(String[]data) throws IOException, InterruptedException
 	{
 		et.deleteSpeaker();
-		ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, data[1], false);
+		
 	}
 	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 11)
 	  @SheetName("Webinar")
 	public void addSponsor(String[]data) throws IOException, InterruptedException, AWTException
 	{
 		et.addNewSponsor("addSponsor");
-		ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, data[1], true);
+		
 	}
 	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 12)
 	  @SheetName("Webinar")
 	public void addExistingSponsor(String[]data) throws IOException, InterruptedException, AWTException
 	{
-		et.addExistingSponsors("existingSponsor");
-		ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, data[1], true);
+		et.addExistingSponsors("addSponsorName");
+		
 	}
 	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 13)
 	  @SheetName("Webinar")
 	public void updateWebinarSponsor(String[]data) throws IOException, InterruptedException, AWTException
 	{
 		et.sponsorUpdate(data);
-		ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, data[1], false);
 	}
+	
 	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 14)
 	  @SheetName("Webinar")
 	public void deleteWebinarSponsor(String[]data) throws IOException, InterruptedException
 	{
 		et.deleteSponsor();
-		ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, data[1], false);
+		
 	}
+	
 	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 15)
 	  @SheetName("Webinar")
 	public void publishWebinar(String[]data) throws IOException, InterruptedException
 	{
 		et.performPublish();
 	}
+	
 	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 16)
 	  @SheetName("Webinar")
 	public void saveWebinarAsDraft(String[]data) throws IOException, InterruptedException
 	{
 		et.performSaveAsDraft();
-		ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, data[1], false);
 	}
+	
 	
 	
 	

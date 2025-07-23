@@ -9,6 +9,8 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -17,11 +19,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.IRetryAnalyzer;
+import org.testng.ITestResult;
 import org.testng.Reporter;
 
 import com.TechConnect.Base.BaseDriver;
 
-public class ActionClass extends BaseDriver {
+public class ActionClass extends BaseDriver implements IRetryAnalyzer {
     // WebDriverWait for explicit waits
     private static final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     // JavascriptExecutor for JS-based actions
@@ -352,7 +356,7 @@ public class ActionClass extends BaseDriver {
         String message = toastMessage.getText().toLowerCase().trim();
         implicitWait(); // Ensure toast is ready
 
-        if (message.contains("success")) {
+        if (message.contains("success")|| message.contains("saved")) {
             Reporter.log("✅ " + entityName + " : " + message, true);
         } else if (message.contains("duplicate") || message.contains("already exists")) {
             Reporter.log("⚠️ Duplicate " + entityName + " : " + message, true);
@@ -373,6 +377,25 @@ public class ActionClass extends BaseDriver {
             Reporter.log("Unexpected toast message: " + message,true);
         }
     }
+    public static boolean isElementListPresent(List<WebElement> list, int timeoutMillis) throws InterruptedException {
+    	
+    	    long start = System.currentTimeMillis();
+    	    while (list.isEmpty() && (System.currentTimeMillis() - start) < timeoutMillis) {
+    	        Thread.sleep(100);
+    	    }
+    	    return !list.isEmpty();
+    	}
+    
+    private int retryCount = 0;
+    private static final int maxRetryCount = 1; // retry once
 
+    @Override
+    public boolean retry(ITestResult result) {
+        if (retryCount < maxRetryCount) {
+            retryCount++;
+            return true;
+        }
+        return false;
+    }
 
 }

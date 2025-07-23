@@ -1,5 +1,8 @@
 package AdminCommonEventActions;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -13,6 +16,7 @@ import com.tc.AdminPOM.WorkshopPage;
 import com.tech_Connect.Action.ActionClass;
 import java.awt.AWTException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 
 public class EventsActionsTest extends AdminBaseClass {
@@ -79,9 +83,11 @@ public class EventsActionsTest extends AdminBaseClass {
 	     }
 
     public void performPublish() throws IOException, InterruptedException{
+    	wp = new WorkshopPage(driver);
     	if(cp.publishOrDraftButton.getText().contains("Publish")) {
          ActionClass.click(cp.publishButton);
         ActionClass.click(cp.confirmPublishButton);
+        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Publish Message : ", true);
     	}
     	else
     	{
@@ -90,13 +96,17 @@ public class EventsActionsTest extends AdminBaseClass {
   }
 
     public void performSaveAsDraft() throws IOException, InterruptedException {
+    	 wp = new WorkshopPage(driver);
+
         if(cp.publishOrDraftButton.getText().contains("Save as Draft")) {
 			ActionClass.click(cp.saveAsDraftButton);
 			 ActionClass.click(cp.confirmSaveAsDraftButton);
+			 ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Event saved as draft successfully", true);
 		} else {
 			Reporter.log("Event is already saved as draft, no action taken", true);
 		}
       }
+  
     
     public void performDelete() throws IOException, InterruptedException {
     	ActionClass.click(cp.threeDotsMenu);
@@ -154,43 +164,47 @@ public class EventsActionsTest extends AdminBaseClass {
     
 
     public void addSessions(String prefix) throws IOException, InterruptedException {
-       
+    	wp = new WorkshopPage(driver);
         ActionClass.click(cp.sessionTab);
         ActionClass.click(cp.createSessionButton);
         fillSessionForm(prefix);
         ActionClass.click(cp.submitButton);
+        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Session : ", true);
      
     }
 
   
     public void updateSession(String prefix) throws IOException, InterruptedException {
-       
+    	wp = new WorkshopPage(driver);
         ActionClass.click(cp.sessionTab);
         ActionClass.click(cp.editSessionButton);
         fillSessionForm(prefix);
         ActionClass.click(cp.submitButton);
+        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Toast Message : ", true);
     }
 
    public void deleteSession() throws InterruptedException {
-      
+	   wp = new WorkshopPage(driver);
         ActionClass.click(cp.sessionTab);
         ActionClass.click(cp.deleteSessionButton);
         ActionClass.waitUptoVisible(cp.confirmDeleteSessionButton);
         ActionClass.click(cp.confirmDeleteSessionButton);
+        ActionClass.verifySuccessMsg(cp.sessionDeleteSuccessMessage, "Session Delete Message: ");
      }
 
   
     public void addNewSpeakers(String prefix) throws IOException, InterruptedException, AWTException {
-       
+    	wp = new WorkshopPage(driver);
+    	commonEp = new CommonEventPage(driver);
         ActionClass.click(cp.speakersSection);
         ActionClass.click(cp.addNewSpeakerButton);
         fillSpeakerForm(prefix);
         ActionClass.click(cp.submitButton);
-      //  ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton,"Speaker : ",true);
+        ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton,"Speaker : ",true);
     }
    
     public void updateSpeaker(String prefix) throws IOException, InterruptedException, AWTException {
-    
+    	wp = new WorkshopPage(driver);
         ActionClass.click(cp.speakersSection);
         ActionClass.enterText(cp.searchSpeakerField, GetPropertyData.propData(prefix));
         if (cp.speakerList.isEmpty()) {
@@ -211,24 +225,27 @@ public class EventsActionsTest extends AdminBaseClass {
     }
    
     public void addExistingSpeakers(String prefix) throws IOException, InterruptedException {
-     
+    	wp = new WorkshopPage(driver);
+    	commonEp = new CommonEventPage(driver);
     	 String existingSpeaker = GetPropertyData.propData(prefix);
          ActionClass.click(cp.speakersSection);
          ActionClass.click(cp.addExistingSpeakersButton);
          ActionClass.typeUsingActions(cp.existingSpeakersDropdown, existingSpeaker);
+         ActionClass.implicitWait();
          ActionClass.pressEnter();
          if(cp.existingSpList.isEmpty()) {
  			Reporter.log("No existing speakers found with the name: " + existingSpeaker, true);
- 			ActionClass.waitUptoVisible(cp.closeButton);
- 			ActionClass.click(cp.closeButton);
+ 			//ActionClass.waitUptoVisible(cp.closeButton);
+ 			ActionClass.jsClick(cp.closeButton);
  		}
  		else
  		{
            ActionClass.click(cp.submitButton2);
-           ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,existingSpeaker, true);
+           ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton,existingSpeaker, true);
  		}}
 
     public void deleteSpeaker() throws InterruptedException {
+    	wp = new WorkshopPage(driver);
         ActionClass.click(cp.speakersSection);
         ActionClass.click(cp.speakerList.get(0));
         ActionClass.click(cp.deleteSpeakerIcon.get(0));
@@ -239,7 +256,7 @@ public class EventsActionsTest extends AdminBaseClass {
 
 
     public void addNewSponsor(String prefix) throws IOException, InterruptedException, AWTException {
-    
+    	wp = new WorkshopPage(driver);
         ActionClass.click(cp.sponsorsSection);
         ActionClass.click(cp.addNewSponsorButton);
         fillSponsorForm(prefix);
@@ -248,7 +265,7 @@ public class EventsActionsTest extends AdminBaseClass {
     }
 
     public void sponsorUpdate(String[]testData) throws IOException, InterruptedException, AWTException 
-    {
+    { wp = new WorkshopPage(driver);
  	   ActionClass.click(cp.sponsorsSection);
  	  ActionClass.enterText(cp.searchSponsorField, testData[0]);
  	   if (cp.sponsorsList.isEmpty()) {
@@ -272,19 +289,20 @@ public class EventsActionsTest extends AdminBaseClass {
     }}
     
     public void addExistingSponsors(String prefix) throws IOException, InterruptedException {
+    	wp = new WorkshopPage(driver);
+    	 
     	String existingSponsor = GetPropertyData.propData(prefix);
         ActionClass.click(cp.sponsorsSection);
         ActionClass.click(cp.addExistingSponsorsButton);
-        ActionClass.typeUsingActions(cp.existingSponsorsDropdown, GetPropertyData.propData("addSponsorName"));
+        ActionClass.typeUsingActions(cp.existingSponsorsDropdown, existingSponsor);
         ActionClass.pressEnter();
-        ActionClass.implicitWait();
-        List<WebElement> existingSponsors = cp.existingSpList;
-        System.out.println("Existing Sponsors: " + existingSponsors.size());
-         if( existingSponsors.isEmpty()) {
+     
+         if(cp.existingSpList.isEmpty()) {
          	Reporter.log("No existing sponsors found with the name: " + existingSponsor, true);
-         	ActionClass.waitUptoClickable(cp.closeButton);
+         	//ActionClass.waitUptoClickable(cp.closeButton);
          	ActionClass.jsClick(cp.closeButton);
          }
+         
          else
  		{
         ActionClass.click(cp.submitButton);
@@ -292,13 +310,38 @@ public class EventsActionsTest extends AdminBaseClass {
     }}
     
     public void deleteSponsor() throws InterruptedException {
-      
+    	wp = new WorkshopPage(driver);
         ActionClass.click(cp.sponsorsSection);
         ActionClass.click(cp.deleteSponsorIcon.get(0));
         ActionClass.waitUptoVisible(cp.confirmDeleteButton);
         ActionClass.click(cp.confirmDeleteButton);
-        ActionClass.verifySuccessMsg(cp.sponsorDeleteSuccessMessage, "Sponsor deleted successfully");
+       ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Sponsor deleted successfully", true);
     }
+    
+    
+    public void validateAddVideo(String filePath) throws InterruptedException, AWTException, IOException {
+    	wp = new WorkshopPage(driver);
+    	commonEp = new CommonEventPage(driver);
+        ActionClass.click(cp.addVideoButton);
+        ActionClass.uploadFile(filePath);
+        ActionClass.click(cp.uploadVideoButton);
+        ActionClass.click(cp.confirmUploadVideoButton);
+       ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, "Verified : ", false);
+    }
+        public void validateDeleteVideo() throws InterruptedException, AWTException, IOException {
+    	wp = new WorkshopPage(driver);
+    	commonEp = new CommonEventPage(driver);
+    	if(cp.videoList.isEmpty()) {
+    		Reporter.log("No videos found to delete", true);
+    	}
+    	else {
+		ActionClass.waitUptoClickable(cp.deleteVideoButton);
+		ActionClass.click(cp.deleteVideoButton);
+		ActionClass.click(cp.confirmDeleteVideoButton);
+		ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, "Verified : ", false);
+	}
+    }
+    
    
    
    

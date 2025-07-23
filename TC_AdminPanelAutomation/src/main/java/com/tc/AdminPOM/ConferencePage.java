@@ -196,6 +196,12 @@ public class ConferencePage {
      public @FindBy(xpath = "//div[@class='css-12jo7m5']")
      List<WebElement> existingSpList;
      
+     public @FindBy(css = "class='css-12jo7m5']")
+     List<WebElement> existingSpList1;
+      
+    
+     
+     
      public @FindBy(xpath = "//div[@class='css-1rhvuft-multiValue']//div[contains(@class,'css-12jo7m5')]")
      List<WebElement> selectedSponsorList;
      
@@ -354,8 +360,13 @@ public class ConferencePage {
      WebElement videoUploadSuccessMessage;
      public @FindBy(xpath = "//button[@class='btn btn-sm '][@type='button']")
      WebElement deleteVideoButton;
+     
+     public @FindBy(xpath = "//button[@class='btn btn-sm '][@type='button']")
+    List<WebElement> videoList;
+     
      public @FindBy(xpath = "//button[text()='Yes']")
      WebElement confirmDeleteVideoButton;
+     
      public @FindBy(xpath = "//div[text()='Video deleted successfully!']")
      WebElement videoDeleteSuccessMessage;
      

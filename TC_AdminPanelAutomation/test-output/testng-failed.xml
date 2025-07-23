@@ -3,16 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="adminWebinarValidationScript.UpdateWebinar">
+      <class name="adminWebinarValidationScript.WebinarDashboardValidation">
         <methods>
-          <include name="addExistingSpeaker" invocation-numbers="0"/>
+          <include name="verifyDaysToEventDisplayedCorrectly"/>
           <include name="preCondition"/>
+          <include name="setup"/>
           <include name="postCondition"/>
-          <include name="deleteWebinarSpeaker" invocation-numbers="0"/>
-          <include name="updateWebinarSpeaker" invocation-numbers="0"/>
-          <include name="setUp"/>
         </methods>
-      </class> <!-- adminWebinarValidationScript.UpdateWebinar -->
+      </class> <!-- adminWebinarValidationScript.WebinarDashboardValidation -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

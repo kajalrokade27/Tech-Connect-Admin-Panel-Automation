@@ -28,7 +28,6 @@ public class sponsorValidation extends AdminBaseClass {
        
         ActionClass.click(sp.addSponsorButton);
         Thread.sleep(2000);
-        
         ActionClass.enterText(sp.sponsor_fields.get(0), testData[0]);
         ActionClass.enterText(sp.sponsor_fields.get(1), testData[1]);
         ActionClass.enterText(sp.desc_field, testData[4]);
@@ -46,7 +45,6 @@ public class sponsorValidation extends AdminBaseClass {
         // Submit and validate
         ActionClass.click(sp.submitButton);
         ActionClass.waitUptoVisible(sp.toastMessage);
-        
         String toast = sp.toastMessage.getText().toLowerCase();
         Assert.assertTrue(toast.contains("success") || toast.contains("duplicate") || toast.contains("already exists"), 
                          "Unexpected message: " + toast);
@@ -62,7 +60,6 @@ public class sponsorValidation extends AdminBaseClass {
         ActionClass.pressEnter();
         ActionClass.click(sp.sponsors_list.get(0));
         Thread.sleep(2000);
-        
         ActionClass.enterText(sp.sponsor_fields.get(0), testData[0]);
         ActionClass.enterText(sp.sponsor_fields.get(1), testData[1]);
         

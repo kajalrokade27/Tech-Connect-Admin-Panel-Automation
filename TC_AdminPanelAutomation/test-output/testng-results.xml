@@ -1,80 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="4" total="5" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
     <line>
       <![CDATA[Admin login successful]]>
     </line>
     <line>
+      <![CDATA[Events found with the name: AI Automation Panel Discussion]]>
+    </line>
+    <line>
+      <![CDATA[✅ Verified :  : upload completed successfully!]]>
+    </line>
+    <line>
+      <![CDATA[✅ Verified :  : video deleted successfully!]]>
+    </line>
+    <line>
       <![CDATA[Admin logout successful]]>
     </line>
   </reporter-output>
-  <suite started-at="2025-07-23T18:37:40 IST" name="Default suite" finished-at="2025-07-23T18:37:55 IST" duration-ms="15090">
+  <suite started-at="2025-07-24T16:46:05 IST" name="Default suite" finished-at="2025-07-24T16:46:38 IST" duration-ms="32704">
     <groups>
     </groups>
-    <test started-at="2025-07-23T18:37:40 IST" name="Default test" finished-at="2025-07-23T18:37:55 IST" duration-ms="15090">
-      <class name="adminWebinarValidationScript.WebinarDashboardValidation">
-        <test-method is-config="true" signature="preCondition()[pri:0, instance:adminWebinarValidationScript.WebinarDashboardValidation@4e3958e7]" started-at="2025-07-23T18:37:40 IST" name="preCondition" finished-at="2025-07-23T18:37:51 IST" duration-ms="11220" status="PASS">
+    <test started-at="2025-07-24T16:46:05 IST" name="Default test" finished-at="2025-07-24T16:46:38 IST" duration-ms="32704">
+      <class name="adminPanelDiscValidationScripts.PDVideoTest">
+        <test-method is-config="true" signature="preCondition()[pri:0, instance:adminPanelDiscValidationScripts.PDVideoTest@757277dc]" started-at="2025-07-24T16:46:05 IST" name="preCondition" finished-at="2025-07-24T16:46:16 IST" duration-ms="10200" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[Admin login successful]]>
             </line>
           </reporter-output>
         </test-method> <!-- preCondition -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:adminWebinarValidationScript.WebinarDashboardValidation@4e3958e7]" started-at="2025-07-23T18:37:51 IST" name="setup" finished-at="2025-07-23T18:37:54 IST" duration-ms="2590" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:adminPanelDiscValidationScripts.PDVideoTest@757277dc]" started-at="2025-07-24T16:46:16 IST" name="setup" finished-at="2025-07-24T16:46:21 IST" duration-ms="5011" status="PASS">
           <reporter-output>
+            <line>
+              <![CDATA[Events found with the name: AI Automation Panel Discussion]]>
+            </line>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyDaysToEventDisplayedCorrectly()[pri:7, instance:adminWebinarValidationScript.WebinarDashboardValidation@4e3958e7]" started-at="2025-07-23T18:37:54 IST" name="verifyDaysToEventDisplayedCorrectly" finished-at="2025-07-23T18:37:54 IST" duration-ms="57" status="FAIL">
-          <exception class="java.lang.NumberFormatException">
-            <message>
-              <![CDATA[For input string: ""]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NumberFormatException: For input string: ""
-at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
-at java.base/java.lang.Integer.parseInt(Integer.java:672)
-at java.base/java.lang.Integer.parseInt(Integer.java:778)
-at adminWebinarValidationScript.WebinarDashboardValidation.verifyDaysToEventDisplayedCorrectly(WebinarDashboardValidation.java:38)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:741)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NumberFormatException -->
+        <test-method signature="validateAddVideo()[pri:1, instance:adminPanelDiscValidationScripts.PDVideoTest@757277dc]" started-at="2025-07-24T16:46:21 IST" name="validateAddVideo" finished-at="2025-07-24T16:46:33 IST" duration-ms="12172" status="PASS">
           <reporter-output>
+            <line>
+              <![CDATA[✅ Verified :  : upload completed successfully!]]>
+            </line>
           </reporter-output>
-        </test-method> <!-- verifyDaysToEventDisplayedCorrectly -->
-        <test-method is-config="true" signature="postCondition()[pri:0, instance:adminWebinarValidationScript.WebinarDashboardValidation@4e3958e7]" started-at="2025-07-23T18:37:54 IST" name="postCondition" finished-at="2025-07-23T18:37:55 IST" duration-ms="1177" status="PASS">
+        </test-method> <!-- validateAddVideo -->
+        <test-method signature="validateDeleteVideo()[pri:2, instance:adminPanelDiscValidationScripts.PDVideoTest@757277dc]" started-at="2025-07-24T16:46:33 IST" name="validateDeleteVideo" finished-at="2025-07-24T16:46:37 IST" duration-ms="4625" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[✅ Verified :  : video deleted successfully!]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- validateDeleteVideo -->
+        <test-method is-config="true" signature="postCondition()[pri:0, instance:adminPanelDiscValidationScripts.PDVideoTest@757277dc]" started-at="2025-07-24T16:46:37 IST" name="postCondition" finished-at="2025-07-24T16:46:38 IST" duration-ms="635" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[Admin logout successful]]>
             </line>
           </reporter-output>
         </test-method> <!-- postCondition -->
-      </class> <!-- adminWebinarValidationScript.WebinarDashboardValidation -->
+      </class> <!-- adminPanelDiscValidationScripts.PDVideoTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

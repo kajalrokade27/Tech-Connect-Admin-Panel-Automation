@@ -16,8 +16,7 @@ import com.tc.AdminPOM.WorkshopPage;
 import com.tech_Connect.Action.ActionClass;
 import java.awt.AWTException;
 import java.io.IOException;
-import java.time.Duration;
-import java.util.List;
+
 
 public class EventsActionsTest extends AdminBaseClass {
 
@@ -265,25 +264,26 @@ public class EventsActionsTest extends AdminBaseClass {
     }
 
     public void sponsorUpdate(String[]testData) throws IOException, InterruptedException, AWTException 
-    { wp = new WorkshopPage(driver);
+    {
+    	wp = new WorkshopPage(driver);
  	   ActionClass.click(cp.sponsorsSection);
- 	  ActionClass.enterText(cp.searchSponsorField, testData[0]);
+ 	   ActionClass.enterText(cp.searchSponsorField, testData[0]); // Assuming testData[0] is the sponsor name to search
  	   if (cp.sponsorsList.isEmpty()) {
  		   Reporter.log("No sponsors found with the name: " + testData[0], true);
  	   }
  	   
  	   else {
  	   ActionClass.click(cp.sponsorsList.get(0)); // Assuming we are updating the first sponsor in the list
- 	   ActionClass.enterText(cp.companyName, testData[1]);
- 	   ActionClass.enterText(cp.companyWebsiteUrl, testData[2]);
+ 	   ActionClass.enterText(cp.companyName, testData[0]);
+ 	   ActionClass.enterText(cp.companyWebsiteUrl, testData[1]);
  	   ActionClass.click(cp.updateSponsorImages.get(0));
- 	    ActionClass.uploadFile(testData[3]); // Assuming sponsor_logo is the new image path
+ 	    ActionClass.uploadFile(testData[2]); // Assuming sponsor_logo is the new image path
  	   ActionClass.scrollToElement(cp.updateSponsorImages.get(1));
  	   ActionClass.click(cp.updateSponsorImages.get(1));
- 	   ActionClass.uploadFile(testData[4]); // Assuming sponsor_banner is the new image path
- 	   ActionClass.enterText(cp.sponsorDescription, testData[5]);
+ 	   ActionClass.uploadFile(testData[3]); // Assuming sponsor_banner is the new image path
+ 	   ActionClass.enterText(cp.sponsorDescription, testData[4]);
  	   ActionClass.selectByVisibleText(cp.sponsorTier, testData[6]);
- 	   ActionClass.selectByVisibleText(cp.sponsorCategory, testData[7]);
+ 	   ActionClass.selectByVisibleText(cp.sponsorCategory, testData[5]);
  	   ActionClass.click(cp.submitButton);
  	  ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Sponsor", false);
     }}

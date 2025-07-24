@@ -1,5 +1,4 @@
-package adminWebinarValidationScript;
-
+package adminPanelDiscValidationScripts;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -12,25 +11,28 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import com.TechConnect.Base.AdminBaseClass;
 import com.TechConnect.FileUtility.GetPropertyData;
+import com.tc.AdminPOM.CommonEventPage;
 import com.tc.AdminPOM.ConferencePage;
 import com.tc.AdminPOM.WorkshopPage;
 import com.tech_Connect.Action.ActionClass;
 import AdminCommonEventActions.EventsActionsTest;
 
-public class WebinarDashboardValidation extends AdminBaseClass
+public class PDDashboardTest extends AdminBaseClass
 {
 	 private ConferencePage cp;
 	  WorkshopPage wp ;
 	 EventsActionsTest et ;
+	 CommonEventPage commonEp;
 	    
 	    @BeforeClass
 	    public void setup() throws IOException, InterruptedException {
 	         cp = new ConferencePage(driver);
 	         wp = new WorkshopPage(driver);
 	         et = new EventsActionsTest();
+	         commonEp = new CommonEventPage(driver);
 	        ActionClass.click(cp.EventDropdown);
-	        ActionClass.click(cp.webinarsSection);
-	        et.searchEvent(GetPropertyData.propData("Webinar1").split("~")[1]);
+	        ActionClass.click(commonEp.panelDiscussionsSection);
+	        et.searchEvent(GetPropertyData.propData("PanelDiscussion1").split("~")[1]);
 	        ActionClass.click(cp.eventCardName);
 	    }
 	  
@@ -39,9 +41,7 @@ public class WebinarDashboardValidation extends AdminBaseClass
 	        // Step 1: Get "Days to Event" text from UI (e.g., "36 days left")
 		  	 ActionClass.implicitWait(); // Ensure the dashboard is fully loaded
 	        String daysToEventText = cp.dashboardElements.get(1).getText();
-	        System.out.println("Days to Event Text: " + daysToEventText);
 	        int displayedDays = Integer.parseInt(daysToEventText.replaceAll("[^0-9]", ""));
-	        Reporter.log("Displayed Days to Event: " + displayedDays, true);
 	        
 	       // Step 2: Parse the known event start date (from UI or database/config)
 	        String fullDateRange = cp.fullDateRange.getText();
@@ -54,7 +54,7 @@ public class WebinarDashboardValidation extends AdminBaseClass
 	        long expectedDays = ChronoUnit.DAYS.between(today, eventDate);
 
 	        // Step 4: Compare actual UI vs calculated days
-	        System.out.println("Expected Days to Event: " + expectedDays + " | UI Displayed: " + displayedDays);
+ Reporter.log("Expected Days to Event: " + expectedDays + " | UI Displayed: " + displayedDays,true);
 	        Assert.assertEquals(displayedDays, expectedDays, "Mismatch in Days to Event!");
 
 	        Reporter.log("✔ 'Days to Event' value is correct on UI", true);

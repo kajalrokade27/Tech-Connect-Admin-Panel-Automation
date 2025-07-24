@@ -23,6 +23,14 @@ public class CommonEventPage extends AdminBaseClass
 			WebElement eventsSection;
 			public @FindBy(xpath = "//span[contains(text(),'Webinars')]")
 			WebElement webinarsSection;
+			
+			public @FindBy(xpath = "//span[contains(text(),'Panel Discussion')]")
+			WebElement panelDiscussionsSection;
+			
+			public @FindBy(xpath = "//span[contains(text(),'Podcasts')]")
+			WebElement podcastSection;
+			
+			
 			public @FindBy(xpath = "//button[text()='Add New']")
 			WebElement addNewButton;
 			public @FindBy(xpath = "//select[@class='form-control']")

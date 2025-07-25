@@ -1,4 +1,4 @@
-package adminPanelDiscValidationScripts;
+package adminPodcastValidationScripts;
 import java.awt.AWTException;
 import java.io.IOException;
 import org.testng.annotations.BeforeClass;
@@ -11,7 +11,7 @@ import com.tc.AdminPOM.WorkshopPage;
 import com.tech_Connect.Action.ActionClass;
 import AdminCommonEventActions.EventsActionsTest;
 
-public class ValidateAddNewPD extends AdminBaseClass{
+public class AddPodcastTest extends AdminBaseClass{
 	
 	EventsActionsTest eventsActionsTest;
 	public CommonEventPage commonEventPage;
@@ -22,12 +22,12 @@ public class ValidateAddNewPD extends AdminBaseClass{
 		commonEventPage = new CommonEventPage(driver);
 		wp = new WorkshopPage(driver);
 		eventsActionsTest.setup();
-		ActionClass.click(commonEventPage.panelDiscussionsSection);
+		ActionClass.click(commonEventPage.podcastSection);
 	}
 	
 	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 3)
-	  @SheetName("PanelDiscussion")
-	public void addNewPanelDisc(String[] data) throws InterruptedException, IOException, AWTException 
+	  @SheetName("Podcast")
+	public void addPodcast(String[] data) throws InterruptedException, IOException, AWTException 
 	{
 		commonEventPage = new CommonEventPage(driver);
 		ActionClass.click(commonEventPage.addNewButton);
@@ -42,7 +42,7 @@ public class ValidateAddNewPD extends AdminBaseClass{
 	}
 	
 	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 4)
-	  @SheetName("PanelDiscussion")
+	  @SheetName("Podcast")
 	public void deletePD(String[] data) throws IOException, InterruptedException {
 		eventsActionsTest.searchEvent(data[1]);
 		eventsActionsTest.performDelete();

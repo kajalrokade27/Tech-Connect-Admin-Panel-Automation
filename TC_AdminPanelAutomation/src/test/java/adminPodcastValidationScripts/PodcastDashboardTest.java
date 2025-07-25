@@ -1,4 +1,4 @@
-package adminPanelDiscValidationScripts;
+package adminPodcastValidationScripts;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -17,7 +17,7 @@ import com.tc.AdminPOM.WorkshopPage;
 import com.tech_Connect.Action.ActionClass;
 import AdminCommonEventActions.EventsActionsTest;
 
-public class PDDashboardTest extends AdminBaseClass
+public class PodcastDashboardTest extends AdminBaseClass
 {
 	 private ConferencePage cp;
 	  WorkshopPage wp ;
@@ -90,7 +90,7 @@ public class PDDashboardTest extends AdminBaseClass
                Reporter.log(label + ": Dashboard = " + dashboardCount + ", Page = " + actualCount, true);
 		        Assert.assertEquals(actualCount, dashboardCount, label + " count mismatch!");
 		        Reporter.log("✔ " + label + " count matches between Dashboard and Detail Page", true);
-		        driver.navigate().back(); // Navigate back to the dash board
+		        driver.navigate().back(); // Navigate back to the dashboard
 		        ActionClass.waitUptoVisible(numbers);
 		        ActionClass.waitForPageLoad(6000);
 		      }

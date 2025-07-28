@@ -38,7 +38,7 @@ public class addWorkshop extends AdminBaseClass {
 
 	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 1)
 	@SheetName("Workshop")
-	public void validateAddNewWorkshop1(String[] testData) throws InterruptedException, AWTException {
+	public void addWorkshopTest(String[] testData) throws InterruptedException, AWTException {
 	    WorkshopPage wp = new WorkshopPage(driver);
 	    ConferencePage cp = new ConferencePage(driver);
 

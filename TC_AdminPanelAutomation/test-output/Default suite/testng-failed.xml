@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="adminPodcastValidationScripts.PodcastDashboardTest">
+      <class name="adminPanelDiscValidationScripts.UpdatePDTest">
         <methods>
-          <include name="sessionCountValidation"/>
+          <include name="setUp"/>
           <include name="preCondition"/>
-          <include name="setup"/>
           <include name="postCondition"/>
+          <include name="addZoomTest" invocation-numbers="0"/>
         </methods>
-      </class> <!-- adminPodcastValidationScripts.PodcastDashboardTest -->
+      </class> <!-- adminPanelDiscValidationScripts.UpdatePDTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

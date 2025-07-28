@@ -43,7 +43,7 @@ public class  UpdatePodcastTest extends AdminBaseClass
 	
 	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 3)
 	  @SheetName("Podcast")
- 		public void updateWebinar(String[]data) throws IOException, InterruptedException, AWTException
+ 		public void updatePodcast(String[]data) throws IOException, InterruptedException, AWTException
  		{
 		    ActionClass.click(commonEp.webinarDetailsImage);
 		    ActionClass.uploadFile(data[11]);

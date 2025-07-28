@@ -341,6 +341,71 @@ public class EventsActionsTest extends AdminBaseClass {
 		ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, "Verified : ", false);
 	}
     }
+        
+      public void addZoomMeet(String[] testData) throws IOException, InterruptedException {
+    	  commonEp = new CommonEventPage(driver);
+    	  wp = new WorkshopPage(driver);
+    	  ActionClass.click(commonEp.zoomSection);
+    	  ActionClass.click(commonEp.createMeetingButton);
+    	  ActionClass.enterText(commonEp.topicName, testData[0]);
+    	  ActionClass.enterText(commonEp.agenda, testData[1]);
+    	  ActionClass.click(commonEp.startDateTime);
+          DateClass.selectDate(cp.start_monthElem, cp.start_nextButton, cp.dateElements, 
+   							testData[2], testData[3]);
+          ActionClass.click(commonEp.endDateTime);
+          DateClass.selectDate(cp.end_monthElem, cp.end_nextButton, cp.dateElements,testData[4], testData[5]);
+          ActionClass.click(commonEp.submitButton);
+          ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, testData[0], true);
+    	  
+    	  }
+      
+      public void updateZoomMeet(String[] testData) throws IOException, InterruptedException {
+    	  commonEp = new CommonEventPage(driver);
+    	  wp = new WorkshopPage(driver);
+    	  ActionClass.click(commonEp.zoomSection);
+    	  ActionClass.click(commonEp.updateMeetingButton);
+    	  ActionClass.enterText(commonEp.topicName, testData[0]);
+    	  ActionClass.enterText(commonEp.agenda, testData[1]);
+    	  ActionClass.click(commonEp.startDateTime);
+          DateClass.selectDate(cp.start_monthElem, cp.start_nextButton, cp.dateElements, 
+   							testData[2], testData[3]);
+          ActionClass.click(commonEp.endDateTime);
+          DateClass.selectDate(cp.end_monthElem, cp.end_nextButton, cp.dateElements,testData[4], testData[5]);
+          ActionClass.click(commonEp.submitButton);
+          ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, testData[0], true);
+      }
+      
+      public void addRegistrant(String [] testData) throws InterruptedException
+      {
+    	  commonEp = new CommonEventPage(driver);
+    	  wp = new WorkshopPage(driver);
+    	  ActionClass.click(commonEp.zoomSection);
+    	 
+    	  ActionClass.click(commonEp.registrantSection);
+    	  ActionClass.click(commonEp.addRegistrantButton);
+    	  ActionClass.typeUsingActions(commonEp.registrantDropdown, testData[0]);
+    	ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, testData[0], true);
+      }
+      
+      public void deleteRegistrant(String []testData) throws InterruptedException {
+    	  commonEp = new CommonEventPage(driver);
+    	  wp = new WorkshopPage(driver);
+    	  ActionClass.click(commonEp.zoomSection);
+     	  ActionClass.click(commonEp.registrantSection);
+    	  ActionClass.click(commonEp.deleteRegistrantButton);
+    	  ActionClass.click(commonEp.confirmDeleteButton);
+    	  ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, "Toast messsage ", true);
+    	  
+      }
+      
+      public void deleteZoomMeet(String[]testData) throws InterruptedException {
+		  commonEp = new CommonEventPage(driver);
+		  wp = new WorkshopPage(driver);
+		  ActionClass.click(commonEp.zoomSection);
+		  ActionClass.click(commonEp.deleteMeetingButton);
+		  ActionClass.click(commonEp.confirmDeleteButton);
+		  ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, testData[0], true);
+	  }
     
    
    

@@ -51,6 +51,7 @@ public class ValidateAddNewWebinar extends AdminBaseClass{
 		eventsActionsTest.searchEvent(data[1]);
 		eventsActionsTest.performDelete();
 		ActionClass.verifyToastMessage1(wp.toastMessage, commonEventPage.cancelButton, data[1],false);
+	    
 	}
 	
    

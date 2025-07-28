@@ -251,4 +251,58 @@ public class CommonEventPage extends AdminBaseClass
 			
 			public @FindBy(xpath = "//button[@type='submit']")
 			WebElement submitButtonDetails;
+			
+			public @FindBy(xpath = "//a[5]//div[1]")
+			WebElement zoomSection;
+			
+			public @FindBy(xpath = "//button[normalize-space()='Create New Meeting']")
+			WebElement createMeetingButton;
+			
+			public @FindBy(xpath = "//input[@name='topicName']")
+			WebElement topicName;
+			
+			public @FindBy(xpath = "//textarea[@name='agenda']")
+			WebElement agenda;
+			
+			public @FindBy(xpath = "//button[@type='submit']")
+			WebElement createMeetingSubmitButton;
+			
+			public @FindBy(xpath = "(//input[@placeholder='Select date & time'])[1]")
+			WebElement startDateTime;
+			
+			public @FindBy(xpath = "(//input[@placeholder='Select date & time'])[2]")
+			WebElement endDateTime;
+			
+			public @FindBy(xpath = "//small[normalize-space()='Registrants']")
+			WebElement registrantSection;
+			
+			public @FindBy(xpath= "//button[normalize-space()='Add registrants']")
+			WebElement addRegistrantButton;
+			
+			public @FindBy(xpath = "//div[contains(@class,'dropdown-heading-value')]")
+			WebElement registrantDropdown;
+			
+			public @FindBy(xpath = "//button[normalize-space()='Add Registrants']")
+			WebElement registrantSubmitButton;
+			
+			public @FindBy(xpath="//button[@class='btn-danger btn btn-secondary btn-sm']//*[name()='svg']")
+			WebElement deleteRegistrantButton;
+			
+			
+			public @FindBy(xpath = "//button[@title='Update Meeting']//*[name()='svg']")
+			WebElement updateMeetingButton;
+			
+			public @FindBy(xpath = "//button[@title='Delete Meeting']")
+		    WebElement deleteMeetingButton;
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 }

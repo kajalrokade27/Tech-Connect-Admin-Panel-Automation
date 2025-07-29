@@ -29,7 +29,7 @@ public class UpdatePDTest extends AdminBaseClass
 	@BeforeClass
 	public void setUp() throws IOException, InterruptedException 
 	{
-		     wp = new WorkshopPage(driver);
+		    wp = new WorkshopPage(driver);
 		    cp = new ConferencePage(driver); 
 		    et = new EventsActionsTest();
 		    mp = new ModeratorPage(driver);

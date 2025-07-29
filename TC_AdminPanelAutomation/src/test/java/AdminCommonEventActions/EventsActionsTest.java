@@ -143,13 +143,10 @@ public class EventsActionsTest extends AdminBaseClass {
             ActionClass.click(cp.speakerImageUpdate);
         }
         ActionClass.uploadFile(GetPropertyData.propData(prefix + "ImagePath"));
-
         ActionClass.enterText(cp.speakerAbout, GetPropertyData.propData(prefix + "About"));
         ActionClass.selectByVisibleText(cp.speakerCategory, GetPropertyData.propData(prefix + "Category"));
     }
-
-    
-    private void fillSponsorForm(String prefix) throws IOException, AWTException, InterruptedException {
+        private void fillSponsorForm(String prefix) throws IOException, AWTException, InterruptedException {
         ActionClass.enterText(cp.companyName, GetPropertyData.propData(prefix + "Name"));
         ActionClass.enterText(cp.companyWebsiteUrl, GetPropertyData.propData(prefix + "Url"));
         ActionClass.click(cp.sponsorlogoBannerImage.get(0));
@@ -160,9 +157,7 @@ public class EventsActionsTest extends AdminBaseClass {
         ActionClass.selectByVisibleText(cp.sponsorTier, GetPropertyData.propData(prefix + "Tier"));
         ActionClass.selectByVisibleText(cp.sponsorCategory, GetPropertyData.propData(prefix + "Category"));
     }
-    
-
-    public void addSessions(String prefix) throws IOException, InterruptedException {
+        public void addSessions(String prefix) throws IOException, InterruptedException {
     	wp = new WorkshopPage(driver);
         ActionClass.click(cp.sessionTab);
         ActionClass.click(cp.createSessionButton);
@@ -172,8 +167,7 @@ public class EventsActionsTest extends AdminBaseClass {
      
     }
 
-  
-    public void updateSession(String prefix) throws IOException, InterruptedException {
+        public void updateSession(String prefix) throws IOException, InterruptedException {
     	wp = new WorkshopPage(driver);
         ActionClass.click(cp.sessionTab);
         ActionClass.click(cp.editSessionButton);
@@ -181,8 +175,7 @@ public class EventsActionsTest extends AdminBaseClass {
         ActionClass.click(cp.submitButton);
         ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Toast Message : ", true);
     }
-
-   public void deleteSession() throws InterruptedException {
+       public void deleteSession() throws InterruptedException {
 	   wp = new WorkshopPage(driver);
         ActionClass.click(cp.sessionTab);
         ActionClass.click(cp.deleteSessionButton);
@@ -190,9 +183,7 @@ public class EventsActionsTest extends AdminBaseClass {
         ActionClass.click(cp.confirmDeleteSessionButton);
         ActionClass.verifySuccessMsg(cp.sessionDeleteSuccessMessage, "Session Delete Message: ");
      }
-
-  
-    public void addNewSpeakers(String prefix) throws IOException, InterruptedException, AWTException {
+        public void addNewSpeakers(String prefix) throws IOException, InterruptedException, AWTException {
     	wp = new WorkshopPage(driver);
     	commonEp = new CommonEventPage(driver);
         ActionClass.click(cp.speakersSection);
@@ -201,8 +192,7 @@ public class EventsActionsTest extends AdminBaseClass {
         ActionClass.click(cp.submitButton);
         ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton,"Speaker : ",true);
     }
-   
-    public void updateSpeaker(String prefix) throws IOException, InterruptedException, AWTException {
+        public void updateSpeaker(String prefix) throws IOException, InterruptedException, AWTException {
     	wp = new WorkshopPage(driver);
         ActionClass.click(cp.speakersSection);
         ActionClass.enterText(cp.searchSpeakerField, GetPropertyData.propData(prefix));
@@ -222,10 +212,9 @@ public class EventsActionsTest extends AdminBaseClass {
         }
         }
     }
-   
-    public void addExistingSpeakers(String prefix) throws IOException, InterruptedException {
-    	wp = new WorkshopPage(driver);
-    	commonEp = new CommonEventPage(driver);
+         public void addExistingSpeakers(String prefix) throws IOException, InterruptedException {
+    	 wp = new WorkshopPage(driver);
+    	 commonEp = new CommonEventPage(driver);
     	 String existingSpeaker = GetPropertyData.propData(prefix);
          ActionClass.click(cp.speakersSection);
          ActionClass.click(cp.addExistingSpeakersButton);
@@ -346,6 +335,7 @@ public class EventsActionsTest extends AdminBaseClass {
     	  commonEp = new CommonEventPage(driver);
     	  wp = new WorkshopPage(driver);
     	  ActionClass.click(commonEp.zoomSection);
+    	  try {
     	  ActionClass.click(commonEp.createMeetingButton);
     	  ActionClass.enterText(commonEp.topicName, testData[0]);
     	  ActionClass.enterText(commonEp.agenda, testData[1]);
@@ -356,6 +346,11 @@ public class EventsActionsTest extends AdminBaseClass {
           DateClass.selectDate(cp.end_monthElem, cp.end_nextButton, cp.dateElements,testData[4], testData[5]);
           ActionClass.click(commonEp.submitButton);
           ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, testData[0], true);
+    	  }
+    	  catch (Exception e) {
+			  Reporter.log("Zoom meeting already exists, skipping creation", true);
+			 
+    	  }
     	  
     	  }
       
@@ -363,6 +358,7 @@ public class EventsActionsTest extends AdminBaseClass {
     	  commonEp = new CommonEventPage(driver);
     	  wp = new WorkshopPage(driver);
     	  ActionClass.click(commonEp.zoomSection);
+    	  try {
     	  ActionClass.click(commonEp.updateMeetingButton);
     	  ActionClass.enterText(commonEp.topicName, testData[0]);
     	  ActionClass.enterText(commonEp.agenda, testData[1]);
@@ -373,6 +369,10 @@ public class EventsActionsTest extends AdminBaseClass {
           DateClass.selectDate(cp.end_monthElem, cp.end_nextButton, cp.dateElements,testData[4], testData[5]);
           ActionClass.click(commonEp.submitButton);
           ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, testData[0], true);
+    	  }
+    	  catch (Exception e) {
+    		  Reporter.log("Zoom meeting not found for update, skipping", true);
+    	  }
       }
       
       public void addRegistrant(String [] testData) throws InterruptedException

@@ -1,13 +1,8 @@
 package adminWorkshopValidation;
 import java.awt.AWTException;
 import java.io.IOException;
-import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeoutException;
-
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -15,6 +10,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.TechConnect.Base.AdminBaseClass;
 import com.TechConnect.FileUtility.GetPropertyData;
+import com.TechConnect.FileUtility.SheetName;
+import com.TechConnect.FileUtility.UniversalDataProvider;
 import com.TechConnect.JavaUtility.DateClass;
 import com.tc.AdminPOM.ConferencePage;
 import com.tc.AdminPOM.ModeratorPage;
@@ -147,9 +144,7 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
 	        ActionClass.click(cp.submitButton);
 	       
 	        ActionClass.verifyToastMessage1(wp.toastMessage, cp.closeButton,"Session : ",true);
-	          
-	        
-	    }
+	       }
 
 	    @Test( priority = 3)
 	    public void updateSession() throws IOException, InterruptedException {
@@ -356,13 +351,50 @@ public class WorkshopUpdateTest extends AdminBaseClass  {
 	    			    et.performPublish();
 	    			    ActionClass.verifyToastMessage1(wp.toastMessage, mp.cancelButton,  " published successfully", false);
 	    		        ActionClass.implicitWait();
-	    		}
+	   }
+	    
 	    @Test(priority = 14)
 	    public void saveAsDraftWorkshop() throws IOException, InterruptedException {
 	    	et.performSaveAsDraft();
 	    	ActionClass.verifyToastMessage1(wp.toastMessage, mp.cancelButton, " saved as draft successfully", false);
 	    	ActionClass.implicitWait();
 	    }
+	    
+	    @Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 17)
+		  @SheetName("ZoomMeeting")
+		public void addZoomTest(String[]data) throws IOException, InterruptedException, AWTException
+		{
+			et.addZoomMeet(data);
+		}
+		
+		@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 17)
+		  @SheetName("ZoomMeeting")
+		public void updateZoomTest(String[]data) throws IOException, InterruptedException, AWTException
+		{
+			et.updateZoomMeet(data);
+		}
+		
+		@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 18)
+		  @SheetName("Registrant")
+		public void addRegistrant(String[]data) throws IOException, InterruptedException, AWTException
+		{
+			et.addRegistrant(data);
+		}
+		
+		@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 19)
+		  @SheetName("Registrant")
+		public void deleteRegistrant(String[]data) throws IOException, InterruptedException
+		{
+			et.deleteRegistrant(data);
+		}
+		
+		@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 20)
+		  @SheetName("ZoomMeeting")
+		public void deleteZoomTest(String[]data) throws IOException, InterruptedException
+		{
+			et.deleteZoomMeet(data);
+		}
+		
 	   
 	    
 	    

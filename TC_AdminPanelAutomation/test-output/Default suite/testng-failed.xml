@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="adminPanelDiscValidationScripts.UpdatePDTest">
+      <class name="adminWorkshopValidation.WorkshopUpdateTest">
         <methods>
-          <include name="setUp"/>
           <include name="preCondition"/>
+          <include name="deleteZoomTest" invocation-numbers="0"/>
           <include name="postCondition"/>
-          <include name="addZoomTest" invocation-numbers="0"/>
+          <include name="setUp"/>
         </methods>
-      </class> <!-- adminPanelDiscValidationScripts.UpdatePDTest -->
+      </class> <!-- adminWorkshopValidation.WorkshopUpdateTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

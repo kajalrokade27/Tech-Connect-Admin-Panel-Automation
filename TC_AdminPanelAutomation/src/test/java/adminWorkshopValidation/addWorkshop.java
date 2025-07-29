@@ -57,6 +57,7 @@ public class addWorkshop extends AdminBaseClass {
 	    ActionClass.typeUsingActions(cp.industryTags, testData[6]);
 	    ActionClass.pressEnter();
 
+	    
 	    ActionClass.scrollToElement(wp.location_field);
 	    ActionClass.enterText(wp.location_field, testData[7]);
         

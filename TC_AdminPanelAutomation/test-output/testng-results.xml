@@ -5,50 +5,50 @@
       <![CDATA[Admin login successful]]>
     </line>
     <line>
-      <![CDATA[Events found with the name: AI Automation Panel Discussion]]>
+      <![CDATA[Events found with the name: AI Automation Workshop]]>
     </line>
     <line>
       <![CDATA[Admin logout successful]]>
     </line>
   </reporter-output>
-  <suite started-at="2025-07-28T18:11:46 IST" name="Default suite" finished-at="2025-07-28T18:12:49 IST" duration-ms="62148">
+  <suite started-at="2025-07-29T17:23:49 IST" name="Default suite" finished-at="2025-07-29T17:24:57 IST" duration-ms="68246">
     <groups>
     </groups>
-    <test started-at="2025-07-28T18:11:46 IST" name="Default test" finished-at="2025-07-28T18:12:49 IST" duration-ms="62148">
-      <class name="adminPanelDiscValidationScripts.UpdatePDTest">
-        <test-method is-config="true" signature="preCondition()[pri:0, instance:adminPanelDiscValidationScripts.UpdatePDTest@2d2ffcb7]" started-at="2025-07-28T18:11:46 IST" name="preCondition" finished-at="2025-07-28T18:11:57 IST" duration-ms="10060" status="PASS">
+    <test started-at="2025-07-29T17:23:49 IST" name="Default test" finished-at="2025-07-29T17:24:57 IST" duration-ms="68246">
+      <class name="adminWorkshopValidation.WorkshopUpdateTest">
+        <test-method is-config="true" signature="preCondition()[pri:0, instance:adminWorkshopValidation.WorkshopUpdateTest@6a03bcb1]" started-at="2025-07-29T17:23:49 IST" name="preCondition" finished-at="2025-07-29T17:24:05 IST" duration-ms="15641" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[Admin login successful]]>
             </line>
           </reporter-output>
         </test-method> <!-- preCondition -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:adminPanelDiscValidationScripts.UpdatePDTest@2d2ffcb7]" started-at="2025-07-28T18:11:57 IST" name="setUp" finished-at="2025-07-28T18:12:02 IST" duration-ms="5304" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:adminWorkshopValidation.WorkshopUpdateTest@6a03bcb1]" started-at="2025-07-29T17:24:05 IST" name="setUp" finished-at="2025-07-29T17:24:10 IST" duration-ms="5774" status="PASS">
           <reporter-output>
             <line>
-              <![CDATA[Events found with the name: AI Automation Panel Discussion]]>
+              <![CDATA[Events found with the name: AI Automation Workshop]]>
             </line>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="addZoomTest([Ljava.lang.String;)[pri:17, instance:adminPanelDiscValidationScripts.UpdatePDTest@2d2ffcb7]" started-at="2025-07-28T18:12:02 IST" name="addZoomTest" data-provider="dynamicData" finished-at="2025-07-28T18:12:48 IST" duration-ms="46026" status="FAIL">
+        <test-method signature="deleteZoomTest([Ljava.lang.String;)[pri:20, instance:adminWorkshopValidation.WorkshopUpdateTest@6a03bcb1]" started-at="2025-07-29T17:24:10 IST" name="deleteZoomTest" data-provider="dynamicData" finished-at="2025-07-29T17:24:56 IST" duration-ms="46054" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[Ljava.lang.String;@7275c74b]]>
+                <![CDATA[[Ljava.lang.String;@7d9ba6c]]>
               </value>
             </param>
           </params>
           <exception class="org.openqa.selenium.TimeoutException">
             <message>
-              <![CDATA[Expected condition failed: waiting for element to be clickable: Proxy element for: DefaultElementLocator 'By.xpath: //button[normalize-space()='Create New Meeting']' (tried for 30 second(s) with 500 milliseconds interval)]]>
+              <![CDATA[Expected condition failed: waiting for element to be clickable: Proxy element for: DefaultElementLocator 'By.xpath: //button[@title='Delete Meeting']' (tried for 30 second(s) with 500 milliseconds interval)]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: Proxy element for: DefaultElementLocator 'By.xpath: //button[normalize-space()='Create New Meeting']' (tried for 30 second(s) with 500 milliseconds interval)
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: Proxy element for: DefaultElementLocator 'By.xpath: //button[@title='Delete Meeting']' (tried for 30 second(s) with 500 milliseconds interval)
 at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
 at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
 at com.tech_Connect.Action.ActionClass.click(ActionClass.java:44)
-at AdminCommonEventActions.EventsActionsTest.addZoomMeet(EventsActionsTest.java:349)
-at adminPanelDiscValidationScripts.UpdatePDTest.addZoomTest(UpdatePDTest.java:163)
+at AdminCommonEventActions.EventsActionsTest.deleteZoomMeet(EventsActionsTest.java:405)
+at adminWorkshopValidation.WorkshopUpdateTest.deleteZoomTest(WorkshopUpdateTest.java:397)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -75,15 +75,15 @@ at org.testng.TestNG.run(TestNG.java:1079)
 at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//button[normalize-space()='Create New Meeting']"}
-  (Session info: chrome=138.0.7204.159)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@title='Delete Meeting']"}
+  (Session info: chrome=138.0.7204.169)
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: '4.20.0', revision: '866c76ca80'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [de5f41c64a58d5d30f338e68e9ea1b75, findElement {using=xpath, value=//button[normalize-space()='Create New Meeting']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.159, chrome: {chromedriverVersion: 138.0.7204.168 (3e8d82e86e9..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59489}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59489/devtoo..., se:cdpVersion: 138.0.7204.159, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: de5f41c64a58d5d30f338e68e9ea1b75
+Command: [4d418f3c37133feae65b241551d9f9d9, findElement {value=//button[@title='Delete Meeting'], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.169, chrome: {chromedriverVersion: 138.0.7204.168 (3e8d82e86e9..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63275}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63275/devtoo..., se:cdpVersion: 138.0.7204.169, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4d418f3c37133feae65b241551d9f9d9
 at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
 at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
 at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
@@ -100,7 +100,7 @@ at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:3
 at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
 at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
 at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-at jdk.proxy2/jdk.proxy2.$Proxy14.isDisplayed(Unknown Source)
+at jdk.proxy2/jdk.proxy2.$Proxy15.isDisplayed(Unknown Source)
 at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:304)
 at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
 at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:287)
@@ -113,15 +113,15 @@ at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
           </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addZoomTest -->
-        <test-method is-config="true" signature="postCondition()[pri:0, instance:adminPanelDiscValidationScripts.UpdatePDTest@2d2ffcb7]" started-at="2025-07-28T18:12:48 IST" name="postCondition" finished-at="2025-07-28T18:12:49 IST" duration-ms="659" status="PASS">
+        </test-method> <!-- deleteZoomTest -->
+        <test-method is-config="true" signature="postCondition()[pri:0, instance:adminWorkshopValidation.WorkshopUpdateTest@6a03bcb1]" started-at="2025-07-29T17:24:57 IST" name="postCondition" finished-at="2025-07-29T17:24:57 IST" duration-ms="693" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[Admin logout successful]]>
             </line>
           </reporter-output>
         </test-method> <!-- postCondition -->
-      </class> <!-- adminPanelDiscValidationScripts.UpdatePDTest -->
+      </class> <!-- adminWorkshopValidation.WorkshopUpdateTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\Admin\AppData\Local\Temp\testng-eclipse-2110253887\testng-customsuite.xml</span>
+                    <span>C:\Users\Admin\AppData\Local\Temp\testng-eclipse--31979832\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -103,7 +103,7 @@
                     <div class="method-list-content failed suite-Default_suite">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="adminPanelDiscValidationScripts.UpdatePDTest" class="method navigator-link" hash-for-method="addZoomTest([AI Automation Webinar, For demo, August 2025, 15, December 2025, 27])">addZoomTest([AI Automation Webinar, For demo, August 2025, 15, December 2025, 27])</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="adminWorkshopValidation.WorkshopUpdateTest" class="method navigator-link" hash-for-method="deleteZoomTest([AI Automation Webinar, For demo, August 2025, 15, December 2025, 27])">deleteZoomTest([AI Automation Webinar, For demo, August 2025, 15, December 2025, 27])</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Default_suite -->
@@ -121,21 +121,21 @@
           <div class="suite-Default_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">adminPanelDiscValidationScripts.UpdatePDTest</span>
+              <span class="class-name">adminWorkshopValidation.WorkshopUpdateTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="addZoomTest([AI Automation Webinar, For demo, August 2025, 15, December 2025, 27])">
-                  </a> <!-- addZoomTest([AI Automation Webinar, For demo, August 2025, 15, December 2025, 27]) -->
-                  <span class="method-name">addZoomTest</span>
+                  <a name="deleteZoomTest([AI Automation Webinar, For demo, August 2025, 15, December 2025, 27])">
+                  </a> <!-- deleteZoomTest([AI Automation Webinar, For demo, August 2025, 15, December 2025, 27]) -->
+                  <span class="method-name">deleteZoomTest</span>
                   <span class="parameters">([AI Automation Webinar, For demo, August 2025, 15, December 2025, 27])</span>
-                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: Proxy element for: DefaultElementLocator &apos;By.xpath: //button[normalize-space()=&apos;Create New Meeting&apos;]&apos; (tried for 30 second(s) with 500 milliseconds interval)
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: Proxy element for: DefaultElementLocator &apos;By.xpath: //button[@title=&apos;Delete Meeting&apos;]&apos; (tried for 30 second(s) with 500 milliseconds interval)
 	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
 	at com.tech_Connect.Action.ActionClass.click(ActionClass.java:44)
-	at AdminCommonEventActions.EventsActionsTest.addZoomMeet(EventsActionsTest.java:349)
-	at adminPanelDiscValidationScripts.UpdatePDTest.addZoomTest(UpdatePDTest.java:163)
+	at AdminCommonEventActions.EventsActionsTest.deleteZoomMeet(EventsActionsTest.java:405)
+	at adminWorkshopValidation.WorkshopUpdateTest.deleteZoomTest(WorkshopUpdateTest.java:397)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -162,15 +162,15 @@
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//button[normalize-space()=&apos;Create New Meeting&apos;]&quot;}
-  (Session info: chrome=138.0.7204.159)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//button[@title=&apos;Delete Meeting&apos;]&quot;}
+  (Session info: chrome=138.0.7204.169)
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: &apos;4.20.0&apos;, revision: &apos;866c76ca80&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.7&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [de5f41c64a58d5d30f338e68e9ea1b75, findElement {using=xpath, value=//button[normalize-space()=&apos;Create New Meeting&apos;]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.159, chrome: {chromedriverVersion: 138.0.7204.168 (3e8d82e86e9..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59489}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59489/devtoo..., se:cdpVersion: 138.0.7204.159, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: de5f41c64a58d5d30f338e68e9ea1b75
+Command: [4d418f3c37133feae65b241551d9f9d9, findElement {value=//button[@title=&apos;Delete Meeting&apos;], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.169, chrome: {chromedriverVersion: 138.0.7204.168 (3e8d82e86e9..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63275}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63275/devtoo..., se:cdpVersion: 138.0.7204.169, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4d418f3c37133feae65b241551d9f9d9
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
@@ -187,7 +187,7 @@ Session ID: de5f41c64a58d5d30f338e68e9ea1b75
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
 	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
 	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy14.isDisplayed(Unknown Source)
+	at jdk.proxy2/jdk.proxy2.$Proxy15.isDisplayed(Unknown Source)
 	at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:304)
 	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
 	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:287)
@@ -204,7 +204,7 @@ Session ID: de5f41c64a58d5d30f338e68e9ea1b75
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\Admin\AppData\Local\Temp\testng-eclipse-2110253887\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\Admin\AppData\Local\Temp\testng-eclipse--31979832\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -213,11 +213,11 @@ Session ID: de5f41c64a58d5d30f338e68e9ea1b75
 &lt;suite name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;adminPanelDiscValidationScripts.UpdatePDTest&quot;&gt;
+      &lt;class name=&quot;adminWorkshopValidation.WorkshopUpdateTest&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;addZoomTest&quot;/&gt;
+          &lt;include name=&quot;deleteZoomTest&quot;/&gt;
         &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- adminPanelDiscValidationScripts.UpdatePDTest --&gt;
+      &lt;/class&gt; &lt;!-- adminWorkshopValidation.WorkshopUpdateTest --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -259,9 +259,9 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'addZoomTest')
-data.setCell(0, 2, 'adminPanelDiscValidationScripts.UpdatePDTest')
-data.setCell(0, 3, 46026);
+data.setCell(0, 1, 'deleteZoomTest')
+data.setCell(0, 2, 'adminWorkshopValidation.WorkshopUpdateTest')
+data.setCell(0, 3, 46054);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
@@ -285,43 +285,43 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">adminPanelDiscValidationScripts.UpdatePDTest</span>
+              <span class="ignored-class-name">adminWorkshopValidation.WorkshopUpdateTest</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">updateWebinarSession</span>
-                <br/>
-                <span class="ignored-method-name">addSpeaker</span>
-                <br/>
-                <span class="ignored-method-name">updateWebinarSponsor</span>
-                <br/>
-                <span class="ignored-method-name">addExistingSpeaker</span>
-                <br/>
-                <span class="ignored-method-name">updateWebinar</span>
-                <br/>
-                <span class="ignored-method-name">updateWebinarSpeaker</span>
-                <br/>
-                <span class="ignored-method-name">deleteWebinarSponsor</span>
-                <br/>
-                <span class="ignored-method-name">addSponsor</span>
-                <br/>
-                <span class="ignored-method-name">addRegistrant</span>
+                <span class="ignored-method-name">updateSpeaker</span>
                 <br/>
                 <span class="ignored-method-name">deleteRegistrant</span>
                 <br/>
-                <span class="ignored-method-name">addExistingSponsor</span>
+                <span class="ignored-method-name">sponsorUpdate</span>
                 <br/>
-                <span class="ignored-method-name">publishWebinar</span>
+                <span class="ignored-method-name">addExistingSpeakers</span>
                 <br/>
-                <span class="ignored-method-name">deleteZoomTest</span>
+                <span class="ignored-method-name">addSessions</span>
                 <br/>
-                <span class="ignored-method-name">deleteWebinarSpeaker</span>
+                <span class="ignored-method-name">addZoomTest</span>
                 <br/>
-                <span class="ignored-method-name">addSession</span>
+                <span class="ignored-method-name">updateSession</span>
+                <br/>
+                <span class="ignored-method-name">addNewSponsor</span>
                 <br/>
                 <span class="ignored-method-name">updateZoomTest</span>
                 <br/>
-                <span class="ignored-method-name">saveWebinarAsDraft</span>
+                <span class="ignored-method-name">deleteSession</span>
                 <br/>
-                <span class="ignored-method-name">deleteWebinarSession</span>
+                <span class="ignored-method-name">deleteSponsor</span>
+                <br/>
+                <span class="ignored-method-name">saveAsDraftWorkshop</span>
+                <br/>
+                <span class="ignored-method-name">addRegistrant</span>
+                <br/>
+                <span class="ignored-method-name">publishWorkshop</span>
+                <br/>
+                <span class="ignored-method-name">addExistingSponsors</span>
+                <br/>
+                <span class="ignored-method-name">addNewSpeakers</span>
+                <br/>
+                <span class="ignored-method-name">TestWithValidData</span>
+                <br/>
+                <span class="ignored-method-name">deleteSpeaker</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -333,24 +333,24 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">adminPanelDiscValidationScripts.UpdatePDTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">adminWorkshopValidation.WorkshopUpdateTest</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
                 <span class="method-name">preCondition</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-class before">
                 <span class="method-name">setUp</span>
-                <span class="method-start">10060 ms</span>
+                <span class="method-start">15643 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">addZoomTest([AI Automation Webinar, For demo, August 2025, 15, December 2025, 27])</span>
-                <span class="method-start">15413 ms</span>
+                <span class="method-name">deleteZoomTest([AI Automation Webinar, For demo, August 2025, 15, December 2025, 27])</span>
+                <span class="method-start">21446 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">postCondition</span>
-                <span class="method-start">61456 ms</span>
+                <span class="method-start">67517 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

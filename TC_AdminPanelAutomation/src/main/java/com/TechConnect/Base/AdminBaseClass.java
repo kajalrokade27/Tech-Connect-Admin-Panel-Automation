@@ -14,7 +14,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class AdminBaseClass extends BaseDriver
 {
-	@BeforeClass
+	@BeforeClass(alwaysRun = true)
 	public void preCondition() throws IOException, InterruptedException
 	{
 	    String browser = GetPropertyData.propData("browser").trim();

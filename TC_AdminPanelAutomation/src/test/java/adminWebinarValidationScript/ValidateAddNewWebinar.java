@@ -29,7 +29,7 @@ public class ValidateAddNewWebinar extends AdminBaseClass{
 		ActionClass.click(commonEventPage.webinarsSection);
 	}
 	
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 3)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 3,groups = {"smoke", "sanity"})
 	  @SheetName("Webinar")
 	public void addNewWebinar(String[] data) throws InterruptedException, IOException, AWTException 
 	{
@@ -45,7 +45,7 @@ public class ValidateAddNewWebinar extends AdminBaseClass{
 		ActionClass.verifyToastMessage1(wp.toastMessage, commonEventPage.cancelButton, data[1],false);
 	}
 	
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 4)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 4,groups = {"smoke"})
 	  @SheetName("Webinar")
 	public void deleteWebinar(String[] data) throws IOException, InterruptedException {
 		eventsActionsTest.searchEvent(data[1]);

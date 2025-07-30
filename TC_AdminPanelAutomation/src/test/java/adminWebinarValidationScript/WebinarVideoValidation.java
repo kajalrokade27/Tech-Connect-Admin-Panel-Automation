@@ -28,12 +28,12 @@ public class WebinarVideoValidation extends AdminBaseClass
       
   }
   
-  @Test(priority = 1)
+  @Test(priority = 1,groups= {"sanity","regression"})
   public void validateAddVideo() throws InterruptedException, AWTException, IOException {
      et.validateAddVideo(GetPropertyData.propData("videoFilePath"));
   }
   
-  @Test(priority = 2)
+  @Test(priority = 2,groups= {"sanity","regression"})
   public void validateDeleteVideo() throws InterruptedException, AWTException, IOException {
         et.validateDeleteVideo();
   } 

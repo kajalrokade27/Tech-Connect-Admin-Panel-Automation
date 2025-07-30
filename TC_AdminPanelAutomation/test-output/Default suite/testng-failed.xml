@@ -3,14 +3,18 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="adminWorkshopValidation.WorkshopUpdateTest">
+      <class name="adminWebinarValidationScript.WebinarDashboardValidation">
         <methods>
+          <include name="verifyDaysToEventDisplayedCorrectly"/>
           <include name="preCondition"/>
-          <include name="deleteZoomTest" invocation-numbers="0"/>
+          <include name="verifySponsorCount"/>
+          <include name="verifySpeakerCount"/>
+          <include name="setup"/>
+          <include name="sessionCountValidation"/>
           <include name="postCondition"/>
-          <include name="setUp"/>
+          <include name="verifyAttendeeCount"/>
         </methods>
-      </class> <!-- adminWorkshopValidation.WorkshopUpdateTest -->
+      </class> <!-- adminWebinarValidationScript.WebinarDashboardValidation -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

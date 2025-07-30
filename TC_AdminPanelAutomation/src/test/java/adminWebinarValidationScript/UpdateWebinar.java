@@ -36,7 +36,7 @@ public class UpdateWebinar extends AdminBaseClass
 		   ActionClass.click(cp.eventCardName);
 		   ActionClass.click(cp.detailsTab);
 	}
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 3)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 3,groups= {"regression"})
 	  @SheetName("Webinar")
  		public void updateWebinar(String[]data) throws IOException, InterruptedException, AWTException
  		{
@@ -51,28 +51,28 @@ public class UpdateWebinar extends AdminBaseClass
  			ActionClass.verifyToastMessage1(wp.toastMessage, commonEp.cancelButton, data[1], false);
  	}
 	
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 4)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 4,groups = {"regression"})
 	  @SheetName("Webinar")
 	public void addSession(String[]data) throws IOException, InterruptedException
 	{
 		et.addSessions("addSession");
 	}
 	
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 5)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 5, groups = {"regression"})
 	  @SheetName("Webinar")
 	public void updateWebinarSession(String[]data) throws IOException, InterruptedException
 	{
 		et.updateSession("updateSession");
 		
 	}
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 6)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 6,groups = {"regression"})
 	  @SheetName("Webinar")
 	public void deleteWebinarSession(String[]data) throws IOException, InterruptedException
 	{
 		et.deleteSession();
 		
 	}
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 7)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 7, groups = {"regression"})
 	  @SheetName("Webinar")
 	public void addSpeaker(String[]data) throws IOException, InterruptedException, AWTException
 	{
@@ -81,7 +81,7 @@ public class UpdateWebinar extends AdminBaseClass
 		
 	}
 	
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 9)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 9, groups = {"regression"})
 	  @SheetName("Webinar")
 	public void updateWebinarSpeaker(String[]data) throws IOException, InterruptedException, AWTException
 	{
@@ -89,41 +89,41 @@ public class UpdateWebinar extends AdminBaseClass
 		et.updateSpeaker("updateSpeaker");
 	}
 	
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 8, retryAnalyzer = com.tech_Connect.Action.ActionClass.class)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 8, retryAnalyzer = com.tech_Connect.Action.ActionClass.class, groups = {"regression"})
 	  @SheetName("Webinar")
 	public void addExistingSpeaker(String[]data) throws IOException, InterruptedException, AWTException
 	{
 		et.addExistingSpeakers("existingSpeaker");
 	}
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 10)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 10, groups = {"regression"})
 	  @SheetName("Webinar")
 	public void deleteWebinarSpeaker(String[]data) throws IOException, InterruptedException
 	{
 		et.deleteSpeaker();
 		
 	}
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 11)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 11, groups = {"regression"})
 	  @SheetName("Webinar")
 	public void addSponsor(String[]data) throws IOException, InterruptedException, AWTException
 	{
 		et.addNewSponsor("addSponsor");
 		
 	}
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 12)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 12, groups = {"regression"})
 	  @SheetName("Webinar")
 	public void addExistingSponsor(String[]data) throws IOException, InterruptedException, AWTException
 	{
 		et.addExistingSponsors("addSponsorName");
 		
 	}
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 13)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 13, groups = {"regression"})
 	  @SheetName("Webinar")
 	public void updateWebinarSponsor(String[]data) throws IOException, InterruptedException, AWTException
 	{
 		et.sponsorUpdate(data);
 	}
 	
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 14)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 14, groups = {"regression"})
 	  @SheetName("Webinar")
 	public void deleteWebinarSponsor(String[]data) throws IOException, InterruptedException
 	{
@@ -131,49 +131,49 @@ public class UpdateWebinar extends AdminBaseClass
 		
 	}
 	
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 15)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 15, groups = {"regression"})
 	  @SheetName("Webinar")
 	public void publishWebinar(String[]data) throws IOException, InterruptedException
 	{
 		et.performPublish();
 	}
 	
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 16)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 16, groups = {"regression"})
 	  @SheetName("Webinar")
 	public void saveWebinarAsDraft(String[]data) throws IOException, InterruptedException
 	{
 		et.performSaveAsDraft();
 	}
 	
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 17)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 17, groups = {"regression"})
 	  @SheetName("ZoomMeeting")
 	public void addZoomTest(String[]data) throws IOException, InterruptedException, AWTException
 	{
 		et.addZoomMeet(data);
 	}
 	
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 17)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 17, groups = {"regression"})
 	  @SheetName("ZoomMeeting")
 	public void updateZoomTest(String[]data) throws IOException, InterruptedException, AWTException
 	{
 		et.updateZoomMeet(data);
 	}
 	
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 18)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 18, groups = {"regression"})
 	  @SheetName("Registrant")
 	public void addRegistrant(String[]data) throws IOException, InterruptedException, AWTException
 	{
 		et.addRegistrant(data);
 	}
 	
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 19)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 19, groups = {"regression"})
 	  @SheetName("Registrant")
 	public void deleteRegistrant(String[]data) throws IOException, InterruptedException
 	{
 		et.deleteRegistrant(data);
 	}
 	
-	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 20)
+	@Test(dataProvider = "dynamicData", dataProviderClass = UniversalDataProvider.class, priority = 20, groups = {"regression"})
 	  @SheetName("ZoomMeeting")
 	public void deleteZoomTest(String[]data) throws IOException, InterruptedException
 	{

@@ -34,7 +34,7 @@ public class WebinarDashboardValidation extends AdminBaseClass
 	        ActionClass.click(cp.eventCardName);
 	    }
 	  
-	  @Test(priority = 7)
+	  @Test(priority = 7,groups= {"smoke","regression"})
 	    public void verifyDaysToEventDisplayedCorrectly() throws InterruptedException {
 	        // Step 1: Get "Days to Event" text from UI (e.g., "36 days left")
 		  	 ActionClass.implicitWait(); // Ensure the dashboard is fully loaded
@@ -59,7 +59,7 @@ public class WebinarDashboardValidation extends AdminBaseClass
 
 	        Reporter.log("✔ 'Days to Event' value is correct on UI", true);
 	    }
-	  @Test(priority = 2)
+	  @Test(priority = 2, groups= {"smoke","regression"})
 	  public void verifyAttendeeCount() throws InterruptedException
 	  {
 		  ActionClass.implicitWait(); // Ensure the dash board is fully loaded
@@ -95,18 +95,18 @@ public class WebinarDashboardValidation extends AdminBaseClass
 		        ActionClass.waitForPageLoad(6000);
 		      }
 		       
-		       @Test(priority = 4)
+		       @Test(priority = 4, groups= {"smoke","regression"})
 		       public void sessionCountValidation() throws InterruptedException
 		       {
 		    	   verifyDashboardToDetailMatch(cp.eventInfoCards.get(1),cp.eventNumbers.get(0) ,cp.sessionList, "Session Count");
 		     }
-		       @Test(priority = 5)
+		       @Test(priority = 5, groups= {"smoke","regression"})
 		       public void verifySpeakerCount() throws InterruptedException
 		       {
 		    	   verifyDashboardToDetailMatch(cp.eventInfoCards.get(2),cp.eventNumbers.get(1) ,cp.speakerList, "Speaker Count");
 		       }
 		       
-		       @Test(priority = 6 )
+		       @Test(priority = 6,groups= {"smoke","regression"})
 		       public void verifySponsorCount() throws InterruptedException
 		       {
 		    	   verifyDashboardToDetailMatch(cp.eventInfoCards.get(3),cp.eventNumbers.get(2) ,cp.sponsorList, "Sponsor Count");
